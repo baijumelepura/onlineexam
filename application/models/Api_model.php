@@ -208,7 +208,6 @@ function get_notification($user,$limit){
 		 }
 		  $query_qp="update savsoft_qbank set no_time_served=(no_time_served +1)  $crin  where qid='$qp'  ";
 	 $this->db->query($query_qp);
-		 
 	 }
 	 
 if($this->config->item('allow_result_email')){

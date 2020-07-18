@@ -550,7 +550,7 @@ $config['dompdf']=$csetting['Enable_dompdf'];
 $config['user_registration']=$csetting['Enable_user_registration'];
 
 // verify email address ( true or false )
-$config['verify_email']=$csetting['Verify_user_email'];
+$config['verify_email']= $csetting['Verify_user_email'];
 
 // tinymce editor ( true or false )
 $config['tinymce']=$csetting['Tinymce_editor'];

@@ -44,3 +44,5 @@ ERROR - 2020-07-18 20:57:06 --> Severity: Warning --> Division by zero C:\xampp7
 ERROR - 2020-07-18 20:57:36 --> Severity: Warning --> Division by zero C:\xampp7\htdocs\onlineexam\application\views\dashboard.php 236
 ERROR - 2020-07-18 20:59:29 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\User_model.php 468
 ERROR - 2020-07-18 20:59:30 --> Severity: Warning --> mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() C:\xampp7\htdocs\onlineexam\system\libraries\Email.php 1896
+ERROR - 2020-07-18 21:47:29 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\User_model.php 468
+ERROR - 2020-07-18 21:50:53 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
