@@ -99,9 +99,9 @@ form{
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="https://savsoftquiz.com">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?=base_url();?>">
          
-        <div class="sidebar-brand-text mx-3"><?php if($hres[0]['setting_value']==""){ ?>Savsoft Quiz <sup>5.0</sup><?php }else{ echo $hres[0]['setting_value']; }?> </div>
+        <div class="sidebar-brand-text mx-3"><img src="<?php echo base_url('images/logo.png');?>"> </div>
 		
 		
       </a>
@@ -199,7 +199,7 @@ if(in_array('List',explode(',',$logged_in['questions'])) || in_array('List_all',
 
  
 <?php 
-if(in_array('List',explode(',',$logged_in['quiz'])) || in_array('List_all',explode(',',$logged_in['quiz']))){
+if((in_array('List',explode(',',$logged_in['quiz'])) || in_array('List_all',explode(',',$logged_in['quiz'])))){
 ?> 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
@@ -229,7 +229,8 @@ if(in_array('List',explode(',',$logged_in['quiz'])) || in_array('List_all',explo
 }
 ?>
 <?php 
-if(in_array('List',explode(',',$logged_in['results'])) || in_array('List_all',explode(',',$logged_in['results']))){
+if( (in_array('List',explode(',',$logged_in['results'])) || in_array('List_all',explode(',',$logged_in['results'])))
+&& $logged_in['su'] != 2){
 ?> 
      <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
@@ -301,10 +302,11 @@ if(in_array('All',explode(',',$logged_in['setting']))){
 }
 ?>
  <?php 
- if(!in_array('List_all',explode(',',$logged_in['quiz']))){
+ if(!in_array('List_all',explode(',',$logged_in['quiz']))){ /*
 ?>  
 <a href="<?php echo site_url('user/switch_group');?>" class="btn btn-danger" style="border-radius:0px;"><?php echo $this->lang->line('change_group');?></a>
 <?php 
+*/
 }
 ?>
 

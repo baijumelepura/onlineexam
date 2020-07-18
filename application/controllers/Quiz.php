@@ -723,6 +723,8 @@ function open_quiz($limit='0'){
 		
 		// get result and quiz info and validate time period
 		$data['quiz']=$this->quiz_model->quiz_result($rid);
+
+
 		$data['saved_answers']=$this->quiz_model->saved_answers($rid);
 		$data['selected_lang']=$selected_lang;
 
@@ -753,7 +755,9 @@ function open_quiz($limit='0'){
 		$data['title']=$data['quiz']['quiz_name'];
 		$this->load->view('header',$data);
 		
-		$this->load->view('quiz_attempt_'.$data['quiz']['quiz_template'],$data);
+		//$this->load->view('quiz_attempt_'.$data['quiz']['quiz_template'],$data);
+		$this->load->view('quiz_attempt_Default',$data);
+
 		$this->load->view('footer',$data);
 			
 		}

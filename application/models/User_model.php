@@ -439,13 +439,14 @@ return $revenue;
  }
  
   function insert_user_2(){
-	 
+	  
 		$userdata=array(
 		'email'=>$this->input->post('email'),
 		'password'=>md5($this->input->post('password')),
 		'first_name'=>$this->input->post('first_name'),
 		'last_name'=>$this->input->post('last_name'),
 		'contact_no'=>$this->input->post('contact_no'),
+		'age'=>$this->input->post('age'),
 		'gid'=>implode(',',$this->input->post('gid')),
 		'su'=>'2'		
 		);

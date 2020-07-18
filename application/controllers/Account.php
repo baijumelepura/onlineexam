@@ -16,6 +16,7 @@ class Account extends CI_Controller {
 	public function index($limit='0')
 	{
 		
+		
 		// redirect if not loggedin
 		if(!$this->session->userdata('logged_in')){
 			redirect('login');

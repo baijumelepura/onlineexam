@@ -145,6 +145,8 @@ class Login extends CI_Controller {
 		$password=urldecode($p2);
 		}
 		 $status=$this->user_model->login($username,$password);
+
+
 		if($status['status']=='1'){
 			$this->load->helper('url');
 			// row exist fetch userdata
@@ -180,7 +182,7 @@ class Login extends CI_Controller {
 				if($user['subscription_expired'] <= time()){
 					// eubscription expired, redirect to payment page
 					
-					redirect('payment_gateway_2/subscribe/'.$gids.'/'.$user['uid']);
+				//	redirect('payment_gateway_2/subscribe/'.$gids.'/'.$user['uid']);
 					
 				}
 				
@@ -191,8 +193,7 @@ class Login extends CI_Controller {
 			$this->session->set_userdata('logged_in', $user);
 			// redirect to dashboard
 			if($user['su']=='1'){
-			 redirect('dashboard');
-				 
+			 redirect('dashboard');				 
 			}else{
 				$burl=$this->config->item('base_url').'index.php/quiz';
 			 header("location:$burl");
@@ -307,7 +308,11 @@ class Login extends CI_Controller {
                         if($this->config->item('verify_email')){
 						$this->session->set_flashdata('message', "<div class='alert alert-success'>".$this->lang->line('account_registered_email_sent')." </div>");
 						}else{
-							$this->session->set_flashdata('message', "<div class='alert alert-success'>".$this->lang->line('account_registered')." </div>");
+						//	$this->session->set_flashdata('message', "<div class='alert alert-success'>".$this->lang->line('account_registered')." </div>");
+						$this->verifylogin($this->input->post('email'),$this->input->post('password'));
+						//redirect('quiz');
+						exit;
+
 						}
 						}else{
 						    $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('error_to_add_data')." </div>");
