@@ -20,7 +20,8 @@ if($this->uri->segment(2) != 'attempt'  && $this->uri->segment(1) != 'install'){
 	$ad=$query->row_array();
 	if($ad['advertisement_code'] != ""){
 	echo $ad['advertisement_code'];
-	}else if($ad['banner']!=''){ ?><a href="<?php echo $ad['banner_link'];?>" target="new_add"><img src="<?php echo base_url('upload/'.$ad['banner']);?>" class="img-responsive"  ></a> <?php    
+	}else if($ad['banner']!=''){ ?>
+	<a href="<?php echo $ad['banner_link'];?>" target="new_add"><img src="<?php echo base_url('upload/'.$ad['banner']);?>" class="img-responsive"  ></a> <?php    
 	
 	}
 	}
@@ -39,15 +40,16 @@ if($this->uri->segment(2) == 'attempt'){
 	if($query->num_rows()==1){
 	$ad=$query->row_array();
 	if($ad['advertisement_code'] != ""){
-	$during_quiz=$ad['advertisement_code'];
+	//$during_quiz=$ad['advertisement_code'];
 	}else if($ad['banner']!=''){ 
-	$during_quiz="<a href='".$ad['banner_link']."' target='new_add'><img src='".base_url('upload/'.$ad['banner'])."' class='img-responsive'  ></a>";
+	//$during_quiz="<a href='".$ad['banner_link']."' target='new_add'><img src='".base_url('upload/'.$ad['banner'])."' class='img-responsive'  ></a>";
 	}
 	}
 	}
 	
  
 if($during_quiz != ""){
+	/*
 ?>
 <script>
 setTimeout(function(){
@@ -76,7 +78,7 @@ $('#advertisement_bg').css('display','none');
 <label>Advertisement will close in <?php echo $this->config->item('showadvertisement_sec');?> Seconds...</label>
 <?php echo $during_quiz;?></center></div>
 
-<?php
+<?php */
 }	
 	?>
 	 

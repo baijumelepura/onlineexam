@@ -752,7 +752,7 @@ $config['firebase_topic']="SavsoftQuiz";
 
 
 $config['quiz_templates']=array('Default','Practice');
-$config['question_lang']=array('English');
+$config['question_lang']=array('English','Arabic');
 
 $config['master_password']=$csetting['Master_password'];
  

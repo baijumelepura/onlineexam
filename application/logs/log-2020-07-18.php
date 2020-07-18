@@ -105,3 +105,94 @@ ERROR - 2020-07-18 23:02:57 --> Severity: error --> Exception: Too few arguments
 ERROR - 2020-07-18 23:03:18 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
 ERROR - 2020-07-18 23:03:35 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
 ERROR - 2020-07-18 23:03:39 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:19:26 --> Severity: Warning --> mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() C:\xampp7\htdocs\onlineexam\system\libraries\Email.php 1896
+ERROR - 2020-07-18 23:19:26 --> Could not find the language line "hello"
+ERROR - 2020-07-18 23:19:26 --> Could not find the language line "user_id"
+ERROR - 2020-07-18 23:19:27 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`NULL`
+GROUP BY `savsoft_result`.`uid`' at line 5 - Invalid query: SELECT `savsoft_result`.`uid`
+FROM `savsoft_result`
+WHERE `savsoft_result`.`quid` IS NULL
+AND `savsoft_result`.`uid` IS NOT NULL
+AND `savsoft_result`.`score_obtained` < `IS` `NULL`
+GROUP BY `savsoft_result`.`uid`
+ERROR - 2020-07-18 23:19:27 --> Severity: error --> Exception: Call to a member function num_rows() on boolean C:\xampp7\htdocs\onlineexam\application\models\Result_model.php 161
+ERROR - 2020-07-18 23:19:27 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`NULL`
+GROUP BY `savsoft_result`.`uid`' at line 5 - Invalid query: SELECT `savsoft_result`.`uid`
+FROM `savsoft_result`
+WHERE `savsoft_result`.`quid` IS NULL
+AND `savsoft_result`.`uid` IS NOT NULL
+AND `savsoft_result`.`score_obtained` < `IS` `NULL`
+GROUP BY `savsoft_result`.`uid`
+ERROR - 2020-07-18 23:19:27 --> Severity: error --> Exception: Call to a member function num_rows() on boolean C:\xampp7\htdocs\onlineexam\application\models\Result_model.php 161
+ERROR - 2020-07-18 23:19:53 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:25:03 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:25:07 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:25:09 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:25:14 --> Severity: Warning --> mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() C:\xampp7\htdocs\onlineexam\system\libraries\Email.php 1896
+ERROR - 2020-07-18 23:25:14 --> Could not find the language line "hello"
+ERROR - 2020-07-18 23:25:14 --> Could not find the language line "user_id"
+ERROR - 2020-07-18 23:25:15 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`NULL`
+GROUP BY `savsoft_result`.`uid`' at line 5 - Invalid query: SELECT `savsoft_result`.`uid`
+FROM `savsoft_result`
+WHERE `savsoft_result`.`quid` IS NULL
+AND `savsoft_result`.`uid` IS NOT NULL
+AND `savsoft_result`.`score_obtained` < `IS` `NULL`
+GROUP BY `savsoft_result`.`uid`
+ERROR - 2020-07-18 23:25:15 --> Severity: error --> Exception: Call to a member function num_rows() on boolean C:\xampp7\htdocs\onlineexam\application\models\Result_model.php 161
+ERROR - 2020-07-18 23:25:16 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`NULL`
+GROUP BY `savsoft_result`.`uid`' at line 5 - Invalid query: SELECT `savsoft_result`.`uid`
+FROM `savsoft_result`
+WHERE `savsoft_result`.`quid` IS NULL
+AND `savsoft_result`.`uid` IS NOT NULL
+AND `savsoft_result`.`score_obtained` < `IS` `NULL`
+GROUP BY `savsoft_result`.`uid`
+ERROR - 2020-07-18 23:25:16 --> Severity: error --> Exception: Call to a member function num_rows() on boolean C:\xampp7\htdocs\onlineexam\application\models\Result_model.php 161
+ERROR - 2020-07-18 23:26:08 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:32:53 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:33:44 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:33:46 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:33:48 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:33:48 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:33:49 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:33:51 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:33:51 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:33:53 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:33:53 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:33:54 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:33:55 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:33:56 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:33:57 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:33:59 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:34:00 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:37:08 --> Severity: Warning --> mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() C:\xampp7\htdocs\onlineexam\system\libraries\Email.php 1896
+ERROR - 2020-07-18 23:37:14 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:37:41 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:37:56 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:38:04 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:39:53 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:49:57 --> Could not find the language line "hello"
+ERROR - 2020-07-18 23:49:57 --> Could not find the language line "user_id"
+ERROR - 2020-07-18 23:49:58 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') order by FIELD(savsoft_options.qid,)' at line 1 - Invalid query: select * from savsoft_options where qid in () order by FIELD(savsoft_options.qid,)
+ERROR - 2020-07-18 23:49:58 --> Severity: error --> Exception: Call to a member function result_array() on boolean C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 316
+ERROR - 2020-07-18 23:49:58 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') order by FIELD(savsoft_options.qid,)' at line 1 - Invalid query: select * from savsoft_options where qid in () order by FIELD(savsoft_options.qid,)
+ERROR - 2020-07-18 23:49:58 --> Severity: error --> Exception: Call to a member function result_array() on boolean C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 316
+ERROR - 2020-07-18 23:52:02 --> Severity: Warning --> implode(): Invalid arguments passed C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 193
+ERROR - 2020-07-18 23:52:48 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:52:57 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:54:29 --> Severity: Warning --> implode(): Invalid arguments passed C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 193
+ERROR - 2020-07-18 23:57:36 --> Severity: Warning --> implode(): Invalid arguments passed C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 193
+ERROR - 2020-07-18 23:58:43 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:58:49 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:58:51 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:58:52 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:58:55 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:59:01 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:59:05 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:59:21 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:59:44 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:59:45 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:59:45 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:59:45 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:59:47 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:59:47 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-18 23:59:48 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878

@@ -151,8 +151,8 @@ if(in_array('List',explode(',',$logged_in['users'])) || in_array('List_all',expl
 <a class="collapse-item" href="<?php echo site_url('user');?>"><?php echo $this->lang->line('users');?> <?php echo $this->lang->line('list');?></a> 
 <?php } ?>          
 <?php 
-if(in_array('List_all',explode(',',$logged_in['appointment']))){ ?>
-<a class="collapse-item" href="<?php echo site_url('appointment/myappointment/');?>"><?php echo $this->lang->line('myappointment');?></a>   
+if(in_array('List_all',explode(',',$logged_in['appointment'])) ){ ?>
+<!-- <a class="collapse-item" href="<?php echo site_url('appointment/myappointment/');?>"><?php echo $this->lang->line('myappointment');?></a>    -->
 <?php } ?>      
 </div>
 </div>
@@ -411,7 +411,7 @@ $logged_in=$this->session->userdata('logged_in');
 				 <?php 
 				 if(count($invitations) >= 1){
 					 ?>
-                <a class="dropdown-item d-flex align-items-center" href="<?php echo site_url('appointment/myappointment/');?>">
+                <!-- <a class="dropdown-item d-flex align-items-center" href="<?php echo site_url('appointment/myappointment/');?>"> -->
                   
                   <div>
                     <div class="small text-gray-500"><?php echo date('d M Y',time());?></div>
@@ -481,7 +481,7 @@ $logged_in=$this->session->userdata('logged_in');
 				
 				 <?php 
 if(in_array('List',explode(',',$logged_in['appointment'])) && !in_array('List_all',explode(',',$logged_in['appointment']))){ ?>
- <a class="dropdown-item" href="<?php echo site_url('appointment/myappointment/');?>"><i class="fas fa-mobile fa-sm fa-fw mr-2 text-gray-400"></i><?php echo $this->lang->line('myappointment');?></a>    
+ <!-- <a class="dropdown-item" href="<?php echo site_url('appointment/myappointment/');?>"><i class="fas fa-mobile fa-sm fa-fw mr-2 text-gray-400"></i><?php echo $this->lang->line('myappointment');?></a>     -->
 <?php } ?> 
 
 
