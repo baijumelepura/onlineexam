@@ -80,9 +80,9 @@ $('#advertisement_bg').css('display','none');
 }	
 	?>
 	 
-<div class="container" style="text-align:right;">
+<!-- <div class="container" style="text-align:right;">
 Powered by <a href="https://savsoftquiz.com">Savsoft Quiz</a>
-</div>
+</div> -->
 </div>	   
 		
 

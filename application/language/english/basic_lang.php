@@ -432,3 +432,5 @@ $lang['quiz_price']="Quiz Price (Set 0 for free)";
 $lang['quiz_paid']="Selected quiz is paid, Please buy it before attempt";
 $lang['checkout']="Checkout";
 $lang['addtocart']="Add to cart";
+
+$lang['age']="Age";

@@ -1,6 +1,5 @@
  <div class="container">
 
-   
  
 <div id="update_notice"></div>  
  
@@ -217,7 +216,7 @@ $revenue_months2[]=floatval($fv);
  
 $months=array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
 ?>		  
-	  
+	  <?php /*
 	                <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -257,12 +256,12 @@ $cal=number_format(((($revenue_months[$todaymonth]-$revenue_months[$pastmonth])/
                 <!-- Card Body -->
                 <div class="card-body">
                   
-		  
+		  <?php /*
 <div class="font-size-34"><small class="font-weight-light text-muted"><?php echo $this->config->item('base_currency_prefix');?></small> <strong><?php echo  number_format(array_sum($revenue_months2), 2, '.', ''); ?></strong>
 <small class="font-weight-light text-muted"><?php echo $this->lang->line('this_year');?> </small>
 </div>
 <canvas id="myChart" width="340" height="340"></canvas>
-</div>
+</div>  
 <script>
 var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
@@ -293,7 +292,7 @@ var myChart = new Chart(ctx, {
 				  
 				  
 				  
-                </div>
+                </div> */ ?>
                
 
 
@@ -308,13 +307,13 @@ var myChart = new Chart(ctx, {
         <!-- References -->
 
         <div class="panel">
-          <div class="panel-heading">
-            <div class="panel-title"><?php echo $this->lang->line('recent_sub');?></div>
-          </div>
+          <!-- <div class="panel-heading">
+            <div class="panel-title"><?php  $this->lang->line('recent_sub');?></div>
+          </div> -->
 
 
   <?php 
-if(count($payments)==0){
+if(count($payments)==0){ /*
 	?>
  	
 	<div class="box m-y-2">
@@ -328,7 +327,7 @@ if(count($payments)==0){
               </div>
             </div>
           </div>
-	
+	<?php  */ ?>
 	<?php
 }
 $i=0;
@@ -338,6 +337,7 @@ $colorcode=array(
 'info',
 'danger'
 );
+/*
 foreach($payments as $key => $val){
 ?>
 <div class="alert alert-<?php echo $colorcode[$i];?>" style="margin:5px;">
@@ -358,7 +358,7 @@ foreach($payments as $key => $val){
 	  }else{
 	  $i+=1;
 	  }
-}
+} */
 ?>
 
         <!-- / payments -->
@@ -385,7 +385,7 @@ foreach($payments as $key => $val){
 <div class="row text-center" style="margin-top:30px;">
  
 <?php 
-echo "Page rendered in <strong> {elapsed_time} </strong> seconds. You may improve it by hosting on recommended hosting. <a href='http://savsoftquiz.com/affiliate.php' target='af'>Click here</a> ";
+ "Page rendered in <strong> {elapsed_time} </strong> seconds. You may improve it by hosting on recommended hosting. <a href='http://savsoftquiz.com/affiliate.php' target='af'>Click here</a> ";
 ?>
 </div>
 

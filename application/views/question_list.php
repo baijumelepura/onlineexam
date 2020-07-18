@@ -166,6 +166,7 @@ if(($limit-($this->config->item('number_of_rows')))>=0){ $back=$limit-($this->co
 
 
 <br><br><br><br>
+<?php /* 
 <div class="card">
 	<div class="card-heading">
 <h4><?php echo $this->lang->line('import_question');?></h4> 
@@ -205,7 +206,7 @@ if(($limit-($this->config->item('number_of_rows')))>=0){ $back=$limit-($this->co
 <a href="<?php echo base_url();?>sample/sample.xls" target="new">Click here</a> <?php echo $this->lang->line('upload_excel_info');?> 
 </form>
 
-</div>
+</div> */ ?>
 
 
 
@@ -214,7 +215,7 @@ if(($limit-($this->config->item('number_of_rows')))>=0){ $back=$limit-($this->co
 </div>
 
 
-
+<?php /* 
 <div class="card" style="margin-top:20px;">
 <div class="card-heading">
 <h4><?php echo $this->lang->line('import_question2');?></h4> 
@@ -268,7 +269,7 @@ if(($limit-($this->config->item('number_of_rows')))>=0){ $back=$limit-($this->co
 </form>
 
 </div>
-
+*/ ?>
 
 
 </div>

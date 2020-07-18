@@ -4,7 +4,7 @@
 </div>
 <div class="col-md-10">
 <a href="<?php echo base_url();?>"><img src="<?php echo base_url('images/logo.png');?>"></a>
-<?php echo $this->lang->line('login_tagline');?>
+<?php  $this->lang->line('login_tagline');?>
 </div>
 <div class="col-md-1">
 </div>
@@ -14,7 +14,7 @@
 </div>
 
  <div class="container">
-
+<br>
    
  <h3><?php echo $title;?></h3>
    
@@ -56,6 +56,10 @@
 			<div class="form-group">	 
 					<label for="inputEmail" class="sr-only"><?php echo $this->lang->line('contact_no');?></label> 
 					<input type="text" name="contact_no"  class="form-control" placeholder="<?php echo $this->lang->line('contact_no');?>"   autofocus>
+			</div>
+			<div class="form-group">	 
+					<label for="inputEmail" class="sr-only"><?php echo $this->lang->line('age');?></label> 
+					<input type="text" name="age"  class="form-control" placeholder="<?php echo $this->lang->line('age');?>"   autofocus>
 			</div>
 		<?php 
 			if($this->session->userdata('cart')){

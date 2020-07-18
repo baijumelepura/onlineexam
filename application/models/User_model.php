@@ -512,8 +512,8 @@ $verilink=site_url('login/verify/'.$veri_code);
 			$this->email->subject($subject);
 			$this->email->message($message);
 			if(!$this->email->send()){
-			 print_r($this->email->print_debugger());
-			exit;
+			// print_r($this->email->print_debugger());
+		//	exit;
 			}
 			 
 				 

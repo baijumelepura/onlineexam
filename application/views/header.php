@@ -251,10 +251,11 @@ if(in_array('List',explode(',',$logged_in['results'])) || in_array('List_all',ex
 
 <?php 
 $acp=explode(',',$logged_in['study_material']);
-if(in_array('List',$acp)){
+if(in_array('List',$acp)){ 
 ?>
  
      <!-- Nav Item - Pages Collapse Menu -->
+     <?php /*
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseStudy" aria-expanded="true" aria-controls="collapseStudy">
           <i class="fas fa-fw fa-book"></i>
@@ -266,7 +267,7 @@ if(in_array('List',$acp)){
             <a class="collapse-item" href="<?php echo site_url('study_material');?>"><?php echo $this->lang->line('study_material');?></a>  
           </div>
         </div>
-      </li>
+      </li> */ ?>
 
  <?php 
 }
@@ -285,14 +286,14 @@ if(in_array('All',explode(',',$logged_in['setting']))){
           <div class="bg-white py-2 collapse-inner rounded">
           
             <a class="collapse-item" href="<?php echo site_url('setting');?>"><?php echo $this->lang->line('setting');?></a>
-            <a class="collapse-item" href="<?php echo site_url('notification');?>"><?php echo $this->lang->line('notification');?></a>
+          <?php /*  <a class="collapse-item" href="<?php echo site_url('notification');?>"><?php echo $this->lang->line('notification');?></a> */ ?>
             <a class="collapse-item" href="<?php echo site_url('user/group_list');?>"><?php echo $this->lang->line('group_list');?></a> 
            <a class="collapse-item" href="<?php echo site_url('qbank/category_list');?>"><?php echo $this->lang->line('category_list');?></a> 
            <a class="collapse-item" href="<?php echo site_url('qbank/level_list');?>"><?php echo $this->lang->line('level_list');?></a> 
            <a class="collapse-item" href="<?php echo site_url('account');?>"><?php echo $this->lang->line('account_type');?></a></a> 
-           <a class="collapse-item" href="<?php echo site_url('user/custom_fields');?>"><?php echo $this->lang->line('custom_forms');?></a>  
-           <a class="collapse-item" href="<?php echo site_url('payment_gateway');?>"><?php echo $this->lang->line('payment_history');?></a> 
-            <a class="collapse-item" href="<?php echo site_url('payment_gateway');?>"><?php echo $this->lang->line('advertisment');?></a> 
+          <?php /* <a class="collapse-item" href="<?php echo site_url('user/custom_fields');?>"><?php echo $this->lang->line('custom_forms');?></a>  */?>
+          <?php /* <a class="collapse-item" href="<?php echo site_url('payment_gateway');?>"><?php echo $this->lang->line('payment_history');?></a> 
+            <a class="collapse-item" href="<?php echo site_url('payment_gateway');?>"><?php echo $this->lang->line('advertisment');?></a> */ ?>
          </div>
         </div>
       </li>
@@ -311,7 +312,7 @@ if(in_array('All',explode(',',$logged_in['setting']))){
 if(in_array('All',explode(',',$logged_in['setting']))){
 ?>
      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
+   <?php /*  <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSupport" aria-expanded="true" aria-controls="collapseStudy">
           <i class="fas fa-fw fa-question-circle"></i>
           <span>Support</span>
@@ -322,7 +323,7 @@ if(in_array('All',explode(',',$logged_in['setting']))){
             <a class="collapse-item" href="https://savsoftquiz.com/support.php">Support</a>
           </div>
         </div>
-      </li>
+      </li>  */ ?>
 	  
 <?php 
 }
@@ -332,7 +333,7 @@ if(in_array('All',explode(',',$logged_in['setting']))){
 ?> 
 
   <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
+     <?php /* <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLanding" aria-expanded="true" aria-controls="collapseStudy">
           <i class="fas fa-fw fa-puzzle-piece"></i>
           <span>Landing Page</span>
@@ -347,7 +348,7 @@ if(in_array('All',explode(',',$logged_in['setting']))){
            <a class="collapse-item" href="<?php echo site_url('payment_gateway');?>">Design</a>
          </div>
         </div>
-      </li>
+      </li> */ ?>
 
 
  <?php 
@@ -395,11 +396,11 @@ $logged_in=$this->session->userdata('logged_in');
 	  
 	              <!-- Nav Item - Alerts -->
             <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             <?php /* <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
                 <!-- Counter - Alerts -->
                 <span class="badge badge-danger badge-counter"><?php echo count($invitations)+count($notifications);?></span>
-              </a>
+              </a> */ ?>
               <!-- Dropdown - Alerts -->
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                 <h6 class="dropdown-header">
