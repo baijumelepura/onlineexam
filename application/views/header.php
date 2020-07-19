@@ -303,9 +303,21 @@
                <i class="fa fa-bars"></i>
                </button> -->
             <?php if($logged_in['su'] == 2){ ?>
-            <a class="mr-3" href="<?php echo base_url();?>"><img src="<?php echo base_url('images/logo.png');?>"></a>
+            <a  href="<?php echo base_url();?>"><img src="<?php echo base_url('images/logo.png');?>"></a>
+      
+            <?php } ?>
+      
+
+            <li class="nav-item active">
+               <a class="nav-link " href="<?=base_url('index.php/quiz');?>">
+               <i class="fas fa-fw fa-chalkboard-teacher"></i>
+               <span><?php echo $this->lang->line('quiz');?> </span>
+               </a>
+          
+            </li>
+
       </div>
-      <?php } ?>
+    
       <!-- Topbar Navbar -->
       <ul class="navbar-nav ml-auto">
       <?php 

@@ -103,3 +103,17 @@ AND `savsoft_result`.`uid` IS NOT NULL
 AND `savsoft_result`.`score_obtained` < `IS` `NULL`
 GROUP BY `savsoft_result`.`uid`
 ERROR - 2020-07-19 16:19:41 --> Severity: error --> Exception: Call to a member function num_rows() on boolean C:\xampp7\htdocs\onlineexam\application\models\Result_model.php 161
+ERROR - 2020-07-19 16:27:54 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-19 16:28:00 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-19 16:28:02 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-19 16:28:07 --> Severity: Warning --> mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() C:\xampp7\htdocs\onlineexam\system\libraries\Email.php 1896
+ERROR - 2020-07-19 16:28:07 --> Could not find the language line "hello"
+ERROR - 2020-07-19 16:28:07 --> Could not find the language line "user_id"
+ERROR - 2020-07-19 16:28:08 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`NULL`
+GROUP BY `savsoft_result`.`uid`' at line 5 - Invalid query: SELECT `savsoft_result`.`uid`
+FROM `savsoft_result`
+WHERE `savsoft_result`.`quid` IS NULL
+AND `savsoft_result`.`uid` IS NOT NULL
+AND `savsoft_result`.`score_obtained` < `IS` `NULL`
+GROUP BY `savsoft_result`.`uid`
+ERROR - 2020-07-19 16:28:08 --> Severity: error --> Exception: Call to a member function num_rows() on boolean C:\xampp7\htdocs\onlineexam\application\models\Result_model.php 161
