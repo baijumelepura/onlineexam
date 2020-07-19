@@ -82,7 +82,7 @@ form{
   
   
   
-<body id="page-top">
+<body id="page-top" class="test-bg-image">
 
 
 

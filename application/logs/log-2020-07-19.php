@@ -56,3 +56,15 @@ ERROR - 2020-07-19 00:17:44 --> Could not find the language line "hello"
 ERROR - 2020-07-19 00:17:44 --> Could not find the language line "user_id"
 ERROR - 2020-07-19 00:19:33 --> Severity: Warning --> implode(): Invalid arguments passed C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 193
 ERROR - 2020-07-19 00:20:03 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-19 15:43:43 --> Severity: Warning --> mysqli::__construct(): (HY000/1049): Unknown database 'savsoftquiz_v5.0' C:\wamp\www\onlineexam\application\config\config.php 515
+ERROR - 2020-07-19 15:43:43 --> Severity: Warning --> mysqli::__construct(): (HY000/1049): Unknown database 'savsoftquiz_v5.0' C:\wamp\www\onlineexam\application\config\config.php 515
+ERROR - 2020-07-19 15:44:33 --> Severity: Warning --> mysqli::__construct(): (HY000/1049): Unknown database 'savsoftquiz_v5.0' C:\wamp\www\onlineexam\application\config\config.php 515
+ERROR - 2020-07-19 15:44:34 --> Severity: Warning --> mysqli::__construct(): (HY000/1049): Unknown database 'savsoftquiz_v5.0' C:\wamp\www\onlineexam\application\config\config.php 515
+ERROR - 2020-07-19 15:45:37 --> Query error: Unknown column 'age' in 'field list' - Invalid query: INSERT INTO `savsoft_users` (`email`, `password`, `first_name`, `last_name`, `contact_no`, `age`, `gid`, `su`) VALUES ('vimalbabu77@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'VIMAL BABU', 'K', '1234567', '12', '1', '2')
+ERROR - 2020-07-19 15:45:37 --> Severity: Warning --> Invalid argument supplied for foreach() C:\wamp\www\onlineexam\application\models\User_model.php 469
+ERROR - 2020-07-19 15:46:00 --> Query error: Unknown column 'age' in 'field list' - Invalid query: INSERT INTO `savsoft_users` (`email`, `password`, `first_name`, `last_name`, `contact_no`, `age`, `gid`, `su`) VALUES ('vimalbabu77@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'VIMAL BABU', 'K', '1234567890', '12', '1', '2')
+ERROR - 2020-07-19 15:46:00 --> Severity: Warning --> Invalid argument supplied for foreach() C:\wamp\www\onlineexam\application\models\User_model.php 469
+ERROR - 2020-07-19 15:50:45 --> Severity: Warning --> Invalid argument supplied for foreach() C:\wamp\www\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-19 22:10:33 --> Query error: Unknown column 'age' in 'field list' - Invalid query: INSERT INTO `savsoft_users` (`email`, `password`, `first_name`, `last_name`, `contact_no`, `age`, `gid`, `su`) VALUES ('vimalbabu77@gmail.com', '4035bbc636d3f53363b5a1209c3ffe1b', 'VIMAL BABU', 'K', '1234567', '29', '1', '2')
+ERROR - 2020-07-19 22:10:33 --> Severity: Warning --> Invalid argument supplied for foreach() C:\wamp\www\onlineexam\application\models\User_model.php 469
+ERROR - 2020-07-19 22:13:56 --> Severity: Warning --> Invalid argument supplied for foreach() C:\wamp\www\onlineexam\application\models\User_model.php 469
