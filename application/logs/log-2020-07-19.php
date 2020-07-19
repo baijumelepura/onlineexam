@@ -117,3 +117,18 @@ AND `savsoft_result`.`uid` IS NOT NULL
 AND `savsoft_result`.`score_obtained` < `IS` `NULL`
 GROUP BY `savsoft_result`.`uid`
 ERROR - 2020-07-19 16:28:08 --> Severity: error --> Exception: Call to a member function num_rows() on boolean C:\xampp7\htdocs\onlineexam\application\models\Result_model.php 161
+ERROR - 2020-07-19 16:35:08 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-19 16:35:10 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-19 16:35:11 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-19 16:35:12 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-19 16:35:12 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-19 16:35:13 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-19 16:35:17 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-19 16:35:17 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-19 16:35:17 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-19 16:36:26 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-19 16:36:30 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-19 16:36:31 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-19 16:36:32 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-19 16:36:33 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878
+ERROR - 2020-07-19 16:36:34 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp7\htdocs\onlineexam\application\models\Quiz_model.php 878

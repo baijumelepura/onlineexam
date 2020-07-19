@@ -20,7 +20,7 @@ img{
 	.question_container{
 		
 		padding:4px;
-		max-height:35%;
+		max-height:100%;
 		overflow-y:auto;
 		 
 	}
