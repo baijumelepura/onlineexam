@@ -306,15 +306,15 @@
             <a  href="<?php echo base_url();?>"><img src="<?php echo base_url('images/logo.png');?>"></a>
       
             <?php } ?>
-      
-
+            <?php if($logged_in['su'] == 2){ ?>
             <li class="nav-item active">
                <a class="nav-link " href="<?=base_url('index.php/quiz');?>">
                <i class="fas fa-fw fa-chalkboard-teacher"></i>
                <span><?php echo $this->lang->line('quiz');?> </span>
                </a>
-          
             </li>
+            <?php } ?>
+         
 
       </div>
     

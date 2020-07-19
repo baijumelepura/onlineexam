@@ -2,6 +2,7 @@
 <?php 
 $logged_in=$this->session->userdata('logged_in');
 		$uid=$logged_in['uid'];	 
+		
 			
 			?>
    
@@ -107,7 +108,7 @@ $logged_in=$this->session->userdata('logged_in');
 		 
 <table class="table table-bordered">
 <tr>
- <th>#</th>
+ <!-- <th>#</th> -->
  <th><?php echo $this->lang->line('quiz_name');?></th>
 <th><?php echo $this->lang->line('noq');?></th>
 <th><?php echo $this->lang->line('action');?> </th>
@@ -122,20 +123,38 @@ if(count($result)==0){
 	
 	<?php
 }
+
+
+
+
 foreach($result as $key => $val){
+
+	$data['quiz']=	$this->quiz_model->get_quiz($val['quid']);
+
+
 ?>
 <tr>
- <td><?php echo $val['quid'];?></td>
+ <!-- <td><?php echo $val['quid'];?></td> -->
  <td><?php echo substr(strip_tags($val['quiz_name']),0,50);?></td>
 <td><?php echo $val['noq'];?></td>
  <td>
  <?php 
+	 $data['purchased_quiz']=$this->quiz_model->get_purchased_quiz();
+	 
+
+
  if($val['quiz_price'] == 0 || in_array($val['quid'],$purchased_quiz)){
-if($val['end_date'] >=time()){	 ?>
+if($val['end_date'] >=time()){
+	$maximum_attempt=$this->quiz_model->count_result($val['quid'],$uid);
+	if($data['quiz']['maximum_attempts'] <= $maximum_attempt){ ?>
+<a href="<?php echo site_url('quiz/quiz_detail/'.$val['quid']);?>" class="btn btn-info"  ><?php echo $this->lang->line('attempted');?> </a>
+		
+<?php }else{ ?>
 	 
 <a href="<?php echo site_url('quiz/quiz_detail/'.$val['quid']);?>" class="btn btn-success"  ><?php echo $this->lang->line('attempt');?> </a>
 
 <?php
+}
 }
 if($val['end_date'] < time()){	 ?>
 	 
@@ -184,7 +203,7 @@ if($val['start_date'] > time()){	 ?>
 </div>
 <br><br>
 
-<?php
+<?php /*
 if(($limit-($this->config->item('number_of_rows')))>=0){ $back=$limit-($this->config->item('number_of_rows')); }else{ $back='0'; } ?>
 
 <a href="<?php echo site_url('quiz/index/'.$back.'/'.$list_view);?>"  class="btn btn-primary"><?php echo $this->lang->line('back');?></a>
@@ -195,7 +214,7 @@ if(($limit-($this->config->item('number_of_rows')))>=0){ $back=$limit-($this->co
 <a href="<?php echo site_url('quiz/index/'.$next.'/'.$list_view);?>"  class="btn btn-primary"><?php echo $this->lang->line('next');?></a>
 
 
-
+<?php */ ?>
 
 
 </div>

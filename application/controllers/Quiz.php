@@ -565,24 +565,9 @@ function open_quiz($limit='0'){
 		
 		// insert result row and get rid (result id)
 		$rid=$this->quiz_model->insert_result($quid,$uid);
-		
 		$this->session->set_userdata('rid', $rid);
 		redirect('quiz/attempt/'.$rid.'/'.$selected_lang);	
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-		
 		// without login ends
 
 		
@@ -854,7 +839,7 @@ if(isset($_FILES['webcam'])){
 					}
 			$this->session->unset_userdata('rid');		
 	if($this->session->userdata('logged_in')){
-	redirect('result/view_result/'.$rid);				
+//	redirect('result/quiz/'.$rid);				
  redirect('quiz');
 	}else{
 	 redirect('quiz/open_quiz/0');	
