@@ -47,6 +47,8 @@ class Quiz extends CI_Controller {
 		$data['active']=$this->quiz_model->quizstat('active');
 		$data['upcoming']=$this->quiz_model->quizstat('upcoming');
 		 $data['stat']=$stat;
+
+
 		$this->load->view('header',$data);
 		$this->load->view('quiz_list',$data);
 		$this->load->view('footer',$data);
@@ -436,9 +438,7 @@ function open_quiz($limit='0'){
 
 
 	public function quiz_detail($quid){
-				// redirect if not loggedin
- 
-		
+		// redirect if not loggedin
 		//$logged_in=$this->session->userdata('logged_in');
 			$logged_in=$this->session->userdata('logged_in');
                         $acp=explode(',',$logged_in['quiz']);

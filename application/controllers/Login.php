@@ -419,7 +419,7 @@ class Login extends CI_Controller {
 		$this->session->set_userdata('logged_in', $user);
 		redirect('dashboard');
 	}
-	function language($lang = "" , $controller = ""){
+	function language($lang = "" , $controller = "", $seg =""){
 		$this->load->helper('url');
 		$language = "english";
 		if($lang == "english") $language = "english";
@@ -427,10 +427,10 @@ class Login extends CI_Controller {
 		$this->session->set_userdata("language",$language);
 		 if($controller == "registration"){ 
 			 redirect('login/registration');
-		 }else if($controller == "registration") {
-			 redirect('login/registration');
-		 }else if($controller == "registration") {
-			redirect('login/registration');
+		 }else if($controller == "quiz") {
+			 redirect('quiz');
+		 }else if($controller == "quiz_detail") {
+			redirect("quiz/quiz_detail/".$seg."");
 	     }else {
 			redirect('login');
 		} 
