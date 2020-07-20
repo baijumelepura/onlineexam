@@ -9,6 +9,20 @@
 <!--Logo Header Close-->
 
 
+<nav class="navbar navbar-light bg-light">
+<label for="cars">Language</label>
+<select  id="lang_ar">
+  <option value="english" <?php if($this->session->userdata("language") == 'english'){ echo 'selected';}?> >English</option>
+  <option  value="arabic" <?php if($this->session->userdata("language") == 'arabic'){ echo 'selected';}?> >Arabic</option>
+</select>
+</nav>
+<script>
+$('#lang_ar').change(function(){
+	window.location.href = "<?=base_url();?>index.php/login/language/"+$(this).val()+'/registration';
+});
+</script>
+
+
 
 
 <div class="container-fluid reg-section">
