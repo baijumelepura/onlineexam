@@ -2,7 +2,6 @@
 <?php 
 $logged_in=$this->session->userdata('logged_in');
 		$uid=$logged_in['uid'];	 
-		
 			
 			?>
    
@@ -42,7 +41,7 @@ $logged_in=$this->session->userdata('logged_in');
  
  <div class="col-lg-4">
    
-<div class="card mb-4">
+<div class="card mb-4 shadow">
  <div class="card-header"  style="<?php if($stat=='active'){ echo 'background:#eeeeee;';}?> ">
  <a href="<?php echo site_url('quiz/index/'.$limit.'/table/active');?>"> <?php echo $this->lang->line('active');?>      
  <?php echo $this->lang->line('quiz');?>     
@@ -60,7 +59,7 @@ $logged_in=$this->session->userdata('logged_in');
 
  <div class="col-lg-4">
    
-<div class="card mb-4">
+<div class="card mb-4 shadow">
  <div class="card-header"  style="<?php if($stat=='upcoming'){ echo 'background:#eeeeee;';}?> ">
  <a href="<?php echo site_url('quiz/index/'.$limit.'/table/upcoming');?>">   <?php echo $this->lang->line('upcoming');?>     
  <?php echo $this->lang->line('quiz');?>     
@@ -78,7 +77,7 @@ $logged_in=$this->session->userdata('logged_in');
 
  <div class="col-lg-4">
    
-<div class="card mb-4">
+<div class="card mb-4 shadow">
  <div class="card-header" style="<?php if($stat=='archived'){ echo 'background:#eeeeee;';}?> ">
   <a href="<?php echo site_url('quiz/index/'.$limit.'/table/archived');?>" >  <?php echo $this->lang->line('archived');?>     
  <?php echo $this->lang->line('quiz');?>     
@@ -105,105 +104,90 @@ $logged_in=$this->session->userdata('logged_in');
 			echo $this->session->flashdata('message');	
 		}
 		?>	
-		 
-<table class="table table-bordered">
-<tr>
- <!-- <th>#</th> -->
- <th><?php echo $this->lang->line('quiz_name');?></th>
-<th><?php echo $this->lang->line('noq');?></th>
-<th><?php echo $this->lang->line('action');?> </th>
-</tr>
-<?php 
-if(count($result)==0){
+
+<div class="card mb-4 shadow">
+<div class="card-body">		 
+	<table class="table table-striped valign-middle">
+	<tr>
+	 <th>#</th>
+	 <th><?php echo $this->lang->line('quiz_name');?></th>
+	<th><?php echo $this->lang->line('noq');?></th>
+	<th><?php echo $this->lang->line('action');?> </th>
+	</tr>
+	<?php 
+	if(count($result)==0){
+		?>
+	<tr>
+	 <td colspan="3"><?php echo $this->lang->line('no_record_found');?></td>
+	</tr>	
+		
+		
+		<?php
+	}
+	foreach($result as $key => $val){
 	?>
-<tr>
- <td colspan="3"><?php echo $this->lang->line('no_record_found');?></td>
-</tr>	
-	
-	
+	<tr>
+	 <td><?php echo $val['quid'];?></td>
+	 <td><?php echo substr(strip_tags($val['quiz_name']),0,50);?></td>
+	<td><?php echo $val['noq'];?></td>
+	 <td>
+	 <?php 
+	 if($val['quiz_price'] == 0 || in_array($val['quid'],$purchased_quiz)){
+	if($val['end_date'] >=time()){	 ?>
+		 
+	<a href="<?php echo site_url('quiz/quiz_detail/'.$val['quid']);?>" class="btn btn-success"  ><?php echo $this->lang->line('attempt');?> </a>
+
 	<?php
-}
-
-
-
-
-foreach($result as $key => $val){
-
-	$data['quiz']=	$this->quiz_model->get_quiz($val['quid']);
-
-
-?>
-<tr>
- <!-- <td><?php echo $val['quid'];?></td> -->
- <td><?php echo substr(strip_tags($val['quiz_name']),0,50);?></td>
-<td><?php echo $val['noq'];?></td>
- <td>
- <?php 
-	 $data['purchased_quiz']=$this->quiz_model->get_purchased_quiz();
-	 
-
-
- if($val['quiz_price'] == 0 || in_array($val['quid'],$purchased_quiz)){
-if($val['end_date'] >=time()){
-	$maximum_attempt=$this->quiz_model->count_result($val['quid'],$uid);
-	if($data['quiz']['maximum_attempts'] <= $maximum_attempt){ ?>
-<a href="<?php echo site_url('quiz/quiz_detail/'.$val['quid']);?>" class="btn btn-info"  ><?php echo $this->lang->line('attempted');?> </a>
-		
-<?php }else{ ?>
-	 
-<a href="<?php echo site_url('quiz/quiz_detail/'.$val['quid']);?>" class="btn btn-success"  ><?php echo $this->lang->line('attempt');?> </a>
-
-<?php
-}
-}
-if($val['end_date'] < time()){	 ?>
-	 
-<a href="#" class="btn btn-warning"  ><?php echo $this->lang->line('expired');?> </a>
-
-<?php
-}
-if($val['start_date'] > time()){	 ?>
-	 
-<a href="#" class="btn btn-default"  ><?php echo $this->lang->line('upcoming');?> </a>
-
-<?php
-}
- 
- }else{
- ?>
-<a href="<?php echo site_url('payment_gateway_2/subscribe/0/'.$uid.'/'.$val['quid']);?>" class="btn btn-primary"  ><?php echo $this->config->item('base_currency_prefix').' '.$val['quiz_price'].' '.$this->config->item('base_currency_sufix')." ".$this->lang->line('paynow');?> </a>
-
- 
- <?php 
- }
- ?>
-<?php 
-	     $acp=explode(',',$logged_in['quiz']);
-		
-			if(in_array('List_all',$acp)){
-	?>
+	}
+	if($val['end_date'] < time()){	 ?>
 		 
-<a href="<?php echo site_url('quiz/edit_quiz/'.$val['quid']);?>"><img src="<?php echo base_url('images/edit.png');?>"></a>
-<a href="javascript:remove_entry('quiz/remove_quiz/<?php echo $val['quid'];?>');"><img src="<?php echo base_url('images/cross.png');?>"></a>
-<?php 
-}
-?>
-</td>
-</tr>
+	<a href="#" class="btn btn-warning"  ><?php echo $this->lang->line('expired');?> </a>
 
-<?php 
-}
-?>
-</table>
+	<?php
+	}
+	if($val['start_date'] > time()){	 ?>
+		 
+	<a href="#" class="btn btn-default"  ><?php echo $this->lang->line('upcoming');?> </a>
 
-   
+	<?php
+	}
+	 
+	 }else{
+	 ?>
+	<a href="<?php echo site_url('payment_gateway_2/subscribe/0/'.$uid.'/'.$val['quid']);?>" class="btn btn-primary"  ><?php echo $this->config->item('base_currency_prefix').' '.$val['quiz_price'].' '.$this->config->item('base_currency_sufix')." ".$this->lang->line('paynow');?> </a>
+
+	 
+	 <?php 
+	 }
+	 ?>
+	<?php 
+		     $acp=explode(',',$logged_in['quiz']);
+			
+				if(in_array('List_all',$acp)){
+		?>
+			 
+	<a href="<?php echo site_url('quiz/edit_quiz/'.$val['quid']);?>"><img src="<?php echo base_url('images/edit.png');?>"></a>
+	<a href="javascript:remove_entry('quiz/remove_quiz/<?php echo $val['quid'];?>');"><img src="<?php echo base_url('images/cross.png');?>"></a>
+	<?php 
+	}
+	?>
+	</td>
+	</tr>
+
+	<?php 
+	}
+	?>
+	</table>
+</div>
+
+</div>   
 
 </div>
 
 </div>
 <br><br>
 
-<?php /*
+<?php
 if(($limit-($this->config->item('number_of_rows')))>=0){ $back=$limit-($this->config->item('number_of_rows')); }else{ $back='0'; } ?>
 
 <a href="<?php echo site_url('quiz/index/'.$back.'/'.$list_view);?>"  class="btn btn-primary"><?php echo $this->lang->line('back');?></a>
@@ -214,7 +198,7 @@ if(($limit-($this->config->item('number_of_rows')))>=0){ $back=$limit-($this->co
 <a href="<?php echo site_url('quiz/index/'.$next.'/'.$list_view);?>"  class="btn btn-primary"><?php echo $this->lang->line('next');?></a>
 
 
-<?php */ ?>
+
 
 
 </div>

@@ -11,14 +11,14 @@
 
 
 
-<div class="container-fluid reg-section">
+<div class="container-fluid ">
 	<div class="register">  
  	<div class="row">
 		   <div class="col-md-4 register-left">
 		        <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
 		        <h3><?php echo $title;?></h3>
 		        <p>To Start your online Accessment From Dr.Nadiabuhannad.com</p>
-		      <!--   <a class="btn btn-light" target="blank" href="<?php echo site_url('login');?>"><?php echo $this->lang->line('login');?></a> -->
+		        <a class="btn btn-light" target="blank" href="<?php echo site_url('login');?>"><?php echo $this->lang->line('login');?></a>
 		    </div>
 
 			<div class="col-md-8 register-right">
@@ -126,33 +126,4 @@
 </div>
 
 
-<footer class="text-center">
-	<nav class="navbar navbar-expand-sm navbar-dark bg-dark text-center">
-      <!-- <a class="navbar-brand" href="#">Bottom navbar</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button> -->
-      <div class="text-center" >
-      	<p class="text-center">2020 © Dr. Nadia Buhannad Development & Guidance - All information on this website is provided "as is" without any representations or warranties, express or implied. Developed By VML</p>
-       <!--  <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
-          <li class="nav-item dropup">
-            <a class="nav-link dropdown-toggle" href="https://getbootstrap.com/" id="dropdown10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropup</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown10">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-        </ul> -->
-      </div>
-    </nav>
-</footer>
+

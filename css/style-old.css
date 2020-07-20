@@ -390,16 +390,8 @@ padding:5px;
 .hoverbg:hover{
 	background:#eeeeee;
 }
-
-
-/*CUSTOM CSS*/
 .test-bg-image{
 	background-size: cover;
-    background-image: url(http://nadiabuhannad.com/wp-content/uploads/2016/08/startup-594090_1920.jpg);
-}
-
-.reg-section{
-    background-size: cover;
     background-image: url(http://nadiabuhannad.com/wp-content/uploads/2016/08/startup-594090_1920.jpg);
 }
 
@@ -413,7 +405,7 @@ padding:5px;
     background-color: rgba(0,0,0,0.4);
 }
 .register{
-   /* margin-top: 3%;*/
+    margin-top: 3%;
     padding: 3% 0;
 }
 .register-left{
@@ -510,21 +502,3 @@ box-shadow: -15px 15px 44px -30px rgba(0,0,0,0.75);
     margin-bottom: -15%;
     color: #495057;
 }
-.text-center{
-    text-align: center;
-}
-
-/* navbar*/
-.cst-nav .nav-item .nav-link {
-    color: #0d73f1fc;
-            font-weight: bold;
-    font-size: 16px;
-
-}
-.cst-nav .nav-item span{
-    padding-left:5px;
-    color: #0d73f1fc !important;
-    font-weight: bold;    
-    font-size: 16px;
-}
-
