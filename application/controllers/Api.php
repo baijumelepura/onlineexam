@@ -14,7 +14,10 @@ class Api extends CI_Controller {
 	    $this->load->model("api_model");
 	   $this->load->model("qbank_model");
 	   	   $this->load->model("result_model");
-		$this->lang->load('basic', $this->config->item('language'));
+			  if(!$this->session->userdata("language")){
+				$this->session->set_userdata("language","english");
+			 }
+			$this->lang->load('basic',$this->session->userdata("language"));
 
 		
 	 }

@@ -6,13 +6,9 @@ class Appcontroller {
   
     public function __construct()
     {
-       //  $this->CI =& get_instance();  
     }
-
     public function session_validation()
     {   
-        
-   
     }
 
 }

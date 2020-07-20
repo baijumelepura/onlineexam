@@ -11,7 +11,10 @@ class Install extends CI_Controller {
 
 	public function index()
 	{
-			$this->lang->load('basic', $this->config->item('language'));
+		if(!$this->session->userdata("language")){
+			$this->session->set_userdata("language","english");
+		 }
+		$this->lang->load('basic',$this->session->userdata("language"));
 		
 		$data['title']=$this->lang->line('installation_process');
  
@@ -25,7 +28,10 @@ class Install extends CI_Controller {
 	}
 	
 	 function config_sq(){
-		$this->lang->load('basic', $this->config->item('language'));
+		if(!$this->session->userdata("language")){
+			$this->session->set_userdata("language","english");
+		 }
+		$this->lang->load('basic',$this->session->userdata("language"));
 
 		if($this->input->post('force_write')){
 		if(chmod("./application/config/sq_config.php",0777)){ } 	

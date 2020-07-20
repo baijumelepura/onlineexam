@@ -13,7 +13,6 @@ class Qbank extends CI_Controller {
 		// redirect if not loggedin
 		if(!$this->session->userdata('logged_in')){
 			redirect('login');
-			
 		}
 		$logged_in=$this->session->userdata('logged_in');
 		if($logged_in['base_url'] != base_url()){

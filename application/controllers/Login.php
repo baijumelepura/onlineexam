@@ -9,15 +9,17 @@ class Login extends CI_Controller {
 	   $this->load->database();
 	   $this->load->model("user_model");
 	    $this->load->model("quiz_model");
-	   $this->lang->load('basic', $this->config->item('language'));
+
+		
 		if($this->db->database ==''){
 		$this->load->helper('url');
 		redirect('install');	
 		}
 		 
-		 
-		 
-		
+		 if(!$this->session->userdata("language")){
+			$this->session->set_userdata("language","english");
+		 }
+		$this->lang->load('basic',$this->session->userdata("language"));
 		
 	 }
 
@@ -416,6 +418,22 @@ class Login extends CI_Controller {
 		 $user['super']=3;
 		$this->session->set_userdata('logged_in', $user);
 		redirect('dashboard');
+	}
+	function language($lang = "" , $controller = ""){
+		$this->load->helper('url');
+		$language = "english";
+		if($lang == "english") $language = "english";
+		if($lang == "arabic") $language = "arabic";
+		$this->session->set_userdata("language",$language);
+		 if($controller == "registration"){ 
+			 redirect('login/registration');
+		 }else if($controller == "registration") {
+			 redirect('login/registration');
+		 }else if($controller == "registration") {
+			redirect('login/registration');
+	     }else {
+			redirect('login');
+		} 
 	}
 	
 	

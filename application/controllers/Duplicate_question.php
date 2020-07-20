@@ -9,7 +9,10 @@ class Duplicate_question extends CI_Controller {
 	   $this->load->database();
 	   $this->load->helper('url');
 	   $this->load->model("duplicate_question_model");
-	   $this->lang->load('duplicate', $this->config->item('language'));
+	   if(!$this->session->userdata("language")){
+		$this->session->set_userdata("language","english");
+	 }
+	$this->lang->load('basic',$this->session->userdata("language"));
 		// redirect if not loggedin
 		if(!$this->session->userdata('logged_in')){
 			redirect('login');

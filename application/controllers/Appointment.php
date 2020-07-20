@@ -9,7 +9,10 @@ class Appointment extends CI_Controller {
 	   $this->load->database();
 	   $this->load->helper('url');
 	   $this->load->model("Appointment_model");
-	     $this->lang->load('basic', $this->config->item('language'));
+	   if(!$this->session->userdata("language")){
+		$this->session->set_userdata("language","english");
+	 }
+	$this->lang->load('basic',$this->session->userdata("language"));
 $this->load->helper('form');
 	 }
 	 

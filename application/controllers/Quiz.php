@@ -26,11 +26,7 @@ class Quiz extends CI_Controller {
 		if($logged_in['base_url'] != base_url()){
 		$this->session->unset_userdata('logged_in');		
 		redirect('login');
-		}
-		
-		
-		
-		 	
+		} 	
 			$logged_in=$this->session->userdata('logged_in');
                         $setting_p=explode(',',$logged_in['quiz']);
 			if(in_array('List',$setting_p) || in_array('List_all',$setting_p)){
@@ -408,16 +404,6 @@ function open_quiz($limit='0'){
 
 	}
 	
-	
-	
-	
-
-	
-	
-	
-	
-	
-	
 	public function remove_quiz($quid){
 				// redirect if not loggedin
 		if(!$this->session->userdata('logged_in')){
@@ -708,12 +694,9 @@ function open_quiz($limit='0'){
 		
 		// get result and quiz info and validate time period
 		$data['quiz']=$this->quiz_model->quiz_result($rid);
-
-
 		$data['saved_answers']=$this->quiz_model->saved_answers($rid);
 		$data['selected_lang']=$selected_lang;
-
-			
+		$data['selected_lang']= ($this->session->userdata("language") =="english") ? 0 : 1;
 			
 		// end date/time
 		if($data['quiz']['end_date'] < time()){
