@@ -7,6 +7,7 @@
       <meta name="description" content="">
       <meta name="author" content="">
       <!-- Custom fonts for this template-->
+      <link rel="icon" href="http://nadiabuhannad.com/wp-content/uploads/2020/07/cropped-logo-square-32x32.png" sizes="32x32">
       <link href="<?php echo base_url();?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
       <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
       <!-- custom css -->
@@ -21,7 +22,7 @@
          border:1px solid #c8c4c4;
          }
          form{
-         width: 100%;
+    /*     width: 100%;*/
          }
          .sidebar {
          width: 16rem!important;
@@ -358,6 +359,22 @@
             
             ?>
          <ul class="navbar-nav ml-auto cst-nav">
+            <!--Language Selector-->
+            <li class="form-inline ml-auto">
+               <label class="navbar-text" for="cars">Language</label>
+               <select class="form-control mr-sm-2"  id="lang_ar">
+                 <option value="english" <?php if($this->session->userdata("language") == 'english'){ echo 'selected';}?> >English</option>
+                 <option  value="arabic" <?php if($this->session->userdata("language") == 'arabic'){ echo 'selected';}?> >Arabic</option>
+               </select>
+            </li>
+  <!--           <script>
+               $('#lang_ar').change(function(){
+               window.location.href = "<?=base_url();?>index.php/login/language/"+$(this).val()+'/registration';
+               });
+            </script> -->
+
+            <!--Language Selector END here-->
+
             <li class="nav-item dropdown">
                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                <span class="">

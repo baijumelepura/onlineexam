@@ -1,27 +1,33 @@
 
 <!--Logo Header open-->
-<nav class="navbar navbar-light bg-light">
+<nav class="navbar navbar-light bg-light clearfix cst-nav">
   <a class="navbar-brand" href="<?php echo base_url();?>">
   <img src="<?php echo base_url('images/logo.png');?>" width="250" height="70" class="d-inline-block align-top" alt="">
   	<?php  $this->lang->line('login_tagline');?> 
   </a>
-</nav>
-<!--Logo Header Close-->
+	<form class="form-inline ml-auto">
+		<label class="navbar-text" for="cars">Language</label>
+		<select class="form-control mr-sm-2"  id="lang_ar">
+		  <option value="english" <?php if($this->session->userdata("language") == 'english'){ echo 'selected';}?> >English</option>
+		  <option  value="arabic" <?php if($this->session->userdata("language") == 'arabic'){ echo 'selected';}?> >Arabic</option>
+		</select>
+	</form>
 
-
-<nav class="navbar navbar-light bg-light">
-<label for="cars">Language</label>
-<select  id="lang_ar">
-  <option value="english" <?php if($this->session->userdata("language") == 'english'){ echo 'selected';}?> >English</option>
-  <option  value="arabic" <?php if($this->session->userdata("language") == 'arabic'){ echo 'selected';}?> >Arabic</option>
-</select>
-</nav>
 <script>
 $('#lang_ar').change(function(){
 	window.location.href = "<?=base_url();?>index.php/login/language/"+$(this).val()+'/registration';
 });
 </script>
+</nav>
+<!--Logo Header Close-->
 
+
+<!-- <nav class="navbar navbar-light bg-light">
+
+
+</nav>
+
+ -->
 
 
 
