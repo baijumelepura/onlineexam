@@ -50,10 +50,7 @@
       <!-- firebase messaging menifest.json -->
       <link rel="manifest" href="<?php echo base_url('js/manifest.json');?>">
    </head>
-
-   <!--body-->
-   <body id="page-top">
-
+   <body id="page-top" class="test-bg-image">
       <?php 
          if($this->session->userdata('logged_in')){
          	if(($this->uri->segment(1).'/'.$this->uri->segment(2))!='quiz/attempt'){
@@ -61,17 +58,14 @@
          	$hquery=$this->db->query(" select * from savsoftquiz_setting where setting_name='App_Name' || setting_name='App_title' order by setting_id asc "); 
          	$hres=$hquery->result_Array();
          ?>
-
       <!-- Page Wrapper -->
       <div id="wrapper">
-
-<!--###########################################################3-->
          <!-- Sidebar -->
          <?php if($logged_in['su'] != 2){ ?>
          <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?=base_url();?>">
-               <div class="sidebar-brand-text mx-3"><img width="200" height="auto"  src="<?php echo base_url('images/logo.png');?>"> </div>
+               <div class="sidebar-brand-text mx-3"><img src="<?php echo base_url('images/logo.png');?>"> </div>
             </a>
             <center><span style="color:#ffffff;"><?php echo $hres[1]['setting_value'];?> </span></center>
             <!-- Divider -->
@@ -298,15 +292,10 @@
       </ul>
       <?php } ?>
       <!-- End of Sidebar -->
-<!--###########################################################3-->
-
-
       <!-- Content Wrapper -->
       <div id="content-wrapper" class="d-flex flex-column">
       <!-- Main Content -->
-      <div id="content clearfix">
-
-
+      <div id="content">
          <!-- Topbar -->
          <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
             <!-- Sidebar Toggle (Topbar) -->
@@ -314,89 +303,110 @@
                <i class="fa fa-bars"></i>
                </button> -->
             <?php if($logged_in['su'] == 2){ ?>
-               <a class="navbar-brand" href="<?php echo base_url();?>">
-                  <img src="<?php echo base_url('images/logo.png');?>" width="250" height="60" alt="drnadiabuhannad.com">
-               </a>
-           <!-- <a  href="<?php echo base_url();?>"><img src="<?php echo base_url('images/logo.png');?>"></a> -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-               <span class="navbar-toggler-icon"></span>
-            </button>
-
-
-
-         
-
-            <?php } ?>
-            <?php if($logged_in['su'] == 2){ ?>
-            <div class="collapse navbar-collapse" id="navbarNav">
-               <ul class="navbar-nav ml-auto cst-nav">
-                  <li class="nav-item">
-                     <a class="nav-link" href="<?=base_url('index.php/quiz');?>">
-                     <i class="fas fa-fw fa-chalkboard-teacher"></i>
-                     <span><?php echo $this->lang->line('quiz');?> </span>
-                     </a>
-                  </li>
-             </ul>
+            <a  href="<?php echo base_url();?>"><img src="<?php echo base_url('images/logo.png');?>"></a>
       
             <?php } ?>
-       
+      
+
+            <li class="nav-item active">
+               <a class="nav-link " href="<?=base_url('index.php/quiz');?>">
+               <i class="fas fa-fw fa-chalkboard-teacher"></i>
+               <span><?php echo $this->lang->line('quiz');?> </span>
+               </a>
+          
+            </li>
+
+      </div>
+    
+      <!-- Topbar Navbar -->
+      <ul class="navbar-nav ml-auto">
       <?php 
          $logged_in=$this->session->userdata('logged_in');
          
          
          
-            // check sg invitation
-            $uid=$logged_in['uid'];
-            $query=$this->db->query("select * from appointment_request 
-            join savsoft_users on savsoft_users.uid=appointment_request.request_by 
-             where appointment_request.to_id='$uid' and appointment_request.appointment_status='Pending' ");
-            $invitations=$query->result_array();
-            
-            $query=$this->db->query("select * from savsoft_notification 
-              where (savsoft_notification.uid='$uid' OR savsoft_notification.uid='0') AND (savsoft_notification.viewed='0')  ");
-            $notifications=$query->result_array();
-            
-            ?>
-         <ul class="navbar-nav ml-auto cst-nav">
-            <li class="nav-item dropdown">
-               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               <span class="">
-                  <?php echo $logged_in['first_name'].' '.$logged_in['last_name'];?> </span>
-               <!-- <img class="img-profile rounded-circle" src=""> -->
-               </a>
-            <!-- Dropdown - User Information -->
-               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                  <a class="dropdown-item" href="<?php echo site_url('user/edit_user/'.$logged_in['uid']);?>">
-                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                     <?php echo $this->lang->line('myaccount');?>
-                  </a>
-                  <?php 
-                     if(in_array('List',explode(',',$logged_in['appointment'])) && !in_array('List_all',explode(',',$logged_in['appointment']))){ ?>
-                  <!-- <a class="dropdown-item" href="<?php echo site_url('appointment/myappointment/');?>"><i class="fas fa-mobile fa-sm fa-fw mr-2 text-gray-400"></i><?php echo $this->lang->line('myappointment');?></a>     -->
-                  <?php } ?> 
-                  <div class="dropdown-divider"></div>
-                     <a class="dropdown-item" href="<?php echo site_url('user/logout');?>"  >
-                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Logout
-                     </a>
-               </div>
-            </li>
-      
-         </ul>
-           <div class="clearfix"></div>
-               </div>
-         </nav>
-               <!-- Topbar Navbar -->
-     
+         	// check sg invitation
+         	$uid=$logged_in['uid'];
+         	$query=$this->db->query("select * from appointment_request 
+         	join savsoft_users on savsoft_users.uid=appointment_request.request_by 
+         	 where appointment_request.to_id='$uid' and appointment_request.appointment_status='Pending' ");
+         	$invitations=$query->result_array();
+         	
+          	$query=$this->db->query("select * from savsoft_notification 
+         	  where (savsoft_notification.uid='$uid' OR savsoft_notification.uid='0') AND (savsoft_notification.viewed='0')  ");
+         	$notifications=$query->result_array();
+         	
+         	?>
+      <!-- Nav Item - Alerts -->
+      <li class="nav-item dropdown no-arrow mx-1">
+      <?php /* <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <i class="fas fa-bell fa-fw"></i>
+         <!-- Counter - Alerts -->
+         <span class="badge badge-danger badge-counter"><?php echo count($invitations)+count($notifications);?></span>
+      </a> */ ?>
+      <!-- Dropdown - Alerts -->
+      <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+      <h6 class="dropdown-header">
+      Notification
+      </h6>
+      <?php 
+         if(count($invitations) >= 1){
+          ?>
+      <!-- <a class="dropdown-item d-flex align-items-center" href="<?php echo site_url('appointment/myappointment/');?>"> -->
+      <div>
+      <div class="small text-gray-500"><?php echo date('d M Y',time());?></div>
+      <span class="font-weight-bold">There are <?php echo count($invitations);?> pending appointments</span>
+      </div>
+      </a>
+      <?php 
+         }
+         foreach($notifications as $k => $notification){
+          ?>
+      <a class="dropdown-item d-flex align-items-center" href="<?php echo site_url('notification');?>">
+      <div>
+      <div class="small text-gray-500"><?php echo $notification['notification_date'];?></div>
+      <span class="font-weight-bold"><?php echo $notification['title'];?> </span>
+      </div>
+      </a>
+      <?php 
+         }
+         if(count($invitations)==0 &&  count($notifications)==0){
+         ?><a class="dropdown-item d-flex align-items-center" href="#"><div class="small text-gray-500"><span class="font-weight-bold"><?php 	 echo "No notification for you!";?></span></div></a><?php 
+         }
+         ?>
+      </div>
+      </li>
+      <div class="topbar-divider d-none d-sm-block"></div>
+      <!-- Nav Item - User Information -->
+      <li class="nav-item dropdown no-arrow">
+      <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+      <?php echo $logged_in['first_name'].' '.$logged_in['last_name'];?> </span>
+      <!-- <img class="img-profile rounded-circle" src=""> -->
+      </a>
+      <!-- Dropdown - User Information -->
+      <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+      <a class="dropdown-item" href="<?php echo site_url('user/edit_user/'.$logged_in['uid']);?>">
+      <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+      <?php echo $this->lang->line('myaccount');?>
+      </a>
+      <?php 
+         if(in_array('List',explode(',',$logged_in['appointment'])) && !in_array('List_all',explode(',',$logged_in['appointment']))){ ?>
+      <!-- <a class="dropdown-item" href="<?php echo site_url('appointment/myappointment/');?>"><i class="fas fa-mobile fa-sm fa-fw mr-2 text-gray-400"></i><?php echo $this->lang->line('myappointment');?></a>     -->
+      <?php } ?> 
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="<?php echo site_url('user/logout');?>"  >
+      <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+      Logout
+      </a>
+      </div>
+      </li>
+      </ul>
+      </nav>
       <!-- End of Topbar -->
-
-      <div class="clearfix"></div>
-
       <!-- Begin Page Content -->
       <div class="container-fluid">
-
-      <center>
-         <?php 
+      <center><?php 
          if($this->uri->segment(3) != 'ph'){
          if($this->uri->segment(2) != 'attempt' && $this->uri->segment(1) != 'install'){
          $this->db->where("add_status","Active");
@@ -412,8 +422,7 @@
          
          }	
          
-         ?>
-      </center>
+         ?></center>
       <?php if($this->session->flashdata('message_header')){
          echo $this->session->flashdata('message_header'); 
          } ?>
@@ -424,4 +433,3 @@
          } 
          }
          ?>
-      </div>

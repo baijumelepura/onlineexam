@@ -18,6 +18,12 @@
   <!-- Custom styles for this template-->
   <link href="<?php echo base_url();?>css/sb-admin-2.min.css" rel="stylesheet">
 
+<style type="text/css">
+  a.login-brand img{
+    padding: 15px;
+}
+</style>
+
 </head>
 
 <body class="bg-gradient-primary">
@@ -27,26 +33,32 @@
     <!-- Outer Row -->
     <div class="row justify-content-center">
 
-      <div class="col-xl-10 col-lg-12 col-md-9">
+      <div class="col-xl-12 col-lg-12 col-md-9">
 
-        <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card o-hidden border-0 shadow-lg my-5" style="margin-top: 5rem!important;">
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <div class="row">
-              <div class="col-lg-6 d-none d-lg-block  " style="background:url('https://savsoftquiz.com/sponserBanner.jpg');background-position: center;
-    background-size: cover;"></div>
+              <div class="col-lg-6 d-none d-lg-block  " style="background:url('http://nadiabuhannad.com/wp-content/uploads/2020/07/slider-1.png'); background-position: center;
+    background-size: cover;">
+      
+                </div>
               <div class="col-lg-6">
                 <div class="p-5">
-                  <div class="text-center">
+                  <div class="text-center" style="padding:20px;">
 				  <?php 
 				 $hquery=$this->db->query(" select * from savsoftquiz_setting where setting_name='App_Name' || setting_name='App_title' order by setting_id asc "); 
 				$hres=$hquery->result_Array();
 				?>
-                    <h1 class="h4 text-gray-900 mb-4">
+          <!-- <h1 class="h4 text-gray-900 mb-4">
 					
 					<?php if($hres[0]['setting_value']==""){ ?>Savsoft Quiz <sup>5.0</sup><?php }else{ echo $hres[0]['setting_value']; }?> 
 					
-					</h1>
+					</h1> -->
+
+              <a class="login-brand" href="<?php echo base_url();?>">
+                  <img src="<?php echo base_url('images/logo.png');?>" width="240"  alt="drnadiabuhannad.com">
+               </a>
                   </div>
                   <form class="user"  method="post" action="<?php echo site_url('login/verifylogin');?>">
 					 
