@@ -11,3 +11,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |	https://codeigniter.com/user_guide/general/hooks.html
 |
 */
+$hook['pre_controller'][] = array(
+    'class'    => 'Appcontroller',
+    'function' => 'session_validation',
+    'filename' => 'Appcontroller.php',
+    'filepath' => 'hooks',
+    'params'   => array('red', 'yellow', 'blue')
+);
