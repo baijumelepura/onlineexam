@@ -13,7 +13,7 @@ $lang['full_name'] = "Full name";
 $lang['select_language'] = "Select Language";
 $lang['custom_css'] = "Custom CSS";
 $lang['config_warning'] = "Update config file carefully";
-$lang['login'] = "Login";
+$lang['login'] = "تسجيل الدخول";
 $lang['processing'] = "Processing...";
 $lang['install_now'] = "Install Now";
 $lang['email_address'] = "عنوان البريد الالكترونى";
@@ -36,7 +36,7 @@ $lang['question_type'] = "Question type";
 $lang['nop'] = "Number of Options";
 $lang['select_question_type'] = "Select question type";
 $lang['select_payment_gateway'] = "Select payment gateway";
-$lang['quiz'] = "Quiz";
+$lang['quiz'] = "اختبار";
 $lang['result'] = "Result";
 $lang['no_registered_user'] = "Number of User Registered";
 $lang['no_questions_qbank'] = "Questions  in Question Bank";
@@ -435,3 +435,4 @@ $lang['addtocart']="Add to cart";
 
 $lang['age']="عمر";
 $lang['attempted']="<i class='fas fa-check' aria-hidden='true'></i></i> Attempted";
+

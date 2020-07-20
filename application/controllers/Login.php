@@ -8,7 +8,9 @@ class Login extends CI_Controller {
 	   parent::__construct();
 	   $this->load->database();
 	   $this->load->model("user_model");
-	    $this->load->model("quiz_model");
+		$this->load->model("quiz_model");
+		$this->load->model("result_model");
+		$this->load->model("social_model");
 
 		
 		if($this->db->database ==''){
@@ -419,7 +421,7 @@ class Login extends CI_Controller {
 		$this->session->set_userdata('logged_in', $user);
 		redirect('dashboard');
 	}
-	function language($lang = "" , $controller = "", $seg =""){
+	function language($lang = "" , $controller = "", $seg ="", $seg2 =""){
 		$this->load->helper('url');
 		$language = "english";
 		if($lang == "english") $language = "english";
@@ -431,10 +433,70 @@ class Login extends CI_Controller {
 			 redirect('quiz');
 		 }else if($controller == "quiz_detail") {
 			redirect("quiz/quiz_detail/".$seg."");
+	     }else if($controller == "answer") {
+			redirect("login/answer/".$seg."/".$seg2."");
 	     }else {
 			redirect('login');
 		} 
 	}
+	
+	function answer($rid,$method =""){
+		
+		$this->load->helper('url');
+		
+			
+		$data['result']=$this->result_model->get_result($rid);
+		 
+		$data['attempt']=$this->result_model->no_attempt($data['result']['quid'],$data['result']['uid']);
+		$data['title']=$this->lang->line('result_id').' '.$data['result']['rid'];
+	
+		 $this->load->model("quiz_model");
+		$data['saved_answers']=$this->quiz_model->saved_answers($rid);
+		$data['questions']=$this->quiz_model->get_questions($data['result']['r_qids']);
+		$data['options']=$this->quiz_model->get_options($data['result']['r_qids']);
+
+		
+		// top 10 results of selected quiz
+	$last_ten_result = $this->result_model->last_ten_result($data['result']['quid']);
+	$value=array();
+     $value[]=array('Quiz Name','Percentage (%)');
+     foreach($last_ten_result as $val){
+     $value[]=array($val['email'].' ('.$val['first_name']." ".$val['last_name'].')',intval($val['percentage_obtained']));
+     }
+     $data['value']=json_encode($value);
+	 
+	// time spent on individual questions
+	$correct_incorrect=explode(',',$data['result']['score_individual']);
+	 $qtime[]=array($this->lang->line('question_no'),$this->lang->line('time_in_sec'));
+    foreach(explode(",",$data['result']['individual_time']) as $key => $val){
+	if($val=='0'){
+		$val=1;
+	}
+	 if($correct_incorrect[$key]=="1"){
+	 $qtime[]=array($this->lang->line('q')." ".($key+1).") - ".$this->lang->line('correct')." ",intval($val));
+	 }else if($correct_incorrect[$key]=='2' ){
+	  $qtime[]=array($this->lang->line('q')." ".($key+1).") - ".$this->lang->line('incorrect')."",intval($val));
+	 }else if($correct_incorrect[$key]=='0' ){
+	  $qtime[]=array($this->lang->line('q')." ".($key+1).") -".$this->lang->line('unattempted')." ",intval($val));
+	 }else if($correct_incorrect[$key]=='3' ){
+	  $qtime[]=array($this->lang->line('q')." ".($key+1).") - ".$this->lang->line('pending_evaluation')." ",intval($val));
+	 }
+	}
+	 $data['qtime']=json_encode($qtime);
+	 $data['percentile'] = $this->result_model->get_percentile($data['result']['quid'], $data['result']['uid'], $data['result']['score_obtained']);
+
+	  $uid=$data['result']['uid'];
+	  $quid=$data['result']['quid'];
+	  
+		$this->load->view('open_header',$data);
+		$this->load->view('open_view_result',$data);
+	//	$this->load->view('view_result_without_login',$data);
+		$this->load->view('footer',$data);	
+		
+		
+	}
+
+
 	
 	
 }
