@@ -378,6 +378,9 @@
             ?>
          <ul class="navbar-nav ml-auto cst-nav">
             <!--Language Selector-->
+           
+           
+            <?php if($logged_in['su'] == 2){ ?>
             <li class="form-inline ml-auto">
                <label class="navbar-text" for="cars">Language</label>
                <select class="form-control mr-sm-2"  id="lang_ar">
@@ -385,6 +388,22 @@
                  <option  value="arabic" <?php if($this->session->userdata("language") == 'arabic'){ echo 'selected';}?> >Arabic</option>
                </select>
             </li>
+                     <?php
+         $method = $this->router->fetch_method();
+         $methods = "quiz";
+         if($method == "index") $methods = "quiz";
+         else if($method == "quiz_detail") $methods = "quiz_detail/".$this->uri->segment(3);
+         ?>
+         <script>
+         $('#lang_ar').change(function(){
+            window.location.href = "<?=base_url();?>index.php/login/language/"+$(this).val()+'/<?=$methods;?>';
+         });
+         </script>
+
+            <?php } ?>
+
+
+
   <!--           <script>
                $('#lang_ar').change(function(){
                window.location.href = "<?=base_url();?>index.php/login/language/"+$(this).val()+'/registration';
