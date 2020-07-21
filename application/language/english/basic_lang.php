@@ -440,3 +440,5 @@ $lang['ArchivedQuiz']="Archived Quiz";
 $lang['QuizName']="Archived Quiz";
 $lang['NoofQuestions']="	No. of Questions";
 $lang['Action']="	No. of Questions";
+$lang['name']="Name";
+

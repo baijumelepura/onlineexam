@@ -434,5 +434,12 @@ $lang['checkout']="Checkout";
 $lang['addtocart']="Add to cart";
 
 $lang['age']="عمر";
-$lang['attempted']="<i class='fas fa-check' aria-hidden='true'></i></i> Attempted";
+$lang['attempted']="Attempted";
+$lang['ActiveQuiz']="Active Quiz";
+$lang['ArchivedQuiz']="Archived Quiz";
+$lang['QuizName']="Archived Quiz";
+$lang['NoofQuestions']="	No. of Questions";
+$lang['Action']="	No. of Questions";
+$lang['name']="اسم";
+
 

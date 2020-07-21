@@ -260,16 +260,18 @@ $qi+=$qvv;
 		 
 <table class="table table-bordered">
 
-<tr><td><?php echo $this->lang->line('first_name');?></td><td><?php echo $result['first_name'];?></td></tr>
-<tr><td><?php echo $this->lang->line('last_name');?></td><td><?php echo $result['last_name'];?></td></tr>
+
+<tr><td><?php echo $this->lang->line('name');?></td><td><?php echo $result['first_name'];?> <?php echo $result['last_name'];?></td></tr>
 <tr><td><?php echo $this->lang->line('email');?></td><td><?php echo $result['email'];?></td></tr>
+<tr><td><?php echo $this->lang->line('contact_no');?></td><td><?php echo $result['contact_no'];?></td></tr>
+<tr><td><?php echo $this->lang->line('age');?></td><td><?php echo $result['age'];?></td></tr>
 <tr><td><?php echo $this->lang->line('quiz_name');?></td><td><?php echo $result['quiz_name'];?></td></tr>
 <tr><td><?php echo $this->lang->line('attempt_time');?></td><td><?php echo date('Y-m-d H:i:s',$result['start_time']);?></td></tr>
-<tr><td><?php echo $this->lang->line('time_spent');?></td><td><?php echo secintomin($result['total_time']);?></td></tr>
-<tr><td><?php echo $this->lang->line('percentage_obtained');?></td><td><?php echo $result['percentage_obtained'];?>%</td></tr>
-<tr><td><?php echo $this->lang->line('percentile_obtained');?></td><td><?php echo substr(((($percentile[1]+1)/$percentile[0])*100),0,5);   ?>%</td></tr>
-<tr><td><?php echo $this->lang->line('score_obtained');?></td><td><?php echo $result['score_obtained'];?></td></tr>
-<tr><td><?php echo $this->lang->line('status');?></td><td><?php echo $result['result_status'];?></td></tr>
+<?php /*<tr><td><?php echo $this->lang->line('time_spent');?></td><td><?php echo secintomin($result['total_time']);?></td></tr>
+<<tr><td><?php echo $this->lang->line('percentage_obtained');?></td><td><?php echo $result['percentage_obtained'];?>%</td></tr>
+<tr><td><?php echo $this->lang->line('percentile_obtained');?></td><td><?php echo substr(((($percentile[1]+1)/$percentile[0])*100),0,5);   ?>%</td></tr> <?php */?>
+<tr><td><?php echo $this->lang->line('score_obtained');?></td><td><?php echo $result['score_obtained'];?> / <?=count($questions);?></td></tr>
+<?php /*<tr><td><?php echo $this->lang->line('status');?></td><td><?php echo $result['result_status'];?></td></tr> <?php */?>
 
 </table>
   
@@ -283,7 +285,7 @@ $ind_score=explode(',',$result['score_individual']);
 // view answer
 if(1==1){
 ?>
-<div class="login-panel panel panel-default noprint">
+<div class="login-panel panel panel-default ">
 		<div class="panel-body"> 
 		<a name="answers_i"></a>
 <h3><?php echo $this->lang->line('answer_sheet');?></h3>
@@ -307,6 +309,9 @@ $seg3=$this->uri->segment(4);
 if($seg3==''){
 $seg3=0;
 }
+
+
+
 
 
 foreach($questions as $qk => $question){
