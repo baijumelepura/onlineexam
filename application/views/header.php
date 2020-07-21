@@ -28,6 +28,8 @@
          width: 16rem!important;
          }
       </style>
+
+
       <script src="<?php echo base_url();?>vendor/jquery/jquery.min.js"></script>
       <script src="<?php echo base_url();?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
       <!-- Core plugin JavaScript-->
@@ -40,6 +42,22 @@
          var base_url="<?php echo base_url();?>";
          
       </script>
+
+            <script type="text/javascript">
+            $(document).ready(function(){
+            resizeDiv();
+            });
+
+            window.onresize = function(event) {
+            resizeDiv();
+            }
+
+            function resizeDiv() {
+            vpw = $(window).width();
+            vph = $(window).height();
+            $(‘#regeng).css({‘height’: vph });
+            }
+            </script>
       <?php
          if(($this->uri->segment(1).'/'.$this->uri->segment(2))!='quiz/attempt'){
          ?>
