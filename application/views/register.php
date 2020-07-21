@@ -32,7 +32,7 @@ $('#lang_ar').change(function(){
 
 
 <div class="container-fluid reg-section">
-	<div class="register">  
+	<div class="register" id="regeng">  
  	<div class="row">
 		   <div class="col-md-4 register-left">
 		        <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
@@ -176,3 +176,4 @@ $('#lang_ar').change(function(){
       </div>
     </nav>
 </footer>
+
