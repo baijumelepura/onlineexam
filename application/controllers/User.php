@@ -508,16 +508,17 @@ function edit_custom($field_id){
 		
 }
 		
-		
-		
-
 	function logout(){
-		
-		$this->session->unset_userdata('logged_in');		
+			$quiz="";
+		    $this->session->unset_userdata('logged_in');		
 			if($this->session->userdata('logged_in_raw')){
 				$this->session->unset_userdata('logged_in_raw');	
+			}	
+			if($this->session->userdata('reg_quiz')){
+				$quiz="?quiz=".$this->config->item('quiz_list')[$this->session->userdata('reg_quiz')];
+				$this->session->unset_userdata('reg_quiz');	
 			}		
- redirect('login');
+           redirect('login'.$quiz.'');
 		
 	}
 }

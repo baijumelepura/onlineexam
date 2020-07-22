@@ -441,4 +441,5 @@ $lang['QuizName']="Archived Quiz";
 $lang['NoofQuestions']="	No. of Questions";
 $lang['Action']="	No. of Questions";
 $lang['name']="Name";
+$lang['login_your_account']="Login your account";
 

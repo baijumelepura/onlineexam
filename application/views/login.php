@@ -60,7 +60,10 @@
                   <img src="<?php echo base_url('images/logo.png');?>" width="240"  alt="drnadiabuhannad.com">
                </a>
                   </div>
-                  <form class="user"  method="post" action="<?php echo site_url('login/verifylogin');?>">
+                  <?php
+                  $posturl = $this->input->get('quiz') ? site_url('login/verifylogin?quiz='.$this->input->get('quiz')) : site_url('login/verifylogin') ;
+                  ?>
+                  <form class="user"  method="post" action="<?php echo $posturl;?>">
 					 
 		<?php 
 		if($this->session->flashdata('message')){
@@ -89,17 +92,12 @@
                   
                   </form>
 				  
-				     <div class="text-center">
-                    <a class="small" href="<?php echo site_url('login/forgot');?>"><?php echo $this->lang->line('forgot_password');?> </a>
-					<?php 
-if($this->config->item('open_quiz')){
-	?>			 
-			&nbsp;&nbsp;&nbsp;<a class="small" href="<?php echo site_url('quiz/open_quiz/0');?>"  ><?php  $this->lang->line('open_quizzes');?></a>
-			 
-			<?php 
-			}
-			?>
-			
+				         <div class="text-center">
+                 <?php if(!$this->input->get('quiz')){ ?>
+                    <a class="small" href="<?php echo site_url('login/forgot');?>"><?php echo $this->lang->line('forgot_password');?> </a>			
+                 <?php }else{ ?>
+                  <a class="small" href="<?php echo site_url('login/forgot?quiz='.$this->input->get('quiz'));?>"><?php echo $this->lang->line('forgot_password');?> </a>			
+                  <?php } ?>
                   </div>
 				  
 				  
@@ -107,8 +105,12 @@ if($this->config->item('open_quiz')){
                   <hr>
                
                   <div class="text-center">
+                  <?php if(!$this->input->get('quiz')){ ?>
                     <a class="btn btn-danger btn-user btn-block" href="<?php echo site_url('login/registration');?>"><?php echo $this->lang->line('register_new_account');?></a>
-                   
+                  <?php }else{ ?>
+                    <a class="btn btn-danger btn-user btn-block" href="<?php echo site_url('login/quiz/'.$this->input->get('quiz'));?>"><?php echo $this->lang->line('register_new_account');?></a>
+                    <?php }?>
+
 				  <!-- <p style="margin-top:40px;""><a class="small" href="https://savsoftquiz.com" style="float:right;">Powered by Savsoft Quiz v5.0</a></p> -->
  
 				 </div>

@@ -346,7 +346,11 @@
          
 
             <?php } ?>
-            <?php if($logged_in['su'] == 2){ ?>
+            <?php
+            
+            
+            
+            if($logged_in['su'] == 2 && (!$this->session->userdata('reg_quiz') || $this->uri->segment(2)=='edit_user')){ ?>
             <div class="collapse navbar-collapse" id="navbarNav">
                <ul class="navbar-nav ml-auto cst-nav">
                   <li class="nav-item">

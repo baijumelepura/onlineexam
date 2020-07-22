@@ -125,7 +125,7 @@ class Login extends CI_Controller {
 	}
 
 	
-		public function registration($gid='0')
+public function registration($gid='0')
 	{
 	$this->load->helper('url');
 		$data['gid']=$gid;
@@ -138,9 +138,23 @@ class Login extends CI_Controller {
 		$this->load->view('footer',$data);
 	}
 
+    public function quiz($quiz=""){
+		$this->load->helper('url');
+		$data['gid']=0;
+		$data['quiz']=$quiz;
+		$data['title']=$this->lang->line('register_new_account');
+		$data['custom_form']=$this->user_model->custom_form('Registration');
+		// fetching group list
+		$data['group_list']=$this->user_model->group_list();
+		$this->load->view('header',$data);
+		$this->load->view('register',$data);
+		$this->load->view('footer',$data);
+	}
+
 	
-	public function verifylogin($p1='',$p2=''){
-		
+	
+	public function verifylogin($p1='',$p2='',$p3=""){
+		$this->load->helper('url');
 		if($p1 == ''){
 		$username=$this->input->post('email');
 		$password=$this->input->post('password');
@@ -151,8 +165,9 @@ class Login extends CI_Controller {
 		 $status=$this->user_model->login($username,$password);
 
 
+
 		if($status['status']=='1'){
-			$this->load->helper('url');
+			
 			// row exist fetch userdata
 			$user=$status['user'];
 			$gids=$user['gid'];
@@ -199,50 +214,26 @@ class Login extends CI_Controller {
 			if($user['su']=='1'){
 			 redirect('dashboard');				 
 			}else{
-				$burl=$this->config->item('base_url').'index.php/quiz';
+                if($p3 || $this->input->get('quiz')){
+					$keys = ($p3) ? $p3 : $this->input->get('quiz');
+					$quiz_id = array_search($keys,$this->config->item('quiz_list'));
+	               $this->session->set_userdata("reg_quiz",$quiz_id);
+				   $burl = $this->config->item('base_url').'index.php/quiz/quiz_detail/'.$quiz_id;
+				}else{
+					$this->session->unset_userdata('reg_quiz');
+					$burl = $this->config->item('base_url').'index.php/quiz/';
+				} 
 			 header("location:$burl");
 			}
-		}else if($status['status']=='0'){
-			 
-			// invalid login
-			// try to auth wp
-			if($this->config->item('wp-login')){
-			 
-		                if($this->authentication($username, $password)){
-		               
-		                 $this->verifylogin($username, $password);
-		                }else{
-		                 $this->load->helper('url');
-		                 $this->session->set_flashdata('message', $status['message']);
-			 $burl=$this->config->item('base_url');
-			 header("location:$burl");
-		                }
-		        }else{
-		        
-		        $this->load->helper('url');
-		        $this->session->set_flashdata('message', $status['message']);
-			redirect('login');
-		        }
-		        
-			
-		}else if($status['status']=='2'){
-                        $this->load->helper('url');
-
-			 
-			// email not verified
-			$this->session->set_flashdata('message', $status['message']);
-			redirect('login');
-		}else if($status['status']=='3'){
-                        $this->load->helper('url');
-
-			 
-			// email not verified
-			$this->session->set_flashdata('message', $status['message']);
-			redirect('login');
-		}
-		
-		
-		
+		}     
+   
+	
+	$this->session->set_flashdata('message', $status['message']);
+	$url = "";
+	if($this->input->get('quiz')){
+		$url = "?quiz=".$this->input->get('quiz');
+	}
+	 redirect('login'.$url.'');
 	}
 	
 	
@@ -293,36 +284,27 @@ class Login extends CI_Controller {
 	}
 	
 	
-		public function insert_user()
+		public function insert_user( $quiz ="")
 	{
-		
+	
 		
 		 $this->load->helper('url');
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('email', 'Email', 'required|is_unique[savsoft_users.email]');
         $this->form_validation->set_rules('password', 'Password', 'required');
-          if ($this->form_validation->run() == FALSE)
-                {
-                     $this->session->set_flashdata('message', "<div class='alert alert-danger'>".validation_errors()." </div>");
-					redirect('login/registration/');
+          if ($this->form_validation->run() == FALSE){
+                    $this->session->set_flashdata('message', "<div class='alert alert-danger'>".validation_errors()." </div>");
+					if($quiz) redirect('login/quiz/'.$quiz.'');
+					else redirect('login/registration/'); 
                 }
                 else
                 {
 					if($this->user_model->insert_user_2()){
-                        if($this->config->item('verify_email')){
-						$this->session->set_flashdata('message', "<div class='alert alert-success'>".$this->lang->line('account_registered_email_sent')." </div>");
-						}else{
-						//	$this->session->set_flashdata('message', "<div class='alert alert-success'>".$this->lang->line('account_registered')." </div>");
-						$this->verifylogin($this->input->post('email'),$this->input->post('password'));
-						//redirect('quiz');
+						$this->verifylogin($this->input->post('email'),$this->input->post('password'),$quiz);
 						exit;
-
-						}
-						}else{
-						    $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('error_to_add_data')." </div>");
-						
 					}
-					redirect('login/registration/');
+					if($quiz) redirect('login/quiz/'.$quiz.'');
+					else redirect('login/registration/'); 
                 }       
 
 	}

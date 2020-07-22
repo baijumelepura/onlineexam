@@ -24,9 +24,17 @@ class Quiz extends CI_Controller {
 		// redirect if not loggedin
 		if(!$this->session->userdata('logged_in')){
 			redirect('login');
-			
 		}
 		$logged_in=$this->session->userdata('logged_in');
+
+		if($this->session->userdata('reg_quiz') && $logged_in['su'] != 1){
+			$id = $this->session->userdata('reg_quiz');
+			redirect('quiz/quiz_detail/'.$id.'');
+		}
+		
+
+
+	
 		if($logged_in['base_url'] != base_url()){
 		$this->session->unset_userdata('logged_in');		
 		redirect('login');

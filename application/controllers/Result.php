@@ -13,7 +13,6 @@ class Result extends CI_Controller {
 	   $this->load->model("user_model");
 	   $this->lang->load('basic', $this->config->item('language'));
 		// redirect if not loggedin
-
 	 }
 
 	public function index($limit='0',$status='0')

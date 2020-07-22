@@ -42,7 +42,7 @@ $('#lang_ar').change(function(){
 		    </div>
 
 			<div class="col-md-8 register-right">
-			   	<form method="post" action="<?php echo site_url('login/insert_user/');?>">
+			   	<form method="post" action="<?php echo site_url('login/insert_user/'.$quiz.'');?>">
 			    	<div class="login-panel panel panel-default">
 			    	 	<div class="panel-body"> 
 			    	 		<?php 
@@ -128,7 +128,12 @@ $('#lang_ar').change(function(){
 							?>			 
 							<div class="col-md-10 offset-md-1">
 		 						<button class="btn btn-default" type="submit"><?php echo $this->lang->line('submit');?></button>
+								<?php if(!$quiz){ ?>
 								<a href="<?php echo site_url('login');?>"><?php echo $this->lang->line('login');?></a>
+								<?php }else{ ?>
+									<a href="<?php echo site_url('login?quiz='.$quiz);?>" ><?php echo $this->lang->line('login');?></a>
+								<?php } ?>
+							
 							</div>
 								 <div class="clearfix"></div>
 							</div>

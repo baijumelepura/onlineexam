@@ -753,11 +753,28 @@ $config['firebase_topic']="SavsoftQuiz";
 
 $config['quiz_templates']=array('Default','Practice');
 $config['question_lang']=array('English','Arabic');
-
 $config['master_password']=$csetting['Master_password'];
  
- 
+$config['quiz_list']=["10"=>"leadership-quality",
+					  "11"=>"critical-thinking",
+					  "12"=>"mbti",
+					  "13"=>"personality-assessment",
+					  "14"=>"psychometric",
+					  "15"=>"job-interest",
+					  "16"=>"self-confidence",
+					  "17"=>"iq"];
 }
  
 
+//http://localhost/onlineexam/index.php/login/quiz/leadership-quality
+//http://localhost/onlineexam/index.php/login/quiz/critical-thinking
+//http://localhost/onlineexam/index.php/login/quiz/mbti
+//http://localhost/onlineexam/index.php/login/quiz/personality-assessment
+//http://localhost/onlineexam/index.php/login/quiz/psychometric
+//http://localhost/onlineexam/index.php/login/quiz/job-interest
+//http://localhost/onlineexam/index.php/login/quiz/self-confidence
+//http://localhost/onlineexam/index.php/login/quiz/iq
+
+
+//http://localhost/onlineexam/index.php/login/answer
 
