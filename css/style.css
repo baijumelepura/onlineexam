@@ -532,3 +532,9 @@ box-shadow: -15px 15px 44px -30px rgba(0,0,0,0.75);
 .cst-nav .form-inline label.navbar-text{
     padding-right: 10px;
 }
+.test-description .card{
+    margin:30px 0;
+}
+.test-description .card .card-body button{
+    float: right;
+}
