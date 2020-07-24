@@ -27,6 +27,9 @@
          .sidebar {
          width: 16rem!important;
          }
+         .ques-ans{
+
+         }
       </style>
       <script src="<?php echo base_url();?>vendor/jquery/jquery.min.js"></script>
       <script src="<?php echo base_url();?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -56,12 +59,12 @@
    <body id="page-top">
 
       <!-- Page Wrapper -->
-      <div id="wrapper">
+      <div id="wrapper" style="height: 100%;">
 
 
-      <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content-wrapper" class="d-flex flex-column" style="background-color: #dadee8;">
       <!-- Main Content -->
-      <div id="content clearfix">
+      <div class="content clearfix">
 
 
          <!-- Topbar -->
@@ -72,7 +75,7 @@
                </button> -->
            
                <a class="navbar-brand" href="<?php echo base_url();?>">
-                  <img src="<?php echo base_url('images/logo.png');?>" width="250" height="60" alt="drnadiabuhannad.com">
+                  <img src="<?php echo base_url('images/logo.png');?>" width="220" height="60" alt="drnadiabuhannad.com">
                </a>
            <!-- <a  href="<?php echo base_url();?>"><img src="<?php echo base_url('images/logo.png');?>"></a> -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

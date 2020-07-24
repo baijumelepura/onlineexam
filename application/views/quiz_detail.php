@@ -1,7 +1,8 @@
 <div class="container test-description">
 <div class="row">
- 	<form method="post" id="quiz_detail" action="<?php echo site_url('quiz/validate_quiz/'.$quiz['quid']);?>">
+ 	<form method="post" id="quiz_detail" action="<?php echo site_url('quiz/validate_quiz/'.$quiz['quid']);?>"  style="width:100%;">
 		<div class="card">
+			
 		  <h3 class="card-header"><?php echo $title;?></h3>
 			<?php 
 			if($this->session->flashdata('message')){
@@ -13,11 +14,11 @@
 		    <p class="card-text">
 		    	<span><b><?php echo $this->lang->line('description');?></b></span> :
 				<?php echo $quiz['description'];?>
-		    	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+		    	<!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  -->
 		    </p>
 		   <!--  <a href="#" class="btn btn-primary">Go somewhere</a> -->
 		  </div>
-		   <ul class="list-group list-group-flush">
+<!-- 		   <ul class="list-group list-group-flush">
 		   	 <li class="list-group-item">
 		   	 	<?php echo $this->lang->line('select_language');?>
 				<select name="selected_lang"  id="changelang">
@@ -30,7 +31,7 @@
 					?>
 				</select>
 		   	 </li>
-		   </ul>
+		   </ul> -->
 		   <div class="card-body text-left">
 
 				<?php 
@@ -103,6 +104,7 @@
 				}
 				?>
 			</div> 
+		
 		</div>
       </form>
 </div>

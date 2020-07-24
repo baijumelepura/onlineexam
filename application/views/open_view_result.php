@@ -20,45 +20,42 @@
    page-break-after: always;
 	}
 	
-.noprint{
-	
-	display:none; 
-}
+	.noprint{
+		
+		display:none; 
+	}
 }
 @media screen {
-.onlyprint{
-	display:none; 
-	
+	.onlyprint{
+		display:none; 
+		
+	}
 }
+table.client-details tr td{
+	padding: 5px;
 }
  td{
 		color:#212121;
 		font-size:14px;
 		padding:4px;
 	}
-	
-	
-	
-	
-	
 	.circle_result{
-	
-	    width: 40px;
-    height: 40px;
-    border-radius: 20px;
-    background: #0b8d6f;
-    color: #ffffff;
-    padding: 5px;
-    font-size: 16px;
-    text-align: center;
-	margin-right:20px;
+		width: 40px;
+	    height: 40px;
+	    border-radius: 20px;
+	    background: #0b8d6f;
+	    color: #ffffff;
+	    padding: 5px;
+	    font-size: 16px;
+	    text-align: center;
+		margin-right:20px;
 		float:left;
-}
+	}
 
 
 .circle_ur{
 	
-	    width: 40px;
+	width: 40px;
     height: 40px;
     border-radius: 20px;
     background: #ffcc66;
@@ -73,7 +70,7 @@
 
 .circle_l{
 	
-	    width: 40px;
+	width: 40px;
     height: 40px;
     border-radius: 20px;
     background: #ff3300;
@@ -88,14 +85,18 @@
 .td_line{
 	background:url('<?php echo base_url('images/rankbar.png');?>');background-repeat: repeat-x;
 }
+.print-area table.client-details tr td{
+    font-size: 16px;
+}
+.print-area table.client-details tr td:first-child{
+    font-weight: bold;
+}
 </style>
  <div class="container">
 <?php 
 $logged_in=$this->session->userdata('logged_in');
 ?>
    
-    
- 
 <?php 
 
 function ordinal($number) {
@@ -248,35 +249,36 @@ $qi+=$qvv;
 ?>
 
   <div class="row">
-  <a href="javascript:print();" class="btn btn-success printbtn" style="margin-top:10px;"><?php echo $this->lang->line('print');?></a>
-
-<div class="col-md-12">
-<br> 
- <div class="login-panel panel panel-default">
-		<div class="panel-body"> 
-	
-	
-	
-		 
-<table class="table table-bordered">
-
-
-<tr><td><?php echo $this->lang->line('name');?></td><td><?php echo $result['first_name'];?> <?php echo $result['last_name'];?></td></tr>
-<tr><td><?php echo $this->lang->line('email');?></td><td><?php echo $result['email'];?></td></tr>
-<tr><td><?php echo $this->lang->line('contact_no');?></td><td><?php echo $result['contact_no'];?></td></tr>
-<tr><td><?php echo $this->lang->line('age');?></td><td><?php echo $result['age'];?></td></tr>
-<tr><td><?php echo $this->lang->line('quiz_name');?></td><td><?php echo $result['quiz_name'];?></td></tr>
-<tr><td><?php echo $this->lang->line('attempt_time');?></td><td><?php echo date('Y-m-d H:i:s',$result['start_time']);?></td></tr>
-<?php /*<tr><td><?php echo $this->lang->line('time_spent');?></td><td><?php echo secintomin($result['total_time']);?></td></tr>
-<<tr><td><?php echo $this->lang->line('percentage_obtained');?></td><td><?php echo $result['percentage_obtained'];?>%</td></tr>
-<tr><td><?php echo $this->lang->line('percentile_obtained');?></td><td><?php echo substr(((($percentile[1]+1)/$percentile[0])*100),0,5);   ?>%</td></tr> <?php */?>
-<tr><td><?php echo $this->lang->line('score_obtained');?></td><td><?php echo $result['score_obtained'];?> / <?=count($questions);?></td></tr>
-<?php /*<tr><td><?php echo $this->lang->line('status');?></td><td><?php echo $result['result_status'];?></td></tr> <?php */?>
-
-</table>
-  
  
-		</div>
+
+<div class="col-md-12 print-area">
+
+ <div class="login-panel panel panel-default">
+ 	<div class="card" style="">
+ 		  <div class="card-header">
+		    <h3 style="float:left">Client Details</h3>
+		     <a href="javascript:print();" class="btn btn-success printbtn" style="float:right;"><?php echo $this->lang->line('print');?></a>
+		  </div>
+
+			<div class="panel-body card-body"> 
+				<table class="table table-bordered client-details">
+				
+					<tr><td><?php echo $this->lang->line('name');?></td><td><?php echo $result['first_name'];?> <?php echo $result['last_name'];?></td></tr>
+					<tr><td><?php echo $this->lang->line('email');?></td><td><?php echo $result['email'];?></td></tr>
+					<tr><td><?php echo $this->lang->line('contact_no');?></td><td><?php echo $result['contact_no'];?></td></tr>
+					<tr><td><?php echo $this->lang->line('age');?></td><td><?php echo $result['age'];?></td></tr>
+					<tr><td><?php echo $this->lang->line('quiz_name');?></td><td><?php echo $result['quiz_name'];?></td></tr>
+					<tr><td><?php echo $this->lang->line('attempt_time');?></td><td><?php echo date('d-m-Y',$result['start_time']);?></td></tr>
+					<?php /*<tr><td><?php echo $this->lang->line('time_spent');?></td><td><?php echo secintomin($result['total_time']);?></td></tr>
+					<<tr><td><?php echo $this->lang->line('percentage_obtained');?></td><td><?php echo $result['percentage_obtained'];?>%</td></tr>
+					<tr><td><?php echo $this->lang->line('percentile_obtained');?></td><td><?php echo substr(((($percentile[1]+1)/$percentile[0])*100),0,5);   ?>%</td></tr> <?php */?>
+					<!-- <tr><td><?php echo $this->lang->line('score_obtained');?></td><td><?php echo $result['score_obtained'];?> / <?=count($questions);?></td></tr> -->
+					<?php /*<tr><td><?php echo $this->lang->line('status');?></td><td><?php echo $result['result_status'];?></td></tr> <?php */?>
+
+				</table>
+			</div>
+
+	</div>
 </div>
 
 
@@ -286,10 +288,21 @@ $ind_score=explode(',',$result['score_individual']);
 if(1==1){
 ?>
 <div class="login-panel panel panel-default ">
-		<div class="panel-body"> 
+	<div class="panel-body card"> 
 		<a name="answers_i"></a>
-<h3><?php echo $this->lang->line('answer_sheet');?></h3>
-
+		<div class="card-header"><h3><?php echo $result['quiz_name'];?> - <?php echo $this->lang->line('answer_sheet');?> </h3></div>
+		<div class="card-body">
+			<div class="rqn ques-ans" id="qn<?php echo $qk;?>" >
+				<table class="table table-striped"  >
+				  <thead>
+				    <tr>
+				      <th scope="col">Q-No</th>
+				      <th scope="col">Question</th>
+				      <th scope="col">Correct Answer</th>
+				      <th scope="col">Client Answer</th>
+				    </tr>
+				  </thead>
+				  <tbody>
 <?php 
 $abc=array(
 '0'=>'A',
@@ -318,15 +331,15 @@ foreach($questions as $qk => $question){
 // remove below condition for all solution at one page
 
 ?>
- 
-<div class="rqn" id="qn<?php echo $qk;?>" style="">
-<div class="col-md-12 " id="q<?php echo $qk;?>" class="" style="margin:10px;padding:10px;<?php if($ind_score[$qk]=='1'){ ?>background-color:#71ba5d; color:#ffffff;<?php }else if($ind_score[$qk]=='2'){ ?>background-color:#ff5e5e; color:#ffffff;<?php }else if($ind_score[$qk]=='3'){ ?>background-color:#fdfbcf;<?php }else{ ?>background-color:#ffffff;<?php } ?>">
-	<div class="col-md-2 col-sm-2">
-		<div style="height:45px; width:45px; background-color:#ffffff;border-radius:50%;color:#4b7d42;
-		margin-top:6px;padding:14px;border:1px solid #666666;"><b><?php echo $qk+1;?></b></div>
-	</div>
-	<div class="col-md-8 col-sm-8">
-		<?php
+
+
+<!--question and answer for print-->
+
+    <tr id="q<?php echo $qk;?>">
+      <th scope="row"><?php echo $qk+1;?></th>
+
+      <td>
+      	      		<?php
 		if(strip_tags($question['paragraph'])!=""){
 		 echo $this->lang->line('paragraph')."<br>";
 		 echo $question['paragraph']."<hr>";
@@ -337,10 +350,12 @@ foreach($questions as $qk => $question){
 		 }else{
 			echo str_replace('../../../',base_url(),str_replace('../../../../',base_url(),$question['question1']));
 
-		 }?><br>
-		 <?php
+		 }?>
 
-		 // multiple single choice
+      </td>
+       		 <?php
+
+		 //############################################ multiple single choice
 		 if($question['question_type']==$this->lang->line('multiple_choice_single_answer')){
 			 
 			 			 			 $save_ans=array();
@@ -350,10 +365,9 @@ foreach($questions as $qk => $question){
 				 }
 			 }
 			 
-			 
 			 ?>
-			 <input type="hidden"  name="question_type[]"  id="q_type<?php echo $qk;?>" value="1">
-			 <?php
+ 			<input type="hidden"  name="question_type[]"  id="q_type<?php echo $qk;?>" value="1">
+ 						 <?php
 			$i=0;
 			$correct_options=array();
 			foreach($options as $ok => $option){
@@ -362,20 +376,17 @@ foreach($questions as $qk => $question){
 						$correct_options[]=$option['q_option'];
 					}
 			?>
-			  <?php if(in_array($option['oid'],$save_ans)){   echo'<b>'.$this->lang->line('your_answer').'</b>:'.$option['q_option']; } ?>
-			 
-			 
-			 <?php 
+		 <?php if(in_array($option['oid'],$save_ans)){   echo'<td>'.$this->lang->line.$option['q_option'].'</td>'; } ?>
+		 	 <?php 
 			 $i+=1;
 				}else{
 				$i=0;	
 					
 				}
-			}echo "<br>";
-			echo "<b>".$this->lang->line('correct_options').'</b>: '.implode(', ',array_map('trim',($correct_options)));
+			};
+			echo "<td>".$this->lang->line.implode(', ',array_map('trim',($correct_options))).'</td>';
 		 }
-			
-// multiple_choice_multiple_answer	
+		 //################################ multiple_choice_multiple_answer	
 
 		 if($question['question_type']==$this->lang->line('multiple_choice_multiple_answer')){
 			 			 $save_ans=array();
@@ -386,8 +397,8 @@ foreach($questions as $qk => $question){
 			 }
 			 
 			 ?>
-			 <input type="hidden"  name="question_type[]"  id="q_type<?php echo $qk;?>" value="2">
-			 <?php echo '<b>'.$this->lang->line('your_answer').'</b>:';
+			  <input type="hidden"  name="question_type[]"  id="q_type<?php echo $qk;?>" value="2">
+			  <?php echo '<td>'.$this->lang->line('your_answer').'</td>:';
 			$i=0;
 			$correct_options=array();
 			foreach($options as $ok => $option){
@@ -396,25 +407,22 @@ foreach($questions as $qk => $question){
 						$correct_options[]=$option['q_option'];
 					}
 			?>
-			 
-		 <?php 
+			<?php 
 
-if(in_array($option['oid'],$save_ans)){   echo  trim($option['q_option']).', '; }?> 
+			if(in_array($option['oid'],$save_ans)){   echo  trim($option['q_option']).', '; }?> 
 
-			 
-		 	 	 
-			 
 			 <?php 
 			 $i+=1;
 				}else{
 				$i=0;	
 					
 				}
-			}echo "<br>";
-			echo "<b>".$this->lang->line('correct_options').'</b>: '.implode(', ',$correct_options);
+			};
+			echo "<td>".$this->lang->line('correct_options').'</td>: '.implode(', ',$correct_options);
 		 }
-			 
-	// short answer	
+
+
+		 	//######################### short answer	
 
 		 if($question['question_type']==$this->lang->line('short_answer')){
 			 			 $save_ans="";
@@ -433,7 +441,7 @@ if(in_array($option['oid'],$save_ans)){   echo  trim($option['q_option']).', '; 
 			 ?>
 			 
 		<div class="op"> 
-		<?php echo '<b>'.$this->lang->line('your_answer').'</b>:';?> 
+		<?php echo '<td>'.$this->lang->line('your_answer').'</td>:';?> 
 		   <?php echo $save_ans;?>   
 		</div>
 			 
@@ -441,16 +449,15 @@ if(in_array($option['oid'],$save_ans)){   echo  trim($option['q_option']).', '; 
 			 <?php 
 			 			 foreach($options as $ok => $option){
 				if($option['qid']==$question['qid']){
-					 echo "<b>".$this->lang->line('correct_answer').'</b>: '.$option['q_option'];
+					 echo "<td>".$this->lang->line('correct_answer').'</td>: '.$option['q_option'];
 			 }
 			 }
 			 
 		 }
-		 
-		 
-		 	// long answer	
 
-		 if($question['question_type']==$this->lang->line('long_answer')){
+	//####################### long answer	
+
+		 		 if($question['question_type']==$this->lang->line('long_answer')){
 			 $save_ans="";
 			 foreach($saved_answers as $svk => $saved_answer){
 				 if($question['qid']==$saved_answer['qid']){
@@ -473,14 +480,9 @@ if(in_array($option['oid'],$save_ans)){   echo  trim($option['q_option']).', '; 
 			 
 			 
 		 }
-			 
-		
-		
-		
-		
-		
-		
-		// matching	
+
+
+//################################################# matching	
 
 		 if($question['question_type']==$this->lang->line('match_the_column')){
 			 			 			 $save_ans=array();
@@ -558,31 +560,11 @@ if(in_array($option['oid'],$save_ans)){   echo  trim($option['q_option']).', '; 
 			
 		 }
 			
-		 ?>
-	<p><?php 
- if($question['description']!='') {
-				echo '<b>'.$this->lang->line('description').'</b>:';
-				echo $question['description'];
-			 }
-			
-?></p>
 
+      ?>
+      		
 
-
-</div>
-<div class="col-md-2 col-sm-2" id="q<?php echo $qk;?>"  style="font-size:30px;">
-
-<?php if($ind_score[$qk]=='1'){ ?><i class="glyphicon glyphicon-ok"></i>  <?php }else if($ind_score[$qk]=='2'){ ?><i class="glyphicon glyphicon-remove"></i> <?php }  ?>
-
-
-</div>
-</div>
-
-
- <div id="page_break"></div>
- 
- </div>
- <?php
+   <?php
  
 }
 
@@ -590,12 +572,26 @@ if(in_array($option['oid'],$save_ans)){   echo  trim($option['q_option']).', '; 
 // view answer ends
 ?>
 
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+
+ <div id="page_break"></div>
+ 
+ </div>
+
+
 
 
 
 
  
- 
+ </div>
  
  
 </div>
@@ -613,6 +609,8 @@ if(in_array($option['oid'],$save_ans)){   echo  trim($option['q_option']).', '; 
  <script>
  $('.s_title').tooltip('show');
  </script>
+
+
  <script>
  function shoq(id){
 	 if(id=="-1"){
@@ -642,3 +640,43 @@ $(document).ready(function () {
 });
 </script>
 <!-- disable copy, right click ends -->
+
+
+
+<!--####################################################################-->
+<!--Essay Type -->
+<!-- <div class="rqn ques-ans" id="qn<?php echo $qk;?>" >
+		<h3>Example- Essay Type  Question</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Q-No</th>
+      <th scope="col">Question</th>
+      <th scope="col">Client Answer</th>
+  
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+     
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+    
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+   
+    </tr>
+  </tbody>
+</table>
+</div>
+ --><!--Essay Type -->
+<!--####################################################################-->

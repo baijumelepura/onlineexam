@@ -8,6 +8,7 @@
 .row{
 margin:0px;
 }
+
 	
 </style>
 
@@ -78,66 +79,66 @@ window.location="<?php echo site_url('quiz/submit_quiz/');?>";
 
 
 
-<div class=" " >
+<div class="test-attempt">
 
 
 
-<div style="background:#3D4A5D;padding:4px;color:#ffffff;">
-<div class="save_answer_signal" id="save_answer_signal2"></div>
-<div class="save_answer_signal" id="save_answer_signal1"></div>
+	<div class="quest-header" style="background:#3D4A5D;padding:4px;color:#ffffff;">
+		<div class="save_answer_signal" id="save_answer_signal2"></div>
+		
+		<div class="save_answer_signal" id="save_answer_signal1"></div>
 
-<div style="float:right;width:150px; margin-right:10px;" >
-
-	Time left: <span id='timer' >
-	<script type="text/javascript">window.onload = CreateTimer("timer", <?php echo $seconds;?>);</script>
-</span>
-</div>
-<div style="float:left;width:150px; " >
- <h4><?php echo $title;?></h4>
-</div>
-<div style="clear:both;"></div>
-</div>
+		<div style="float:right;width:150px; margin-right:10px;" >
+			Time left: <span id='timer' >
+			<script type="text/javascript">window.onload = CreateTimer("timer", <?php echo $seconds;?>);</script>
+			</span>
+		</div>
+		<div class="quest-heading" style="" >
+			<h4 ><?php echo $title;?></h4>
+		</div>
+		<div style="clear:both;"></div>
+	</div>
 	
-<div style="clear:both;"></div>
+	<div style="clear:both;"></div>
 
 
 
    
  
- <div class="row"  style="margin-top:0px;">
+ <div class="row quest-container"  style="margin-top:0px;height: 90%;">
  <div class="col-md-9">
  <!-- Category button -->
 
  <div class="row" style="margin:2px;" >
-<?php 
-$categories=explode(',',$quiz['categories']);
-$category_range=explode(',',$quiz['category_range']);
- 
-function getfirstqn($cat_keys='0',$category_range){
-	if($cat_keys==0){
-		return 0;
-	}else{
-		$r=0;
-		for($g=0; $g < $cat_keys; $g++){
-		$r+=$category_range[$g];	
+	<?php 
+	$categories=explode(',',$quiz['categories']);
+	$category_range=explode(',',$quiz['category_range']);
+	 
+	function getfirstqn($cat_keys='0',$category_range){
+		if($cat_keys==0){
+			return 0;
+		}else{
+			$r=0;
+			for($g=0; $g < $cat_keys; $g++){
+			$r+=$category_range[$g];	
+			}
+			return $r;
 		}
-		return $r;
+		
+		
 	}
-	
-	
-}
 
 
-if(count($categories) > 1 ){
-	$jct=0;
-	foreach($categories as $cat_key => $category){
-?>
-<a href="javascript:switch_category('cat_<?php echo $cat_key;?>');"   class="btn btn-info"  style="cursor:pointer;margin-left:5px;"><?php echo $category;?></a>
-<input type="hidden" id="cat_<?php echo $cat_key;?>" value="<?php echo getfirstqn($cat_key,$category_range);?>">
-<?php 
-}
-}
-?>
+	if(count($categories) > 1 ){
+		$jct=0;
+		foreach($categories as $cat_key => $category){
+	?>
+	<a href="javascript:switch_category('cat_<?php echo $cat_key;?>');"   class="btn btn-info"  style="cursor:pointer;margin-left:5px;"><?php echo $category;?></a>
+	<input type="hidden" id="cat_<?php echo $cat_key;?>" value="<?php echo getfirstqn($cat_key,$category_range);?>">
+	<?php 
+	}
+	}
+	?>
 </div> 
 
 
@@ -165,33 +166,43 @@ foreach($questions as $qk => $question){
  
  <div id="q<?php echo $qk;?>" class="question_div">
 		
-		<div class="question_container" >
-		
-		<?php 
-		if(strip_tags($question['paragraph'])!=""){
-		echo $this->lang->line('paragraph')."<br>";
-		echo $question['paragraph']."<hr>";
-		}
-		?>
-		 <?php echo $this->lang->line('question');?> <?php echo $qk+1;?>)<br>
-		 <?php 
+		<div class="question_container questions-header shadow-sm">
+			<div class="media">
+				<img src="https://nadiabuhannad.com/wp-content/uploads/2020/07/cropped-logo-square-180x180.png" style="width: 64px;height: 64px;" class="mr-3" alt="...">
+				<div class="media-body">
+					<?php 
+					if(strip_tags($question['paragraph'])!=""){
+					echo $this->lang->line('paragraph')."<br>";
+					echo $question['paragraph']."<hr>";
+					}
+					?>
+					<h5 class="mt-0 q-number"><?php echo $this->lang->line('question');?> <?php echo $qk+1;?></h5>
+					
+						 <div class="q-text">
+								 <?php 
 
-		 if($selected_lang == 1){
-	        echo str_replace('../../../',base_url(),str_replace('../../../../',base_url(),$question['question1']));
-		 }else{
-			echo str_replace('../../../',base_url(),str_replace('../../../../',base_url(),$question['question']));
-		 }
-		 /* 
-// --- if unclosed HTML tags disturbing layout , use following code 		 
-$qu=str_replace('&#34;','',$question['question']);
-$somevar = new DOMDocument();
-$somevar->loadHTML((mb_convert_encoding($qu, 'HTML-ENTITIES', 'UTF-8')) );
-echo $somevar->saveHTML(); 
-*/		 
-		 ?>
-		 
+								 if($selected_lang == 1){
+							        echo str_replace('../../../',base_url(),str_replace('../../../../',base_url(),$question['question1']));
+								 }else{
+									echo str_replace('../../../',base_url(),str_replace('../../../../',base_url(),$question['question']));
+								 }
+								 /* 
+						// --- if unclosed HTML tags disturbing layout , use following code 		 
+						$qu=str_replace('&#34;','',$question['question']);
+						$somevar = new DOMDocument();
+						$somevar->loadHTML((mb_convert_encoding($qu, 'HTML-ENTITIES', 'UTF-8')) );
+						echo $somevar->saveHTML(); 
+						*/		 
+								 ?>
+								
+						 </div>
+
+
+				</div>
+			</div>
 		 </div>
-		<div class="option_container" >
+
+		<div class="option_container col-md-11 offset-md-1" >
 		 <?php 
 		 // multiple single choice
 		 if($question['question_type']==$this->lang->line('multiple_choice_single_answer')){
@@ -212,22 +223,24 @@ echo $somevar->saveHTML();
 				if($option['qid']==$question['qid']){
 			?>
 			 
-		<div class="op">
-		
-		
-
-			
+		<div class="op">		
 		<table>
-		<tr><td>
-		<?php 
-		 echo $abc[$i].')';
-		?>
-		
-			
-			
-<input type="radio" name="answer[<?php echo $qk;?>][]"  id="answer_value<?php echo $qk.'-'.$i;?>" value="<?php echo $option['oid'];?>"   <?php if(in_array($option['oid'],$save_ans)){ echo 'checked'; } ?>  >
-		 </td><td> <?php  echo ($selected_lang == 1) ? $option['q_option1'] : $option['q_option']; ?> 
-		</td></tr></table>
+			<tr>
+				<td>
+				<b><?php 
+				 echo $abc[$i].')';
+				?>	</b>
+				</td>
+
+				<td class="input-holder">
+					<input type="radio" name="answer[<?php echo $qk;?>][]"  id="answer_value<?php echo $qk.'-'.$i;?>" value="<?php echo $option['oid'];?>"   
+					<?php if(in_array($option['oid'],$save_ans)){ echo 'checked'; } ?>  >
+				</td>
+
+			 	<td> <?php  echo ($selected_lang == 1) ? $option['q_option1'] : $option['q_option']; ?> </td>
+
+			</tr>
+		</table>
 		</div>
 			 <?php 
 			 $i+=1;
@@ -257,13 +270,19 @@ echo $somevar->saveHTML();
 			?>
 			 
 		<div class="op">
-		<table>
-		<tr><td>
-		<?php echo $abc[$i];?>) <input type="checkbox" name="answer[<?php echo $qk;?>][]" id="answer_value<?php echo $qk.'-'.$i;?>"   value="<?php echo $option['oid'];?>"  <?php if(in_array($option['oid'],$save_ans)){ echo 'checked'; } ?> > 
-		</td><td>
-		<?php echo ($selected_lang == 1) ? $option['q_option1'] : $option['q_option'];?>
-		</td></tr>
-		</table>
+			<table>
+				<tr>
+					<td>
+						<?php echo $abc[$i];?>) 
+					</td>
+					<td class="input-holder">
+					<input type="checkbox" name="answer[<?php echo $qk;?>][]" id="answer_value<?php echo $qk.'-'.$i;?>"   value="<?php echo $option['oid'];?>"  <?php if(in_array($option['oid'],$save_ans)){ echo 'checked'; } ?> > 
+					</td>
+					<td>
+					<?php echo ($selected_lang == 1) ? $option['q_option1'] : $option['q_option'];?>
+					</td>
+				</tr>
+			</table>
 		 </div>
 			 
 			 
@@ -418,13 +437,12 @@ echo $somevar->saveHTML();
 ?>
 </form>
  </div>
-  <div class="col-md-3" style="min-height:84%;padding:5px;color:#212121;background:#CEDDF0;">
 
-  
-  
-  
+
+ <!--hint section-->
+<div class="col-md-3 ques-hint shadow-sm">
    
-<b> <?php echo $this->lang->line('questions');?></b>
+	<b> <h5><?php echo $this->lang->line('questions');?></h5></b>
 	<div style="max-height:60%;overflow-y:auto;">
 		<?php 
 		for($j=0; $j < $quiz['noq']; $j++ ){
@@ -435,28 +453,21 @@ echo $somevar->saveHTML();
 			<?php 
 		}
 		?>
-<div style="clear:both;"></div>
-
+		<div style="clear:both;"></div>
 	</div>
 	
 	
-	<br>
+
 	<hr>
-	<br>
+
 	<div>
-	
-
-	
-<table>
-<tr><td style="font-size:12px;"><div class="qbtn" style="background:#449d44;">&nbsp;</div> <?php echo $this->lang->line('Answered');?>  </td></tr>
-<tr><td style="font-size:12px;"><div class="qbtn" style="background:#c9302c;">&nbsp;</div> <?php echo $this->lang->line('UnAnswered');?>  </td></tr>
-<tr><td style="font-size:12px;"><div class="qbtn" style="background:#ec971f;">&nbsp;</div> <?php echo $this->lang->line('Review-Later');?>  </td></tr>
-<tr><td style="font-size:12px;"><div class="qbtn" style="background:#212121;">&nbsp;</div> <?php echo $this->lang->line('Not-visited');?>  </td></tr>
-</table>
-
-
-
-	<div style="clear:both;"></div>
+		<table>
+			<tr><td style="font-size:12px;"><div class="qbtn" style="background:#449d44;"></div></td><td class="attempt-info"><?php echo $this->lang->line('Answered');?>  </td></tr>
+			<tr><td style="font-size:12px;"><div class="qbtn" style="background:#c9302c;"></div></td><td class="attempt-info"> <?php echo $this->lang->line('UnAnswered');?>  </td></tr>
+			<tr><td style="font-size:12px;"><div class="qbtn" style="background:#ec971f;"></div></td><td class="attempt-info"> <?php echo $this->lang->line('Review-Later');?>  </td></tr>
+			<tr><td style="font-size:12px;"><div class="qbtn" style="background:#212121;"></div></td><td class="attempt-info"> <?php echo $this->lang->line('Not-visited');?>  </td></tr>
+		</table>
+		<div style="clear:both;"></div>
 
 	</div>
 
@@ -474,15 +485,15 @@ echo $somevar->saveHTML();
 
 
 <div class="footer_buttons" style="background:#3D4A5D;">
-	<button class="btn btn-warning"   onClick="javascript:review_later();" style="margin-top:2px;" ><?php echo $this->lang->line('review_later');?></button>
+	<button class="btn btn-warning"   onClick="javascript:review_later();"  ><?php echo $this->lang->line('review_later');?></button>
 	
-	<button class="btn btn-info"  onClick="javascript:clear_response();"  style="margin-top:2px;"  ><?php echo $this->lang->line('clear');?></button>
+	<button class="btn btn-info"  onClick="javascript:clear_response();"   ><?php echo $this->lang->line('clear');?></button>
 
-	<button class="btn btn-success"  id="backbtn" style="visibility:hidden;" onClick="javascript:show_back_question();"  style="margin-top:2px;" ><?php echo $this->lang->line('back');?></button>
+	<button class="btn btn-success"  id="backbtn" style="visibility:hidden;" onClick="javascript:show_back_question();"   ><?php echo $this->lang->line('back');?></button>
 	
-	<button class="btn btn-success" id="nextbtn" onClick="javascript:show_next_question();" style="margin-top:2px;" ><?php echo $this->lang->line('save_next');?></button>
+	<button class="btn btn-success" id="nextbtn" onClick="javascript:show_next_question();" ><?php echo $this->lang->line('save_next');?></button>
 	
-	<button class="btn btn-danger"  onClick="javascript:cancelmove();" style="margin-top:2px;" ><?php echo $this->lang->line('submit_quiz');?></button>
+	<button class="btn btn-danger"  onClick="javascript:cancelmove();"  ><?php echo $this->lang->line('submit_quiz');?></button>
 </div>
 
 <script>
