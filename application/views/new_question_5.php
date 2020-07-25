@@ -75,17 +75,23 @@ if($para==1){
 <?php
 } 
 ?>			
-			
+		<?php 
+ foreach($lang as $lkey =>$val){	
+ $lno=$lkey;
+ if($lkey==0){
+	 $lno="";
+}
+ ?>	
 
 			<div class="form-group">	 
-					<label for="inputEmail"  ><?php echo $this->lang->line('question');?></label> 
-					<textarea  name="question"  class="form-control"   ></textarea>
+					<label for="inputEmail"  ><?php echo $this->lang->line('question').' '.$val;?></label> 
+					<textarea  name="question<?=$lno;?>"  class="form-control"   ></textarea>
 			</div>
 			<div class="form-group">	 
-					<label for="inputEmail"  ><?php echo $this->lang->line('description');?></label> 
-					<textarea  name="description"  class="form-control"></textarea>
+					<label for="inputEmail"  ><?php echo $this->lang->line('description').' '.$val;?></label> 
+					<textarea  name="description<?=$lno;?>"  class="form-control"></textarea>
 			</div>
-	 
+	 <?php } ?>
 
  <input type="hidden" name="parag" id="parag" value="0">
 	<button class="btn btn-default" type="submit"><?php echo $this->lang->line('submit');?></button>

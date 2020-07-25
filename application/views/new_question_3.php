@@ -1,5 +1,6 @@
  <div class="container">
 <?php
+
 $lang=$this->config->item('question_lang');
 ?>
    
@@ -65,16 +66,24 @@ $lang=$this->config->item('question_lang');
 <?php 
 if($para==1){
 ?>
-
+<?php 
+ 
+ 
+ foreach($lang as $lkey =>$val){	
+ $lno=$lkey;
+ if($lkey==0){
+	 $lno="";
+ }
+ ?>
 			<div class="form-group">	 
 					<label for="inputEmail"  ><?php echo $this->lang->line('paragraph');?></label> 
-					<textarea  name="paragraph"  class="form-control"   ><?php
+					<textarea  name="paragraph<?=$lno;?>"  class="form-control"   ><?php
 	if(isset($qp)){ echo $qp['paragraph']; } ?></textarea>
 			</div>
 			 
 
 <?php
-} 
+} }
 ?>			
 
 			<div class="form-group">	 

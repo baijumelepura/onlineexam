@@ -244,7 +244,9 @@ Class Qbank_model extends CI_Model
 	 $userdata=array(
 	  'paragraph'=>$this->input->post('paragraph'),
 	 'question'=>$this->input->post('question'),
+	 'question1'=>$this->input->post('question1'),
 	 'description'=>$this->input->post('description'),
+	 'description1'=>$this->input->post('description1'),
 	 'question_type'=>$this->lang->line('short_answer'),
 	 'cid'=>$this->input->post('cid'),
 	 'lid'=>$this->input->post('lid')	 
@@ -280,6 +282,8 @@ Class Qbank_model extends CI_Model
 	  'paragraph'=>$this->input->post('paragraph'),
 	 'question'=>$this->input->post('question'),
 	 'description'=>$this->input->post('description'),
+	 'question1'=>$this->input->post('question1'),
+	 'description1'=>$this->input->post('description1'),
 	 'question_type'=>$this->lang->line('long_answer'),
 	 'cid'=>$this->input->post('cid'),
 	 'lid'=>$this->input->post('lid')	 
@@ -436,7 +440,9 @@ Class Qbank_model extends CI_Model
 	 $userdata=array(
 	 'paragraph'=>$this->input->post('paragraph'),
 	  'question'=>$this->input->post('question'),
-	 'description'=>$this->input->post('description'),
+	  'description'=>$this->input->post('description'),
+	  'question1'=>$this->input->post('question1'),
+	 'description1'=>$this->input->post('description1'),
 	 'question_type'=>$this->lang->line('short_answer'),
 	 'cid'=>$this->input->post('cid'),
 	 'lid'=>$this->input->post('lid')	 
@@ -468,6 +474,8 @@ Class Qbank_model extends CI_Model
 	  'paragraph'=>$this->input->post('paragraph'),
 	 'question'=>$this->input->post('question'),
 	 'description'=>$this->input->post('description'),
+	 'question1'=>$this->input->post('question1'),
+	 'description1'=>$this->input->post('description1'),
 	 'question_type'=>$this->lang->line('long_answer'),
 	 'cid'=>$this->input->post('cid'),
 	 'lid'=>$this->input->post('lid')	 

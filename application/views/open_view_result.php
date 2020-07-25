@@ -245,7 +245,8 @@ foreach($category_range as $qik => $qvv){
  $category_ranges[]=$category_ranges_i;
 $qi+=$qvv;
 }
- 
+$lang = ($this->session->userdata("language") =='english') ? true : false;
+$optn = ['0'=>'A','1'=>'B','2'=>'C','3'=>'D','4'=>'E','5'=>'F','6'=>'G'];
 ?>
 
   <div class="row">
@@ -298,8 +299,9 @@ if(1==1){
 				    <tr>
 				      <th scope="col">Q-No</th>
 				      <th scope="col">Question</th>
+					  <th scope="col">Client Answer</th>
 				      <th scope="col">Correct Answer</th>
-				      <th scope="col">Client Answer</th>
+				  
 				    </tr>
 				  </thead>
 				  <tbody>
@@ -335,150 +337,169 @@ foreach($questions as $qk => $question){
 
 <!--question and answer for print-->
 
-    <tr id="q<?php echo $qk;?>">
-      <th scope="row"><?php echo $qk+1;?></th>
-
-      <td>
-      	      		<?php
-		if(strip_tags($question['paragraph'])!=""){
-		 echo $this->lang->line('paragraph')."<br>";
-		 echo $question['paragraph']."<hr>";
-		}
-		
-		if($this->session->userdata("language")== "english"){
-		 echo str_replace('../../../',base_url(),str_replace('../../../../',base_url(),$question['question']));
-		 }else{
-			echo str_replace('../../../',base_url(),str_replace('../../../../',base_url(),$question['question1']));
-
-		 }?>
-
-      </td>
-       		 <?php
-
+    
+      <?php
 		 //############################################ multiple single choice
-		 if($question['question_type']==$this->lang->line('multiple_choice_single_answer')){
-			 
-			 			 			 $save_ans=array();
+if($question['question_type']==$this->lang->line('multiple_choice_single_answer')){
+            echo '<tr >';
+			echo '<th>'. ($qk+1) .'</th>';
+			echo '<td>';
+			
+		 if(strip_tags($question['paragraph'])!=""){
+		    echo $this->lang->line('paragraph')."<br>";
+	     	echo  $lang  ? $question['paragraph']."<hr>" : $question['paragraph1']."<hr>";
+		}
+		if($lang ){
+		       echo  str_replace('../../../',base_url(),str_replace('../../../../',base_url(),$question['question']));
+		 }else{
+	        	echo str_replace('../../../',base_url(),str_replace('../../../../',base_url(),$question['question1']));
+		 }
+        echo '</td>';
+		  $save_ans=array();
 			 foreach($saved_answers as $svk => $saved_answer){
 				 if($question['qid']==$saved_answer['qid']){
 					$save_ans[]=$saved_answer['q_option'];
 				 }
 			 }
-			 
-			 ?>
- 			<input type="hidden"  name="question_type[]"  id="q_type<?php echo $qk;?>" value="1">
- 						 <?php
-			$i=0;
+			 echo '<td>';
+			$i=0; $j=0;
 			$correct_options=array();
-			foreach($options as $ok => $option){
+			foreach(array_reverse($options) as $ok => $option){
 				if($option['qid']==$question['qid']){
 					if($option['score'] >= 0.1){
-						$correct_options[]=$option['q_option'];
+						$correct_options[$j]= $lang  ? $optn[$j].' ) '.strip_tags($option['q_option']): $optn[$j].' ) '.strip_tags($option['q_option1']);
 					}
-			?>
-		 <?php if(in_array($option['oid'],$save_ans)){   echo'<td>'.$this->lang->line.$option['q_option'].'</td>'; } ?>
-		 	 <?php 
-			 $i+=1;
-				}else{
-				$i=0;	
 					
+		        if(in_array($option['oid'],$save_ans)){
+					
+					  echo  $lang ? $optn[$j].' ) '.strip_tags($option['q_option']) : $optn[$j].' ) '.strip_tags($option['q_option1']);
+				 }
+				  $i+=1;
+				  $j++;
+				}else{
+				 $i=0;	
 				}
 			};
-			echo "<td>".$this->lang->line.implode(', ',array_map('trim',($correct_options))).'</td>';
+			echo'</td>';
+			echo "<td>";
+			if(!empty($correct_options)){ 
+				foreach($correct_options as $correct_option){ 
+					echo  $correct_option.'<br>';
+				} }
+			echo "</td> </tr >";
 		 }
+
+		 
 		 //################################ multiple_choice_multiple_answer	
 
-		 if($question['question_type']==$this->lang->line('multiple_choice_multiple_answer')){
-			 			 $save_ans=array();
+		 if($question['question_type']==$this->lang->line('multiple_choice_multiple_answer') ){ 
+			echo '<tr >';
+			echo '<th>'. ($qk+1) .'</th>';
+		    echo '<td>';
+		 if(strip_tags($question['paragraph'])!=""){
+		    echo $this->lang->line('paragraph')."<br>";
+	     	echo  $lang  ? $question['paragraph']."<hr>" : $question['paragraph1']."<hr>";
+		}
+		if($lang ){
+		 echo str_replace('../../../',base_url(),str_replace('../../../../',base_url(),$question['question']));
+		 }else{
+		 echo str_replace('../../../',base_url(),str_replace('../../../../',base_url(),$question['question1']));
+
+		 }
+		  echo '</td>';
+			$save_ans=array();
 			 foreach($saved_answers as $svk => $saved_answer){
 				 if($question['qid']==$saved_answer['qid']){
 					$save_ans[]=$saved_answer['q_option'];
 				 }
 			 }
 			 
-			 ?>
-			  <input type="hidden"  name="question_type[]"  id="q_type<?php echo $qk;?>" value="2">
-			  <?php echo '<td>'.$this->lang->line('your_answer').'</td>:';
-			$i=0;
+			$i=0; $j =0;
 			$correct_options=array();
-			foreach($options as $ok => $option){
+			echo'<td>';
+
+			//print_r($options);die;
+			foreach(array_reverse($options) as $ok => $option){
 				if($option['qid']==$question['qid']){
-						if($option['score'] >= 0.1){
-						$correct_options[]=$option['q_option'];
+					if($option['score'] >= 0.1){
+							$correct_options[$j]= $lang  ? $optn[$j].' ) '.strip_tags($option['q_option']).'<br>' : $optn[$j].' ) '.strip_tags($option['q_option1']).'<br>';
 					}
-			?>
-			<?php 
+						if(in_array($option['oid'],$save_ans)){  
+							echo $lang ? $optn[$j].' ) '.strip_tags($option['q_option']).'<br>' : $optn[$j].' ) '.strip_tags($option['q_option1']).'<br>';
+						}
 
-			if(in_array($option['oid'],$save_ans)){   echo  trim($option['q_option']).', '; }?> 
-
-			 <?php 
-			 $i+=1;
+				  $i+=1;
+				  $j++;
 				}else{
 				$i=0;	
 					
 				}
 			};
-			echo "<td>".$this->lang->line('correct_options').'</td>: '.implode(', ',$correct_options);
+			echo '</td>';
+		
+			echo "<td>".implode(',',$correct_options).'</td>';
+
+			echo  "</tr>";
+
 		 }
 
 
 		 	//######################### short answer	
 
-		 if($question['question_type']==$this->lang->line('short_answer')){
-			 			 $save_ans="";
+		 if($question['question_type']==$this->lang->line('short_answer') ){
+			echo '<tr >';
+			echo '<th>'. ($qk+1) .'</th>';
+		    echo '<td>';
+			   if(strip_tags($question['paragraph'])!=""){
+				  echo $this->lang->line('paragraph')."<br>";
+				   echo  $lang  ? $question['paragraph']."<hr>" : $question['paragraph1']."<hr>";
+			  }
+			  if($lang ){
+			   echo str_replace('../../../',base_url(),str_replace('../../../../',base_url(),$question['question']));
+			   }else{
+			   echo str_replace('../../../',base_url(),str_replace('../../../../',base_url(),$question['question1']));
+			   }
+	    	echo '</td> <td colspan="2">';
+			$save_ans="";
 			 foreach($saved_answers as $svk => $saved_answer){
 				 if($question['qid']==$saved_answer['qid']){
 					$save_ans=$saved_answer['q_option'];
 				 }
 			 }
-			 ?>
-			 <input type="hidden"  name="question_type[]"  id="q_type<?php echo $qk;?>" value="3"   >
-			 
-			 <?php
 
-			 
-			
-			 ?>
-			 
-		<div class="op"> 
-		<?php echo '<td>'.$this->lang->line('your_answer').'</td>:';?> 
-		   <?php echo $save_ans;?>   
-		</div>
-			 
-			 
-			 <?php 
-			 			 foreach($options as $ok => $option){
-				if($option['qid']==$question['qid']){
-					 echo "<td>".$this->lang->line('correct_answer').'</td>: '.$option['q_option'];
-			 }
-			 }
-			 
+			// foreach($options as $ok => $option){
+			// 	if($option['qid']==$question['qid']){
+					 echo " Client Answer : " .$save_ans;
+			// } }
+			 echo '</td>
+			 <tr >';
 		 }
 
 	//####################### long answer	
+	if($question['question_type']==$this->lang->line('long_answer') ){
 
-		 		 if($question['question_type']==$this->lang->line('long_answer')){
+		echo '<tr >';
+		echo '<th>'. ($qk+1) .'</th>';
+		echo '<td>';
+		   if(strip_tags($question['paragraph'])!=""){
+			  echo $this->lang->line('paragraph')."<br>";
+			   echo  $lang  ? $question['paragraph']."<hr>" : $question['paragraph1']."<hr>";
+		  }
+		  if($lang ){
+		   echo str_replace('../../../',base_url(),str_replace('../../../../',base_url(),$question['question']));
+		   }else{
+		   echo str_replace('../../../',base_url(),str_replace('../../../../',base_url(),$question['question1']));
+		   }
+	    	echo '</td> <td colspan="2">';
 			 $save_ans="";
 			 foreach($saved_answers as $svk => $saved_answer){
 				 if($question['qid']==$saved_answer['qid']){
 					$save_ans=$saved_answer['q_option'];
 				 }
 			 }
-			 ?>
-			 <input type="hidden"  name="question_type[]" id="q_type<?php echo $qk;?>" value="4">
-			 <?php
-			 ?>
-			 
-		<div class="op"> 
-		<?php echo $this->lang->line('answer');?> <br>
-		<?php echo $this->lang->line('word_counts');?>  <?php /* echo str_word_count($save_ans); */ ?>
-
-		<?php echo $save_ans;?>
-		<?php /* <textarea name="answer[<?php echo $qk;?>][]" id="answer_value<?php echo $qk;?>" style="width:100%;height:100%;" onKeyup="count_char(this.value,'char_count<?php echo $qk;?>');"><?php echo $save_ans;?></textarea>*/ ?>
-		</div>
-				
-			 
-			 <?php 
+		     echo " Client Answer : " .$save_ans;
+			 echo '</td>
+			 <tr >';
 			 
 			 
 		 }
@@ -486,7 +507,7 @@ foreach($questions as $qk => $question){
 
 //################################################# matching	
 
-		 if($question['question_type']==$this->lang->line('match_the_column')){
+		 if($question['question_type']==$this->lang->line('match_the_column') && 1==2){
 			 			 			 $save_ans=array();
 			 foreach($saved_answers as $svk => $saved_answer){
 				 if($question['qid']==$saved_answer['qid']){
@@ -574,7 +595,7 @@ foreach($questions as $qk => $question){
 // view answer ends
 ?>
 
-    </tr>
+    
     
   </tbody>
 </table>

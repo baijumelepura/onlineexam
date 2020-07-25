@@ -776,5 +776,5 @@ $config['quiz_list']=["10"=>"leadership-quality",
 //http://localhost/onlineexam/index.php/login/test/iq
 
 
-//http://localhost/onlineexam/index.php/login/answer
+//http://localhost/onlineexam/index.php/login/answer/54
 

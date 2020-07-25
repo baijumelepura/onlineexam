@@ -1,5 +1,7 @@
  <div class="container">
-
+ <?php
+$lang=$this->config->item('question_lang');
+?>
    
  <h3><?php echo $title;?></h3>
    
@@ -72,15 +74,24 @@ if(strip_tags($question['paragraph'])!=""){
 <?php
 } 
 ?>			
+<?php 
+ foreach($lang as $lkey =>$val){	
+ $lno=$lkey;
+ if($lkey==0){
+	 $lno="";
+}
+ ?>
+			<div class="form-group">	 
+					<label for="inputEmail"  ><?php echo $this->lang->line('question').'  '.$val;?></label> 
+					<textarea  name="question<?=$lno;?>"  class="form-control"   ><?php echo $question['question'.$lno];?></textarea>
+			</div>
+			<div class="form-group">	 
+					<label for="inputEmail"  ><?php echo $this->lang->line('description').'  '.$val;?></label> 
+					<textarea  name="description<?=$lno;?>"  class="form-control"><?php echo $question['description'.$lno];?></textarea>
+			</div>
 
-			<div class="form-group">	 
-					<label for="inputEmail"  ><?php echo $this->lang->line('question');?></label> 
-					<textarea  name="question"  class="form-control"   ><?php echo $question['question'];?></textarea>
-			</div>
-			<div class="form-group">	 
-					<label for="inputEmail"  ><?php echo $this->lang->line('description');?></label> 
-					<textarea  name="description"  class="form-control"><?php echo $question['description'];?></textarea>
-			</div>
+<?php } ?>
+
 	<div class="form-group">	 
 					<label for="inputEmail"  ><?php echo $this->lang->line('answer_in_one_or_two_word');?> </label> <br>
 					<input type="text" name="option[]"  class="form-control"  value="<?php echo $options[0]['q_option'];?>"  > 

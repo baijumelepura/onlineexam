@@ -296,7 +296,7 @@ public function registration($gid='0')
         $this->form_validation->set_rules('password', 'Password', 'required');
           if ($this->form_validation->run() == FALSE){
                     $this->session->set_flashdata('message', "<div class='alert alert-danger'>".validation_errors()." </div>");
-					if($quiz) redirect('login/quiz/'.$quiz.'');
+					if($quiz) redirect('login/test/'.$quiz.'');
 					else redirect('login/registration/'); 
                 }
                 else
@@ -305,7 +305,7 @@ public function registration($gid='0')
 						$this->verifylogin($this->input->post('email'),$this->input->post('password'),$quiz);
 						exit;
 					}
-					if($quiz) redirect('login/quiz/'.$quiz.'');
+					if($quiz) redirect('login/test/'.$quiz.'');
 					else redirect('login/registration/'); 
                 }       
 
