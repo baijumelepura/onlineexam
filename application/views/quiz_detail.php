@@ -1,7 +1,9 @@
 <div class="container test-description">
 <div class="row">
+
  	<form method="post" id="quiz_detail" action="<?php echo site_url('quiz/validate_quiz/'.$quiz['quid']);?>"  style="width:100%;">
-		<div class="card">
+		
+	 <?= $warningmsg;?><div class="card">
 			
 		  <h3 class="card-header"><?php echo $title;?></h3>
 			<?php 
@@ -81,13 +83,14 @@
 
 				<?php 
 				}else{
+					if(!$warningmsg){
 				?>	
 					<button class="btn btn-success" type="submit"><?php echo $this->lang->line('start_quiz');?></button>
 				 
 				 <?php 
-				}
+				}}
 				}else{
-					if($quiz['with_login']==0){ 
+					if($quiz['with_login']==0 ){ 
 					?>
 					
 					<button class="btn btn-success" type="submit"><?php echo $this->lang->line('start_quiz');?></button>

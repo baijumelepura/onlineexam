@@ -442,5 +442,6 @@ $lang['NoofQuestions']="	No. of Questions";
 $lang['Action']="	No. of Questions";
 $lang['name']="اسم";
 $lang['login_your_account']="Login your account";
+$lang['maximum_attempt']="You have  successfully completed the online test !";
 
 

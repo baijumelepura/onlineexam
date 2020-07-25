@@ -465,6 +465,12 @@ function open_quiz($limit='0'){
 		$data['title']=$this->lang->line('attempt').' '.$this->lang->line('quiz');
 		
 		$data['quiz']=$this->quiz_model->get_quiz($quid);
+
+		$maximum_attempt=$this->quiz_model->count_result($quid,$logged_in['uid']);
+		$data['warningmsg'] ="";
+		if($data['quiz']['maximum_attempts'] <= $maximum_attempt){
+			$data['warningmsg'] = "<div class='alert alert-primary'>".$this->lang->line('maximum_attempt')." </div>";
+		 }
 		$this->load->view('header',$data);
 		$this->load->view('quiz_detail',$data);
 		$this->load->view('footer',$data);
