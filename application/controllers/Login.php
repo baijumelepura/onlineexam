@@ -138,7 +138,7 @@ public function registration($gid='0')
 		$this->load->view('footer',$data);
 	}
 
-    public function quiz($quiz=""){
+    public function test($quiz=""){
 		$this->load->helper('url');
 		$data['gid']=0;
 		$data['quiz']=$quiz;
@@ -265,13 +265,15 @@ public function registration($gid='0')
 			if($this->input->post('email')){
 			$user_email=$this->input->post('email');
 			 if($this->user_model->reset_password($user_email)){
-				$this->session->set_flashdata('message', "<div class='alert alert-success'>".$this->lang->line('password_updated')." </div>");
-						
+				$this->session->set_flashdata('message', "<div class='alert alert-success'>".$this->lang->line('password_updated')." </div>");	
 			}else{
-				$this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('email_doesnot_exist')." </div>");
-						
+				$this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('email_doesnot_exist')." </div>");		
 			}
-			redirect('login/forgot');
+			$furl ="";
+			if($this->input->get('quiz')){
+				$furl = '?quiz='.$this->input->get('quiz');
+			}
+			redirect('login/forgot'.$furl.'');
 			}
 			
   

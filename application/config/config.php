@@ -766,14 +766,14 @@ $config['quiz_list']=["10"=>"leadership-quality",
 }
  
 
-//http://localhost/onlineexam/index.php/login/quiz/leadership-quality
-//http://localhost/onlineexam/index.php/login/quiz/critical-thinking
-//http://localhost/onlineexam/index.php/login/quiz/mbti
-//http://localhost/onlineexam/index.php/login/quiz/personality-assessment
-//http://localhost/onlineexam/index.php/login/quiz/psychometric
-//http://localhost/onlineexam/index.php/login/quiz/job-interest
-//http://localhost/onlineexam/index.php/login/quiz/self-confidence
-//http://localhost/onlineexam/index.php/login/quiz/iq
+//http://localhost/onlineexam/index.php/login/test/leadership-quality
+//http://localhost/onlineexam/index.php/login/test/critical-thinking
+//http://localhost/onlineexam/index.php/login/test/mbti
+//http://localhost/onlineexam/index.php/login/test/personality-assessment
+//http://localhost/onlineexam/index.php/login/test/psychometric
+//http://localhost/onlineexam/index.php/login/test/job-interest
+//http://localhost/onlineexam/index.php/login/test/self-confidence
+//http://localhost/onlineexam/index.php/login/test/iq
 
 
 //http://localhost/onlineexam/index.php/login/answer

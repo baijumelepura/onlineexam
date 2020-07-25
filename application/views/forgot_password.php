@@ -1,12 +1,4 @@
  <div class="container">
-
-   
- 
- 
- 
-
-
-
 <div class="col-md-4">
 </div>
 <div class="col-md-4">
@@ -14,10 +6,14 @@
 	<div class="login-panel panel panel-default">
 		<div class="panel-body"> 
 		<img src="<?php echo base_url('images/logo.png');?>">
-		
-
-			<form method="post" class="form-signin" action="<?php echo site_url('login/forgot');?>">
-					<h2 class="form-signin-heading"><?php echo $this->lang->line('login');?></h2>
+		<?php 
+		$furl = "";
+			if($this->input->get('quiz')){
+				$furl ="?quiz=".$this->input->get('quiz');
+			}
+        ?>
+	<form method="post" class="form-signin" action="<?php echo site_url('login/forgot'.$furl);?>">
+		<h2 class="form-signin-heading"><?php echo $this->lang->line('login');?></h2>
 		<?php 
 		if($this->session->flashdata('message')){
 			?>
@@ -38,13 +34,19 @@
 			</div>
 <?php 
 if($this->config->item('user_registration')){
-	?>
-	<a href="<?php echo site_url('login/registration');?>"><?php echo $this->lang->line('register_new_account');?></a>
-	&nbsp;&nbsp;&nbsp;&nbsp;
+	if($this->input->get('quiz')){ ?>
+	<a href="<?php echo site_url('login/test/'.$this->input->get('quiz'));?>"><?php echo $this->lang->line('register_new_account');?></a>
+	<?php }else{ ?>
+		<a href="<?php echo site_url('login/registration');?>"><?php echo $this->lang->line('register_new_account');?></a>
+	<?php } ?>
+&nbsp;&nbsp;&nbsp;&nbsp;
 <?php
 }
-?>
+if($this->input->get('quiz')){ ?>
+<a href="<?php echo site_url('login?quiz='.$this->input->get('quiz'));?>"><?php echo $this->lang->line('login');?></a>
+<?php }else{  ?>
 	<a href="<?php echo site_url('login');?>"><?php echo $this->lang->line('login');?></a>
+<?php } ?>
 
 			</form>
 		</div>

@@ -344,9 +344,9 @@ foreach($questions as $qk => $question){
 		 echo $this->lang->line('paragraph')."<br>";
 		 echo $question['paragraph']."<hr>";
 		}
-
+		
 		if($this->session->userdata("language")== "english"){
-		 echo str_replace('../../../',base_url(),str_replace('../../../../',base_url(),$question['question1']));
+		 echo str_replace('../../../',base_url(),str_replace('../../../../',base_url(),$question['question']));
 		 }else{
 			echo str_replace('../../../',base_url(),str_replace('../../../../',base_url(),$question['question1']));
 
@@ -471,8 +471,10 @@ foreach($questions as $qk => $question){
 			 
 		<div class="op"> 
 		<?php echo $this->lang->line('answer');?> <br>
-		<?php echo $this->lang->line('word_counts');?>  <?php echo str_word_count($save_ans);?>
-		<textarea name="answer[<?php echo $qk;?>][]" id="answer_value<?php echo $qk;?>" style="width:100%;height:100%;" onKeyup="count_char(this.value,'char_count<?php echo $qk;?>');"><?php echo $save_ans;?></textarea>
+		<?php echo $this->lang->line('word_counts');?>  <?php /* echo str_word_count($save_ans); */ ?>
+
+		<?php echo $save_ans;?>
+		<?php /* <textarea name="answer[<?php echo $qk;?>][]" id="answer_value<?php echo $qk;?>" style="width:100%;height:100%;" onKeyup="count_char(this.value,'char_count<?php echo $qk;?>');"><?php echo $save_ans;?></textarea>*/ ?>
 		</div>
 				
 			 
@@ -634,9 +636,9 @@ $(document).ready(function () {
     });
    
     //Disable mouse right click
-    $("body").on("contextmenu",function(e){
-        return false;
-    });
+    // $("body").on("contextmenu",function(e){
+    //     return false;
+    // });
 });
 </script>
 <!-- disable copy, right click ends -->

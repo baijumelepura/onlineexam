@@ -91,7 +91,6 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?=base_url();?>">
                <div class="sidebar-brand-text mx-3"><img width="200" height="auto"  src="<?php echo base_url('images/logo.png');?>"> </div>
-               <div class="sidebar-brand-text mx-3"><img width="220" height="auto"  src="<?php echo base_url('images/logo.png');?>"> </div>
             </a>
             <center><span style="color:#ffffff;"><?php echo $hres[1]['setting_value'];?> </span></center>
             <!-- Divider -->
@@ -337,8 +336,7 @@
                <a class="navbar-brand" href="<?php echo base_url();?>">
                   <img src="<?php echo base_url('images/logo.png');?>" width="220" height="60" alt="drnadiabuhannad.com">
                </a>
-           <!-- <a  href="<?php echo base_url();?>"><img src="<?php echo base_url('images/logo.png');?>"></a> -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                <span class="navbar-toggler-icon"></span>
             </button>
 

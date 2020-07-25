@@ -108,7 +108,7 @@
                   <?php if(!$this->input->get('quiz')){ ?>
                     <a class="btn btn-danger btn-user btn-block" href="<?php echo site_url('login/registration');?>"><?php echo $this->lang->line('register_new_account');?></a>
                   <?php }else{ ?>
-                    <a class="btn btn-danger btn-user btn-block" href="<?php echo site_url('login/quiz/'.$this->input->get('quiz'));?>"><?php echo $this->lang->line('register_new_account');?></a>
+                    <a class="btn btn-danger btn-user btn-block" href="<?php echo site_url('login/test/'.$this->input->get('quiz'));?>"><?php echo $this->lang->line('register_new_account');?></a>
                     <?php }?>
 
 				  <!-- <p style="margin-top:40px;""><a class="small" href="https://savsoftquiz.com" style="float:right;">Powered by Savsoft Quiz v5.0</a></p> -->
