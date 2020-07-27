@@ -132,6 +132,7 @@ public function registration($gid='0')
 		$data['title']=$this->lang->line('register_new_account');
 		$data['custom_form']=$this->user_model->custom_form('Registration');
 		// fetching group list
+		$data['quiz']=null;
 		$data['group_list']=$this->user_model->group_list();
 		$this->load->view('header',$data);
 		$this->load->view('register',$data);

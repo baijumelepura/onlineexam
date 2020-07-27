@@ -225,6 +225,8 @@ return intval($per);
 $c_range=array();
 $j=0;
 $i=0;
+
+
 foreach(explode(",",$result['category_range']) as $ck => $cv){
 	$c_range[]=array($i,($i+($cv-1)));
 	$i+=$cv;
@@ -236,7 +238,7 @@ $cia_cat=cia_cat($correct_incorrect_unattempted,$c_range);
 $cia_tim_cate=cia_tim_cate($correct_incorrect_unattempted,explode(",",$result['individual_time']),$c_range);
 ?>
 <?php 
-$noq=count($result['r_qids']);
+$noq=count(explode(',',$result['r_qids']));
 $category_range=explode(',',$result['category_range']);
 $category_ranges=array();
 $qi=0;
@@ -293,7 +295,7 @@ if(1==1){
 		<a name="answers_i"></a>
 		<div class="card-header"><h3><?php echo $result['quiz_name'];?> - <?php echo $this->lang->line('answer_sheet');?> </h3></div>
 		<div class="card-body">
-			<div class="rqn ques-ans" id="qn<?php echo $qk;?>" >
+			<div class="rqn ques-ans"  >
 				<table class="table table-striped"  >
 				  <thead>
 				    <tr>
@@ -324,9 +326,6 @@ $seg3=$this->uri->segment(4);
 if($seg3==''){
 $seg3=0;
 }
-
-
-
 
 
 foreach($questions as $qk => $question){

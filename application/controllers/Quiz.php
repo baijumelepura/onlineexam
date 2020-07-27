@@ -10,6 +10,7 @@ class Quiz extends CI_Controller {
 	   $this->load->helper('url');
 	   $this->load->model("quiz_model");
 	   $this->load->model("user_model");
+	   $this->load->model("result_model");
 
 	   if(!$this->session->userdata("language")){
 		 $this->session->set_userdata("language","english");
@@ -826,14 +827,51 @@ if(isset($_FILES['webcam'])){
 		$this->session->unset_userdata('logged_in');		
 		redirect('login');
 		}
+	    $rid=$this->session->userdata('rid');
 
-	 $rid=$this->session->userdata('rid');
-		
+		$result_model=$this->result_model->get_result($rid);
+
+
+
 				if($this->quiz_model->submit_result()){
-					 
-					 $this->session->set_flashdata('message', "<div class='alert alert-success'>".str_replace("{result_url}",site_url('result/view_result/'.$rid),$this->lang->line('quiz_submit_successfully'))." </div>");
-					 
-					
+					// $this->session->set_flashdata('message', "<div class='alert alert-success'>".str_replace("{result_url}",site_url('result/view_result/'.$rid),$this->lang->line('quiz_submit_successfully'))." </div>");
+					try {
+						
+					$this->load->library('email');
+					$config['protocol']    = 'smtp';
+					$config['smtp_host']    = 'ssl://smtp.gmail.com';
+					$config['smtp_port']    = '465';
+					$config['smtp_timeout'] = '7';
+					$config['smtp_user']    = 'melepurakkalbaiju@gmail.com';
+					$config['smtp_pass']    = 'Lumia710710@';
+					$config['newline']    = "\r\n";
+					$config['validation'] = TRUE; // bool whether to validate email or not   
+					$config['mailtype'] = 'html';   
+					$config['charset'] = 'iso-8859-1';
+					$config['mailtype'] = 'html';
+				
+					$this->email->initialize($config);
+				
+					$this->email->from('melepurakkalbaiju@gmail.com','Test Admin');
+					$this->email->to('vimal@nucleousmgt.com'); 
+					$this->email->bcc('baijumca005@gmail.com');
+					$this->email->subject('Test Result');
+				
+					date_default_timezone_set('Asia/Dubai');
+					$email_data = [
+						"name"=>$logged_in['first_name'].' '.$logged_in['last_name'],
+						"email"=>$logged_in['email'],
+						"number"=>$logged_in['contact_no'],
+						"age"=>$logged_in['age'],
+						"test"=>$result_model['quiz_name'],
+						"date"=>date('d-m-y H:i:s'),
+						"url"=>base_url()."index.php/login/answer/".$rid."/".$this->config->item('quiz_list')[$result_model['quid']],
+					];
+					$body =	$this->load->view('email_templates',$email_data,true);
+					$this->email->message($body);
+					$this->email->send();
+					} catch (Exception $e) {
+					}
 					}else{
 						    $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('error_to_submit')." </div>");
 						
@@ -841,9 +879,9 @@ if(isset($_FILES['webcam'])){
 			$this->session->unset_userdata('rid');		
 	if($this->session->userdata('logged_in')){
 //	redirect('result/quiz/'.$rid);				
- redirect('quiz');
+  redirect('quiz');
 	}else{
-	 redirect('quiz/open_quiz/0');	
+		redirect('quiz');	
 	}
  }
  
