@@ -766,15 +766,15 @@ $config['quiz_list']=["10"=>"leadership-quality",
 }
  
 
-//http://localhost/onlineexam/index.php/login/test/leadership-quality
-//http://localhost/onlineexam/index.php/login/test/critical-thinking
-//http://localhost/onlineexam/index.php/login/test/mbti
-//http://localhost/onlineexam/index.php/login/test/personality-assessment
-//http://localhost/onlineexam/index.php/login/test/psychometric
-//http://localhost/onlineexam/index.php/login/test/job-interest
-//http://localhost/onlineexam/index.php/login/test/self-confidence
-//http://localhost/onlineexam/index.php/login/test/iq
+//http://test.sikologia.com/index.php/login/test/leadership-quality
+//http://test.sikologia.com/index.php/login/test/critical-thinking
+//http://test.sikologia.com/index.php/login/test/mbti
+//http://test.sikologia.com/index.php/login/test/personality-assessment
+//http://test.sikologia.com/index.php/login/test/psychometric
+//http://test.sikologia.com/index.php/login/test/job-interest
+//http://test.sikologia.com/index.php/login/test/self-confidence
+//http://test.sikologia.com/index.php/login/test/iq
 
 
-//http://localhost/onlineexam/index.php/login/answer/54
+//http://test.sikologia.com/index.php/login/answer/54
 

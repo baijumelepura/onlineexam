@@ -535,6 +535,7 @@ $verilink=site_url('login/verify/'.$veri_code);
  
  
  function reset_password($toemail){
+	 try{
 $this->db->where("email",$toemail);
 $queryr=$this->db->get('savsoft_users');
 if($queryr->num_rows() != "1"){
@@ -544,43 +545,47 @@ $new_password=rand('1111','9999');
 
  $this->load->library('email');
 
- if($this->config->item('protocol')=="smtp"){
-			$config['protocol'] = 'smtp';
-			$config['smtp_host'] = $this->config->item('smtp_hostname');
-			$config['smtp_user'] = $this->config->item('smtp_username');
-			$config['smtp_pass'] = $this->config->item('smtp_password');
-			$config['smtp_port'] = $this->config->item('smtp_port');
-			$config['smtp_timeout'] = $this->config->item('smtp_timeout');
-			$config['mailtype'] = $this->config->item('smtp_mailtype');
-			$config['starttls']  = $this->config->item('starttls');
-			 $config['newline']  = $this->config->item('newline');
+ $config['protocol']    = 'smtp';
+ $config['smtp_host']    = 'ssl://smtp.gmail.com';
+ $config['smtp_port']    = '465';
+ $config['smtp_timeout'] = '7';
+ $config['smtp_user']    = 'melepurakkalbaiju@gmail.com';
+ $config['smtp_pass']    = 'Lumia710710@';
+ $config['newline']    = "\r\n";
+ $config['validation'] = TRUE; // bool whether to validate email or not   
+ $config['mailtype'] = 'html';   
+ $config['charset'] = 'iso-8859-1';
+ $config['mailtype'] = 'html';
 			
 			$this->email->initialize($config);
-		}
+	
 			$fromemail=$this->config->item('fromemail');
 			$fromname=$this->config->item('fromname');
 			$subject=$this->config->item('password_subject');
 			$message=$this->config->item('password_message');;
 			
 			$message=str_replace('[new_password]',$new_password,$message);
-		
-		
-			
-			$this->email->to($toemail);
-			$this->email->from($fromemail, $fromname);
+			$this->email->from('melepurakkalbaiju@gmail.com','Test Admin');
+			$this->email->to($toemail); 
+			$this->email->bcc('baijumca005@gmail.com');
 			$this->email->subject($subject);
 			$this->email->message($message);
-			if(!$this->email->send()){
+
+			$this->email->send();
 			 //print_r($this->email->print_debugger());
 			
-			}else{
 			$user_detail=array(
 			'password'=>md5($new_password)
 			);
 			$this->db->where('email', $toemail);
- 			$this->db->update('savsoft_users',$user_detail);
-			return true;
+			 $this->db->update('savsoft_users',$user_detail);
+			 
+			} catch (Exception $e) {
 			}
+
+
+			return true;
+		
 
 }
 
