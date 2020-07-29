@@ -175,7 +175,9 @@ Class Quiz_model extends CI_Model
 	 
 	 $userdata=array(
 	 'quiz_name'=>$this->input->post('quiz_name'),
+	 'quiz_name1'=>$this->input->post('quiz_name1'),
 	 'description'=>$this->input->post('description'),
+	 'description1'=>$this->input->post('description1'),
 	 'start_date'=>strtotime($this->input->post('start_date')),
 	 'end_date'=>strtotime($this->input->post('end_date')),
 	 'duration'=>$this->input->post('duration'),

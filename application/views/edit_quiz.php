@@ -5,7 +5,9 @@
 if(!$this->session->flashdata('addquestion')){
 ?>
 		
-   
+		<?php
+$lang=$this->config->item('question_lang');
+?>
  <h3><?php echo $title;?></h3>
    
  <?php
@@ -50,14 +52,27 @@ if(!$this->session->flashdata('addquestion')){
 		<?php
 if(!$this->session->flashdata('addquestion')){
 ?>
+<?php 
+ foreach($lang as $lkey =>$val){	
+ $lno=$lkey;
+ if($lkey==0){
+	 $lno="";
+}
+ ?>
 <div class="form-group">	 
-					<label for="inputEmail" ><?php echo $this->lang->line('quiz_name');?></label> 
-					<input type="text"  name="quiz_name"  value="<?php echo $quiz['quiz_name'];?>" class="form-control" placeholder="<?php echo $this->lang->line('quiz_name');?>"  required autofocus>
+					<label for="inputEmail" ><?php echo $this->lang->line('quiz_name').' '.$val;?> </label> 
+					<input type="text"  name="quiz_name<?=$lno;?>"  value="<?php echo $quiz['quiz_name'.$lno];?>" class="form-control" placeholder="<?php echo $this->lang->line('quiz_name');?>"  required autofocus>
 			</div>
-				<div class="form-group">	 
-					<label for="inputEmail"  ><?php echo $this->lang->line('description');?></label> 
-					<textarea   name="description"  class="form-control tinymce_textarea" ><?php echo $quiz['description'];?></textarea>
+			<div class="form-group">	 
+					<label for="inputEmail"  ><?php echo $this->lang->line('description').' '.$val;?></label> 
+					<textarea   name="description<?=$lno;?>"  class="form-control tinymce_textarea" ><?php echo $quiz['description'.$lno];?></textarea>
 			</div>
+			
+<?php } ?>
+
+
+
+
 <a href="#" data-toggle="collapse" data-target="#advance_options"><?php echo $this->lang->line('advance_options');?></a>
 
 <?php
