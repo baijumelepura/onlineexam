@@ -569,3 +569,72 @@ box-shadow: -15px 15px 44px -30px rgba(0,0,0,0.75);
 /*    margin-right: 10px;*/
   margin: 10px;
 }
+.forget-pass{
+    min-height: 500px;
+    color: #ffffff;
+}
+.forget-pass .forget-pass-col{
+ background-color: blue;
+ padding: 20px;
+}
+.forget-pass .forget-pass-col h2{
+    padding: 20px 0;
+}
+.forget-pass .forget-pass-col a{
+    color:#ffffff;
+}
+.cst-navbar-header img{
+        width: 200px;
+}
+.cst-navbar-header .navbar-collapse.show {
+        background-color: #ffffff;
+        z-index: 1;
+        -webkit-box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15)!important;
+        box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15)!important;
+        padding: 10px;
+}
+.cst-navbar-header .navbar-collapse.show .form-inline{
+        padding: 0 .75rem;
+}
+.cst-navbar-header .navbar-collapse.show .form-inline .form-control{
+    float: left;
+    width: auto;
+}
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #483f3f;
+    color: white;
+    text-align: center;
+    padding: 15px 10px;
+    margin-top: 2%;
+    font-size: 14px;
+}
+footer a{
+    color: #ffffff;
+}
+footer .fas{
+    margin-right: 10px;
+}
+#wrapper #content-wrapper{
+    height: 100vh;
+    background-color: #36aee845 !important;
+}
+@media only screen and (max-width: 600px) {
+    .cst-navbar-header img{
+        width: 150px;
+        }
+     footer{
+        position: relative;
+     }
+    footer .col{
+        text-align: center !important;
+     }
+     .tbl-rspons{
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+     }       
+}

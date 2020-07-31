@@ -126,3 +126,18 @@
 
 </center>
 </div>
+
+
+<footer class="text-center">
+	<div class="row">
+	      <div class="col-md-12 text-center" >
+	      	2020 © Dr. Nadia Buhannad Development & Guidance - All information on this website is provided "as is" without any representations or warranties, express or implied. Developed By VML
+	      </div>
+	       <div class="col text-right" >
+	       <a href="www.nadiabuhannad.com"><i class="fas fa-globe"></i>www.nadiabuhannad.com</a>
+	       </div>
+	       <div class="col text-left" >
+	       	<i class="fas fa-envelope"></i>info@nadiabuhannad.com
+	       </div>
+	 </div>
+</footer>

@@ -1,30 +1,22 @@
+
  <div class="container">
 
-   
- <h3><?php echo $title;?></h3>
-   
- 
 
-  <div class="row">
-     <form method="post" action="<?php echo site_url('user/update_user/'.$uid);?>">
-	
-<div class="col-md-12">
-<br> 
- <div class="login-panel panel panel-default">
-		<div class="panel-body"> 
-	
-	
-	
+<div class="row">
+	<div class="col-md-12">
+	<div class="card">
+	  <h5 class="card-header"><?php echo $title;?></h5>
+	  <div class="card-body">
+	  	   <form method="post" style="width: 100%" action="<?php echo site_url('user/update_user/'.$uid);?>">
+
 			<?php 
-		if($this->session->flashdata('message')){
+			if($this->session->flashdata('message')){
 			echo $this->session->flashdata('message');	
-		}
-		?>	
-		
-		
-				
-				
-				<div class="form-group ">	 
+			}
+			?>	
+
+
+			<div class="form-group ">	 
 					<label for="inputEmail" class="sr-only"><?php echo $this->lang->line('email_address');?></label> 
 					<input type="email" id="inputEmail" name="email" value="<?php echo $result['email'];?>" readonly=readonly class="form-control" placeholder="<?php echo $this->lang->line('email_address');?>" required autofocus>
 			</div>
@@ -53,34 +45,40 @@
 			
 
 				 
- <?php 
-	foreach($custom_form as $fk => $fval){
+			<?php 
+			foreach($custom_form as $fk => $fval){
+
+			?>
+						<div class="form-group">	 
+							<label for="inputEmail"  ><?php echo $fval['field_title']; ?></label> 
+							<input type="<?php echo $fval['field_type']; ?>" name="custom[<?php echo $fval['field_id']; ?>]"  class="form-control" value="<?php echo $custom_form_user[$fval['field_id']]; ?>"  <?php echo $fval['field_validate']; ?> >
+					</div>
+
+			<?php
+			}
+			?>	
+		<button class="btn btn-primary" type="submit"><?php echo $this->lang->line('submit');?></button>
  
-	?>
-				<div class="form-group">	 
-					<label for="inputEmail"  ><?php echo $fval['field_title']; ?></label> 
-					<input type="<?php echo $fval['field_type']; ?>" name="custom[<?php echo $fval['field_id']; ?>]"  class="form-control" value="<?php echo $custom_form_user[$fval['field_id']]; ?>"  <?php echo $fval['field_validate']; ?> >
-			</div>
-	
-	<?php
-	}
-	?>	
-	<button class="btn btn-default" type="submit"><?php echo $this->lang->line('submit');?></button>
- 
-		</div>
-</div>
- 
- 
- 
- 
-</div>
       </form>
+	  </div>
+	</div>
+	</div>
 </div>
 
 
-
- 
-
-
-
 </div>
+
+
+<footer class="text-center">
+	<div class="row">
+	      <div class="col-md-12 text-center" >
+	      	2020 © Dr. Nadia Buhannad Development & Guidance - All information on this website is provided "as is" without any representations or warranties, express or implied. Developed By VML
+	      </div>
+	       <div class="col text-right" >
+	       <a href="www.nadiabuhannad.com"><i class="fas fa-globe"></i>www.nadiabuhannad.com</a>
+	       </div>
+	       <div class="col text-left" >
+	       	<i class="fas fa-envelope"></i>info@nadiabuhannad.com
+	       </div>
+	 </div>
+</footer>

@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 <?php 
 if($this->uri->segment(3) != 'ph'){
 if($this->config->item('mathjax')){

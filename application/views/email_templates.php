@@ -451,8 +451,9 @@
                   <tr>
                     <td class="content-cell">
                       <div class="f-fallback">
-                        <h1>Hi {{name}},</h1>
-                        <p>Thanks .</p>
+                        <h1>Online Test Answer Sheet is Ready</h1>
+                        <p>Hello Dr.Nadiabuhannd,<br><br>
+                        The online test answer sheet is waiting for you from your client <b><?=$name?></b>. Please view this by clicking the below button to know more about your client and their answers.<br>Thank You.</p>
         
                         <!-- Action -->
                         <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0" role="presentation">
@@ -463,7 +464,7 @@
                               <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
                                 <tr>
                                   <td align="center">
-                                    <a href="<?=$url;?>" class="f-fallback button button--green" target="_blank">Results</a>
+                                    <a href="<?=$url;?>" class="f-fallback button button--green" style="color: #ffffff;" target="_blank">Answer Sheet</a>
                                   </td>
                                 </tr>
                               </table>
@@ -542,7 +543,7 @@
                 <table class="email-footer" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation">
                   <tr>
                     <td class="content-cell" align="center">
-                      <p class="f-fallback sub align-center">&copy; 2019 [Product Name]. All rights reserved.</p>
+                      <p class="f-fallback sub align-center">www.nadiabuhannad.com &copy; 2020 [Online Test]. All rights reserved.</p>
                       <p class="f-fallback sub align-center">
                        
                       </p>
