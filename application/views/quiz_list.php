@@ -26,10 +26,7 @@ $logged_in=$this->session->userdata('logged_in');
 	 </form>
   </div><!-- /.col-lg-6 -->
   <div class="col-lg-6">
-  <p style="float:right;">
- 
-  </p>
-  
+	  <p style="float:right;"></p>
   </div>
 </div><!-- /.row -->
 
@@ -107,7 +104,7 @@ $logged_in=$this->session->userdata('logged_in');
 
 <div class="card mb-4 shadow">
 <div class="card-body">		 
-	<table class="table table-striped valign-middle">
+	<table class="table table-striped valign-middle tbl-rspons">
 	<tr>
 	 <th>#</th>
 	 <th><?php echo $this->lang->line('quiz_name');?></th>
@@ -202,3 +199,17 @@ if(($limit-($this->config->item('number_of_rows')))>=0){ $back=$limit-($this->co
 
 
 </div>
+
+<footer class="text-center" style="position:relative;">
+	<div class="row">
+	      <div class="col-md-12 text-center" >
+	      	2020 © Dr. Nadia Buhannad Development & Guidance - All information on this website is provided "as is" without any representations or warranties, express or implied. Developed By VML
+	      </div>
+	       <div class="col text-right" >
+	       <a href="www.nadiabuhannad.com"><i class="fas fa-globe"></i>www.nadiabuhannad.com</a>
+	       </div>
+	       <div class="col text-left" >
+	       	<i class="fas fa-envelope"></i>info@nadiabuhannad.com
+	       </div>
+	 </div>
+</footer>

@@ -1,5 +1,5 @@
 <?php 
-$lang['savsoft_quiz'] = "Savsoft Quiz v5.0";
+$lang['savsoft_quiz'] = "Dr.Nadiabuhannad Online Test";
 $lang['installation_process'] = "Installation Process";
 $lang['installation_completed'] = "Installation Completed. Visit base URL {base_url} to login.<br><br>Default login info:<br> Email: ADMINEMAIL <br>Password: ADMINPASS<br><br>For more information or customization visit <a href='http://savsoftquiz.com/'>www.SavsoftQuiz.com/</a> ";
 $lang['installation_failed'] = "Installation Failed";
@@ -149,7 +149,7 @@ $lang['forgot_password'] = "Forgot password?";
 $lang['send_new_password'] = "Reset Password";
 $lang['password_updated'] = "Password updated and an email sent with new password";
 $lang['email_doesnot_exist'] = "Email id does not exist";
-$lang['email_linked_account'] = "Please fill email address linked with account";
+$lang['email_linked_account'] = "Please fill email address linked with your account";
 $lang['login'] = "Login";
 $lang['contact_no'] = "Contact Number";
 $lang['account_registered'] = "Account registered successfully ";

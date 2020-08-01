@@ -11,7 +11,13 @@
       <link href="<?php echo base_url();?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
       <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
       <!-- custom css -->
+      <?php if($this->session->userdata("language")=='english'){ ?>
       <link href="<?php echo base_url('css/style.css?q='.time());?>" rel="stylesheet">
+      <?php }else{ ?>
+        <link href="<?php echo base_url('css/ar_style.css?q='.time());?>" rel="stylesheet">
+<?php } ?>
+
+
       <!-- Custom styles for this template-->
       <link href="<?php echo base_url();?>css/sb-admin-2.min.css" rel="stylesheet">
       <style>
@@ -327,40 +333,35 @@
 
 
          <!-- Topbar -->
-         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-            <!-- Sidebar Toggle (Topbar) -->
-            <!-- <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-               <i class="fa fa-bars"></i>
-               </button> -->
+         <nav class="cst-navbar-header navbar navbar-expand-lg navbar-light bg-white topbar mb-4 static-top shadow">
+            <!-- if loged in  -->
             <?php if($logged_in['su'] == 2){ ?>
+
                <a class="navbar-brand" href="<?php echo base_url();?>">
-                  <img src="<?php echo base_url('images/logo.png');?>" width="220" height="60" alt="drnadiabuhannad.com">
+                  <img src="<?php echo base_url('images/logo.png');?>"  alt="drnadiabuhannad.com">
                </a>
-                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                <span class="navbar-toggler-icon"></span>
-            </button>
-
-
-
-         
+               </button>
 
             <?php } ?>
-            <?php
-            
-            
-            
+            <!-- if loged in  -->
+                 <div class="collapse navbar-collapse" id="navbarNav">
+                       <ul class="navbar-nav ml-auto cst-nav">
+<!--             <?php
             if($logged_in['su'] == 2 && (!$this->session->userdata('reg_quiz') || $this->uri->segment(2)=='edit_user')){ ?>
-            <div class="collapse navbar-collapse" id="navbarNav">
-               <ul class="navbar-nav ml-auto cst-nav">
+       
+      
                   <li class="nav-item">
                      <a class="nav-link" href="<?=base_url('index.php/quiz');?>">
                      <i class="fas fa-fw fa-chalkboard-teacher"></i>
                      <span><?php echo $this->lang->line('quiz');?> </span>
                      </a>
                   </li>
-             </ul>
+          
       
-            <?php } ?>
+            <?php } ?>  -->
        
       <?php 
          $logged_in=$this->session->userdata('logged_in');
@@ -379,13 +380,14 @@
             $notifications=$query->result_array();
             
             ?>
-         <ul class="navbar-nav ml-auto cst-nav">
+    
             <!--Language Selector-->
            
            
             <?php if($logged_in['su'] == 2){ ?>
-            <li class="form-inline ml-auto">
-               <label class="navbar-text" for="cars">Language</label>
+
+            <li class="form-inline nav-item">
+               <label class="navbar-text" for="cars"><b>Language</b></label>
                <select class="form-control mr-sm-2"  id="lang_ar">
                  <option value="english" <?php if($this->session->userdata("language") == 'english'){ echo 'selected';}?> >English</option>
                  <option  value="arabic" <?php if($this->session->userdata("language") == 'arabic'){ echo 'selected';}?> >Arabic</option>

@@ -3,9 +3,9 @@
    
  <h3><?php echo $title;?></h3>
    
- 
 
-  <div class="row">
+
+  <div class="row">gfhgfhgfhg
      <form method="post" action="<?php echo site_url('user/update_user/'.$uid);?>">
 	
 <div class="col-md-8">
