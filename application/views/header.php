@@ -15,6 +15,7 @@
       <link href="<?php echo base_url('css/style.css?q='.time());?>" rel="stylesheet">
       <?php }else{ ?>
         <link href="<?php echo base_url('css/ar_style.css?q='.time());?>" rel="stylesheet">
+        
 <?php } ?>
 
 
