@@ -1,5 +1,8 @@
 <div class="container test-description">
 <div class="row">
+<?php
+$lang = $this->session->userdata("language");
+?>
 
  	<form method="post" id="quiz_detail" action="<?php echo site_url('quiz/validate_quiz/'.$quiz['quid']);?>"  style="width:100%;">
 		
@@ -12,12 +15,25 @@
 			}
 			?>
 		  <div class="card-body">
+			<?php if($lang == 'english'){ ?>
 		    <h5 class="card-title"><?php echo $this->lang->line('quiz_name');?> : <?php echo $quiz['quiz_name'];?></h5>
+			<?php }else{ ?>
+				<h5 class="card-title"><?php echo $this->lang->line('quiz_name');?> : <?php echo $quiz['quiz_name1'];?></h5>
+			<?php } ?>
+			<?php if($lang == 'english'){ ?>
 		    <p class="card-text">
 		    	<span><b><?php echo $this->lang->line('description');?></b></span> :
 				<?php echo $quiz['description'];?>
 		    	<!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  -->
 		    </p>
+			<?php }else{ ?>
+			    <p class="card-text">
+		    	<span><b><?php echo $this->lang->line('description');?></b></span> :
+				<?php echo $quiz['description1'];?>
+		    	<!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  -->
+		    </p>
+				<?php } ?>
+
 		   <!--  <a href="#" class="btn btn-primary">Go somewhere</a> -->
 		  </div>
 <!-- 		   <ul class="list-group list-group-flush">
