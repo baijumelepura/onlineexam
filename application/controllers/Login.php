@@ -411,9 +411,15 @@ public function registration($gid='0')
 		$language = "english";
 		if($lang == "english") $language = "english";
 		if($lang == "arabic") $language = "arabic";
+		
 		$this->session->set_userdata("language",$language);
 		 if($controller == "registration"){ 
+			 if($seg){
+				redirect('login/test/'.$seg.'');
+			 }else{
 			 redirect('login/registration');
+			 }
+
 		 }else if($controller == "quiz") {
 			 redirect('quiz');
 		 }else if($controller == "quiz_detail") {

@@ -762,7 +762,9 @@ $config['quiz_list']=["10"=>"leadership-quality",
 					  "14"=>"psychometric",
 					  "15"=>"job-interest",
 					  "16"=>"self-confidence",
-					  "17"=>"iq"];
+					  "17"=>"iq",
+					  "18"=>"anxiety-test"
+					];
 }
  
 

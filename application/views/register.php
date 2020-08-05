@@ -13,9 +13,11 @@
 		</select>
 	</form>
 
+	
+
 <script>
 $('#lang_ar').change(function(){
-	window.location.href = "<?=base_url();?>index.php/login/language/"+$(this).val()+'/registration';
+	window.location.href = "<?=base_url();?>index.php/login/language/"+$(this).val()+'/registration/'+"<?=$quiz;?>";
 });
 </script>
 </nav>
@@ -59,24 +61,24 @@ $('#lang_ar').change(function(){
 									</div>
 									<div class="form-group">	  
 										<label for="inputPassword" class="sr-only"><?php echo $this->lang->line('password');?></label>
-										<input type="password" id="inputPassword" name="password"  class="form-control" placeholder="<?php echo $this->lang->line('password');?>" required >
+										<input type="password" id="inputPassword" minlength="4" name="password"  class="form-control" placeholder="<?php echo $this->lang->line('password');?>" required >
 							 		</div>
 									<div class="form-group">	 
 										<label for="inputEmail" class="sr-only"><?php echo $this->lang->line('first_name');?></label> 
-										<input type="text"  name="first_name"  class="form-control" placeholder="<?php echo $this->lang->line('first_name');?>"   autofocus>
+										<input type="text"  name="first_name" minlength="2" class="form-control" placeholder="<?php echo $this->lang->line('first_name');?>" required  autofocus>
 									</div>
 							
 									<div class="form-group">	 
 										<label for="inputEmail" class="sr-only"><?php echo $this->lang->line('last_name');?></label> 
-										<input type="text"   name="last_name"  class="form-control" placeholder="<?php echo $this->lang->line('last_name');?>"   autofocus>
+										<input type="text"   name="last_name" minlength="2"  class="form-control" placeholder="<?php echo $this->lang->line('last_name');?>" required  autofocus>
 									</div>
 									<div class="form-group">	 
 										<label for="inputEmail" class="sr-only"><?php echo $this->lang->line('contact_no');?></label> 
-										<input type="text" name="contact_no"  class="form-control" placeholder="<?php echo $this->lang->line('contact_no');?>"   autofocus>
+										<input type="text" name="contact_no" minlength="6" class="form-control" placeholder="<?php echo $this->lang->line('contact_no');?>" required  autofocus>
 									</div>
 									<div class="form-group">	 
 										<label for="inputEmail" class="sr-only"><?php echo $this->lang->line('age');?></label> 
-										<input type="text" name="age"  class="form-control" placeholder="<?php echo $this->lang->line('age');?>"   autofocus>
+										<input type="number" name="age"  class="form-control" placeholder="<?php echo $this->lang->line('age');?>" required  autofocus>
 									</div>
 								</div>
 						
