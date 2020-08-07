@@ -753,8 +753,7 @@ $config['firebase_topic']="SavsoftQuiz";
 
 $config['quiz_templates']=array('Default','Practice');
 $config['question_lang']=array('English','Arabic');
-$config['master_password']=$csetting['Master_password'];
- 
+$config['master_password'] = "123456"; //$csetting['Master_password'];
 $config['quiz_list']=["10"=>"leadership-quality",
 					  "11"=>"critical-thinking",
 					  "12"=>"mbti",
@@ -765,9 +764,19 @@ $config['quiz_list']=["10"=>"leadership-quality",
 					  "17"=>"iq",
 					  "18"=>"anxiety-test"
 					];
+
+
+
+
+
+
+
+
+					
 }
  
-
+// User register
+//http://test.sikologia.com/index.php/login/test/anxiety-test
 //http://test.sikologia.com/index.php/login/test/leadership-quality
 //http://test.sikologia.com/index.php/login/test/critical-thinking
 //http://test.sikologia.com/index.php/login/test/mbti
@@ -777,6 +786,12 @@ $config['quiz_list']=["10"=>"leadership-quality",
 //http://test.sikologia.com/index.php/login/test/self-confidence
 //http://test.sikologia.com/index.php/login/test/iq
 
+// Default password : 123456
 
+// Admin
+// login
+// http://test.sikologia.com/index.php/login
+
+//Result 
 //http://test.sikologia.com/index.php/login/answer/54
 

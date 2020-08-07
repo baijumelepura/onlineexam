@@ -1,10 +1,10 @@
 
 <!--Logo Header open-->
 <nav class="navbar navbar-light bg-light clearfix cst-nav">
-  <a class="navbar-brand" href="<?php echo base_url();?>">
+  <span class="navbar-brand">
   <img src="<?php echo base_url('images/logo.png');?>" width="250" height="70" class="d-inline-block align-top" alt="">
   	<?php  $this->lang->line('login_tagline');?> 
-  </a>
+  </span>
 	<form class="form-inline ml-auto">
 		<label class="navbar-text" for="cars">Language</label>
 		<select class="form-control mr-sm-2"  id="lang_ar">
@@ -44,6 +44,14 @@ $('#lang_ar').change(function(){
 		    </div>
 
 			<div class="col-md-8 register-right">
+			   
+			   
+			   <?php
+			   
+			 
+			 
+			 if($this->session->userdata("master_password")){  ?>
+			   
 			   	<form method="post" action="<?php echo site_url('login/insert_user/'.$quiz.'');?>">
 			    	<div class="login-panel panel panel-default">
 			    	 	<div class="panel-body"> 
@@ -59,10 +67,10 @@ $('#lang_ar').change(function(){
 										<label for="inputEmail" class="sr-only"><?php echo $this->lang->line('email_address');?></label> 
 										<input type="email" id="inputEmail" name="email" class="form-control" placeholder="<?php echo $this->lang->line('email_address');?>" required autofocus>
 									</div>
-									<div class="form-group">	  
+									<!-- <div class="form-group">	  
 										<label for="inputPassword" class="sr-only"><?php echo $this->lang->line('password');?></label>
 										<input type="password" id="inputPassword" minlength="4" name="password"  class="form-control" placeholder="<?php echo $this->lang->line('password');?>" required >
-							 		</div>
+							 		</div> -->
 									<div class="form-group">	 
 										<label for="inputEmail" class="sr-only"><?php echo $this->lang->line('first_name');?></label> 
 										<input type="text"  name="first_name" minlength="2" class="form-control" placeholder="<?php echo $this->lang->line('first_name');?>" required  autofocus>
@@ -131,9 +139,9 @@ $('#lang_ar').change(function(){
 							<div class="col-md-10 offset-md-1">
 		 						<button class="btn btn-default" type="submit"><?php echo $this->lang->line('submit');?></button>
 								<?php if(!$quiz){ ?>
-								<a href="<?php echo site_url('login');?>"><?php echo $this->lang->line('login');?></a>
+								<!-- <a href="<?php echo site_url('login');?>"><?php echo $this->lang->line('login');?></a> -->
 								<?php }else{ ?>
-									<a href="<?php echo site_url('login?quiz='.$quiz);?>" ><?php echo $this->lang->line('login');?></a>
+									<!-- <a href="<?php echo site_url('login?quiz='.$quiz);?>" ><?php echo $this->lang->line('login');?></a> -->
 								<?php } ?>
 							
 							</div>
@@ -143,6 +151,49 @@ $('#lang_ar').change(function(){
 			    	 	 <div class="clearfix"></div>
 			    	 </div>
 			    	 </form>
+								<?php }else{ ?>
+
+
+
+					 <form method="post" action="<?php echo site_url('login/test/'.$quiz.'');?>">
+			    	<div class="login-panel panel panel-default">
+			    	 	<div class="panel-body"> 
+			    	 		<?php 
+								if($this->session->flashdata('message')){
+									echo $this->session->flashdata('message');	
+								}
+							?>
+							  <div class="row register-form">
+							  	 <!--  <h3 class="register-heading">Apply as a Employee</h3> -->
+								<div class="col-md-10 offset-md-1 col-xs-12">
+									<div class="form-group">	 
+										<label for="inputEmail" ><?php echo $this->lang->line('password');?></label> 
+										<input type="password" id="inputEmail" name="password" class="form-control" placeholder="<?php echo $this->lang->line('Enter_password');?>" required autofocus>
+									</div>
+									
+								</div>
+					
+							<div class="col-md-10 offset-md-1">
+		 						<button class="btn btn-default" type="submit"><?php echo $this->lang->line('submit');?></button>
+			    	 	     </div>
+			    	 	
+			    	 </div>
+			    	 </form>
+
+
+								<?php } ?>
+
+
+
+
+
+
+
+
+
+
+
+
 			    	</div>
 
 		    <div class="clearfix"></div>

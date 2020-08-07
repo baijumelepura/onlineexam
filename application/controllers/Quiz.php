@@ -517,12 +517,17 @@ function open_quiz($limit='0'){
 			}
 			}
 		$data['quiz']=$this->quiz_model->get_quiz($quid);
+
+	
 		// if it is without login quiz.
 		if($data['quiz']['with_login']==0 && !$this->session->userdata('logged_in')){
+
+			
 		if($this->session->userdata('logged_in_raw')){
 		$logged_in=$this->session->userdata('logged_in_raw');
+		
 		}else{
-			
+		
 		$userdata=array(
 		'email'=>time(),
 		'password'=>md5(rand(11111,99999)),
@@ -579,6 +584,8 @@ function open_quiz($limit='0'){
 		}else{
 		// with login starts
 				// redirect if not loggedin
+
+				
 		if(!$this->session->userdata('logged_in')){
 			$this->session->set_flashdata('message', $this->lang->line('login_required2'));
 			

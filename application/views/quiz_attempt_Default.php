@@ -84,14 +84,14 @@ window.location="<?php echo site_url('quiz/submit_quiz/');?>";
 
 
 	<div class="quest-header" style="background:#3D4A5D;padding:4px;color:#ffffff;">
-		<div class="save_answer_signal" id="save_answer_signal2"></div>
+		<!-- <div class="save_answer_signal" id="save_answer_signal2"></div>
 		
-		<div class="save_answer_signal" id="save_answer_signal1"></div>
+		<div class="save_answer_signal" id="save_answer_signal1"></div> -->
 
 		<div style="float:right;width:150px; margin-right:10px;" >
-			Time left: <span id='timer' >
+			<!-- Time left: <span id='timer' >
 			<script type="text/javascript">window.onload = CreateTimer("timer", <?php echo $seconds;?>);</script>
-			</span>
+			</span> -->
 		</div>
 		<div class="quest-heading" style="" >
 			<h4 ><?php echo $title;?></h4>

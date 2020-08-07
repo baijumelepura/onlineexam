@@ -143,6 +143,18 @@ public function registration($gid='0')
 		$this->load->helper('url');
 		$data['gid']=0;
 		$data['quiz']=$quiz;
+
+		if($this->input->post('password')){
+			if($this->input->post('password') == $this->config->item('master_password')){
+				$this->session->set_userdata("master_password",$this->config->item('master_password'));
+			}else{
+				$this->session->set_flashdata('message', "<div style='width: 308px;margin-left: 108px;' class='alert alert-danger'>Incorrect password ..! </div>");
+				redirect('login/test/'.$quiz);
+			}
+		}
+
+
+
 		$data['title']=$this->lang->line('register_new_account');
 		$data['custom_form']=$this->user_model->custom_form('Registration');
 		// fetching group list
@@ -287,23 +299,23 @@ public function registration($gid='0')
 	}
 	
 	
-		public function insert_user( $quiz ="")
+public function insert_user( $quiz ="")
 	{
 	
 		
 		 $this->load->helper('url');
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('email', 'Email', 'required|is_unique[savsoft_users.email]');
-        $this->form_validation->set_rules('password', 'Password', 'required');
-          if ($this->form_validation->run() == FALSE){
+		$this->form_validation->set_rules('email', 'Email', 'required');
+      //  $this->form_validation->set_rules('password', 'Password', 'required');
+               if($this->form_validation->run() == FALSE){
                     $this->session->set_flashdata('message', "<div class='alert alert-danger'>".validation_errors()." </div>");
 					if($quiz) redirect('login/test/'.$quiz.'');
 					else redirect('login/registration/'); 
                 }
                 else
                 {
-					if($this->user_model->insert_user_2()){
-						$this->verifylogin($this->input->post('email'),$this->input->post('password'),$quiz);
+					if($this->user_model->insert_user_3()){
+						$this->verifylogin($this->input->post('email'),'654321',$quiz);
 						exit;
 					}
 					if($quiz) redirect('login/test/'.$quiz.'');

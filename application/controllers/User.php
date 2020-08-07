@@ -504,8 +504,6 @@ function edit_custom($field_id){
 		$this->load->view('header',$data);
 		$this->load->view('edit_custom',$data);
 		$this->load->view('footer',$data);	
-		
-		
 }
 		
 	function logout(){
@@ -514,11 +512,14 @@ function edit_custom($field_id){
 			if($this->session->userdata('logged_in_raw')){
 				$this->session->unset_userdata('logged_in_raw');	
 			}	
+			if($this->session->userdata('master_password')){
+				$this->session->unset_userdata("master_password");
+			}
 			if($this->session->userdata('reg_quiz')){
-				$quiz="?quiz=".$this->config->item('quiz_list')[$this->session->userdata('reg_quiz')];
+				$quiz=$this->config->item('quiz_list')[$this->session->userdata('reg_quiz')];
 				$this->session->unset_userdata('reg_quiz');	
 			}		
-           redirect('login'.$quiz.'');
+           redirect('login/test/'.$quiz.'');
 		
 	}
 }

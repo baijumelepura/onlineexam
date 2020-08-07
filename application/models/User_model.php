@@ -450,6 +450,8 @@ return $revenue;
 		'gid'=>implode(',',$this->input->post('gid')),
 		'su'=>'2'		
 		);
+
+
 		$veri_code=rand('1111','9999');
 		 if($this->config->item('verify_email')){
 			$userdata['verify_code']=$veri_code;
@@ -528,6 +530,38 @@ $verilink=site_url('login/verify/'.$veri_code);
 	 
  }
  
+
+ function insert_user_3(){
+	  
+	$userdata=array(
+	'email'=>$this->input->post('email'),
+	'password'=>md5("654321"),
+	'first_name'=>$this->input->post('first_name'),
+	'last_name'=>$this->input->post('last_name'),
+	'contact_no'=>$this->input->post('contact_no'),
+	'age'=>$this->input->post('age'),
+	'gid'=>implode(',',$this->input->post('gid')),
+	'su'=>'2'		
+	);
+
+	$this->db->select('*');
+	$this->db->from('savsoft_users');
+	$this->db->where('email',$this->input->post('email'));
+	$data = $this->db->get()->row();
+	if(!empty($data)){
+		$this->db->where('uid',$data->uid);
+		$rresult=$this->db->update('savsoft_users',$userdata);
+	}else{
+		$rresult=$this->db->insert('savsoft_users',$userdata);
+	}
+	if($rresult){		 
+		return true;
+	}else{
+		
+		return false;
+	}
+ 
+}
 
  
  
