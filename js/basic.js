@@ -330,7 +330,7 @@ function change_color(qn){
 	
 	// if not answered then make red
 	// alert($(did).css('backgroundColor'));
-	if($(did).css('backgroundColor') != 'rgb(68, 157, 68)' && $(did).css('backgroundColor') != 'rgb(236, 151, 31)'){
+	if($(did).css('backgroundColor') != 'rgb(120, 150, 236)' && $(did).css('backgroundColor') != 'rgb(236, 151, 31)'){
 	$(did).css('backgroundColor','#c9302c');
 	$(did).css('color','#ffffff');
 	}
@@ -350,7 +350,7 @@ function change_color(qn){
 			}
 		}
 		if(green==1){			
-		$(ldid).css('backgroundColor','#449d44');
+		$(ldid).css('backgroundColor','7896ec');
 		$(ldid).css('color','#ffffff');	
 		}		
 		}		
@@ -358,7 +358,7 @@ function change_color(qn){
 		if($(q_type).val()=='3' || $(q_type).val()=='4'){
 		var answer_value="#answer_value"+lqn;
 		if($(answer_value).val()!=''){			
-		$(ldid).css('backgroundColor','#449d44');
+		$(ldid).css('backgroundColor','7896ec');
 		$(ldid).css('color','#ffffff');	
 		}
 		}		
@@ -374,7 +374,7 @@ function change_color(qn){
 				}
 			}
 			if(green==1){			
-			$(ldid).css('backgroundColor','#449d44');
+			$(ldid).css('backgroundColor','7896ec');
 			$(ldid).css('color','#ffffff');	
 			}		
 		}		
@@ -448,9 +448,28 @@ function review_later(){
 	
 }
 
+function objectifyForm(formArray ) {//serialize data function
+	var question_type = [];
+	var answer = [];
+	j=0;k=0;
+	for (var i = 0; i < formArray.length; i++){
+		paragraph = formArray[i]['name'];
+		 if(paragraph.match('question_type')){
+			question_type[j] = 'question_type';
+			j++;
+		 }
+		 if(paragraph.match('answer')){
+			answer[k] = 'answer';
+			k++;
+		 }
+	}
 
-
-
+	if((answer.length == question_type.length)){
+		return true;
+	}else{
+		return false;
+	}
+  }
 function save_answer(qn){
 	
 								// signal 1
@@ -460,15 +479,22 @@ function save_answer(qn){
 								},5000);
 								
 								      var str = $( "#quiz_form" ).serialize()+'&'+$.param({ 'qn': qn });
- 
- 
-						// var formData = {user_answer:str};
+									  var strformData = $( "#quiz_form" ).serializeArray();
+
+				
 						$.ajax({
 							 type: "POST",
 							 data : str,
 								url: base_url + "index.php/quiz/save_answer/",
 							success: function(data){
 							// signal 1
+
+							if(objectifyForm(strformData)){
+								$('.btn-save').show();
+							}else{
+								$('.btn-save').hide();
+							}
+		
 							$('#save_answer_signal2').css('backgroundColor','#00ff00');
 								setTimeout(function(){
 							$('#save_answer_signal2').css('backgroundColor','#666666');		
@@ -534,6 +560,7 @@ function submit_quiz(){
 	save_answer(qn);
 	setIndividual_time(qn);
 	$('#processing').html("Processing...<br>");
+	$(".sub-spinner").show();
 	setTimeout(function(){
 	window.location=base_url+"index.php/quiz/submit_quiz/";
 	},3000);

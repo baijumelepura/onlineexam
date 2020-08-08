@@ -11,9 +11,26 @@ margin:0px;
 
 	
 </style>
-
+<script type="text/javascript">
+$(document).ready(function () {
+    //Disable cut copy paste
+    $('body').bind('cut copy paste', function (e) {
+        e.preventDefault();
+    });
+    
+    //Disable mouse right click
+    $("body").on("contextmenu",function(e){
+        return false;
+    });
+});
+</script>
 
 <script>
+
+
+
+
+
 
 var Timer;
 var TotalSeconds;
@@ -71,7 +88,6 @@ alert('Time Over');
 window.location="<?php echo site_url('quiz/submit_quiz/');?>";
 }
 
- 
 
  
 
@@ -161,7 +177,9 @@ $abc=array(
 '10'=>'J',
 '11'=>'K'
 );
+$checkans[] = 0;
 foreach($questions as $qk => $question){
+	$checkans[$qk] = false;
 ?>
  
  <div id="q<?php echo $qk;?>" class="question_div">
@@ -213,7 +231,7 @@ foreach($questions as $qk => $question){
 					$save_ans[]=$saved_answer['q_option'];
 				 }
 			 }
-			 
+		//	 print_r($save_ans);die;
 			 
 			 ?>
 			 <input type="hidden"  name="question_type[]"  id="q_type<?php echo $qk;?>" value="1">
@@ -233,11 +251,19 @@ foreach($questions as $qk => $question){
 				</td>
 
 				<td class="input-holder">
-					<input type="radio" name="answer[<?php echo $qk;?>][]"  id="answer_value<?php echo $qk.'-'.$i;?>" value="<?php echo $option['oid'];?>"   
+					<input type="radio" onClick="javascript:show_next_question();" name="answer[<?php echo $qk;?>][]"  id="answer_value<?php echo $qk.'-'.$i;?>" value="<?php echo $option['oid'];?>"   
 					<?php if(in_array($option['oid'],$save_ans)){ echo 'checked'; } ?>  >
 				</td>
 
 			 	<td> <?php  echo ($selected_lang == 1) ? $option['q_option1'] : $option['q_option']; ?> </td>
+
+
+				 <?php 
+if(in_array($option['oid'],$save_ans)){
+	$checkans[$qk] = true; 
+
+}
+				 ?>
 
 			</tr>
 		</table>
@@ -276,7 +302,7 @@ foreach($questions as $qk => $question){
 						<?php echo $abc[$i];?>) 
 					</td>
 					<td class="input-holder">
-					<input type="checkbox" name="answer[<?php echo $qk;?>][]" id="answer_value<?php echo $qk.'-'.$i;?>"   value="<?php echo $option['oid'];?>"  <?php if(in_array($option['oid'],$save_ans)){ echo 'checked'; } ?> > 
+					<input type="checkbox"  name="answer[<?php echo $qk;?>][]" id="answer_value<?php echo $qk.'-'.$i;?>"   value="<?php echo $option['oid'];?>"  <?php if(in_array($option['oid'],$save_ans)){ echo 'checked'; } ?> > 
 					</td>
 					<td>
 					<?php echo ($selected_lang == 1) ? $option['q_option1'] : $option['q_option'];?>
@@ -445,27 +471,26 @@ foreach($questions as $qk => $question){
 	<b> <h5><?php echo $this->lang->line('questions');?></h5></b>
 	<div style="max-height:60%;overflow-y:auto;">
 		<?php 
+			$showhidebutton = true;
 		for($j=0; $j < $quiz['noq']; $j++ ){
+			if(!$checkans[$j]){ $showhidebutton = false; }
 			?>
 			
-			<div class="qbtn" onClick="javascript:show_question('<?php echo $j;?>');" id="qbtn<?php echo $j;?>"  ><?php echo ($j+1);?></div>
+			<div style="<?php if($checkans[$j]){echo 'background:#7896ec;';}else{echo 'background:#c9302c;'; }?>"
+			 class="qbtn" onClick="javascript:show_question('<?php echo $j;?>');" id="qbtn<?php echo $j;?>"  ><?php echo ($j+1);?></div>
 			
 			<?php 
 		}
 		?>
 		<div style="clear:both;"></div>
 	</div>
-	
-	
-
-	<hr>
-
+<hr>
 	<div>
 		<table>
-			<tr><td style="font-size:12px;"><div class="qbtn" style="background:#449d44;"></div></td><td class="attempt-info"><?php echo $this->lang->line('Answered');?>  </td></tr>
+			<tr><td style="font-size:12px;"><div class="qbtn" style="background:#7896ec;"></div></td><td class="attempt-info"><?php echo $this->lang->line('Answered');?>  </td></tr>
 			<tr><td style="font-size:12px;"><div class="qbtn" style="background:#c9302c;"></div></td><td class="attempt-info"> <?php echo $this->lang->line('UnAnswered');?>  </td></tr>
-			<tr><td style="font-size:12px;"><div class="qbtn" style="background:#ec971f;"></div></td><td class="attempt-info"> <?php echo $this->lang->line('Review-Later');?>  </td></tr>
-			<tr><td style="font-size:12px;"><div class="qbtn" style="background:#212121;"></div></td><td class="attempt-info"> <?php echo $this->lang->line('Not-visited');?>  </td></tr>
+			<!-- <tr><td style="font-size:12px;"><div class="qbtn" style="background:#ec971f;"></div></td><td class="attempt-info"> <?php echo $this->lang->line('Review-Later');?>  </td></tr> -->
+			<!-- 	 -->
 		</table>
 		<div style="clear:both;"></div>
 
@@ -485,15 +510,21 @@ foreach($questions as $qk => $question){
 
 
 <div class="footer_buttons" style="background:#3D4A5D;">
-	<button class="btn btn-warning"   onClick="javascript:review_later();"  ><?php echo $this->lang->line('review_later');?></button>
+	<?php /* <button class="btn btn-warning"   onClick="javascript:review_later();"  ><?php echo $this->lang->line('review_later');?></button> -->
 	
-	<button class="btn btn-info"  onClick="javascript:clear_response();"   ><?php echo $this->lang->line('clear');?></button>
+	<button class="btn btn-info"  onClick="javascript:clear_response();"   ><?php echo $this->lang->line('clear');?></button> */ ?>
 
 	<button class="btn btn-success"  id="backbtn" style="visibility:hidden;" onClick="javascript:show_back_question();"   ><?php echo $this->lang->line('back');?></button>
 	
-	<button class="btn btn-success" id="nextbtn" onClick="javascript:show_next_question();" ><?php echo $this->lang->line('save_next');?></button>
+	<?php /* <button class="btn btn-success" id="nextbtn" onClick="javascript:show_next_question();" ><?php echo $this->lang->line('save_next');?></button> */ ?>
 	
-	<button class="btn btn-danger"  onClick="javascript:cancelmove();"  ><?php echo $this->lang->line('submit_quiz');?></button>
+	<button class="btn btn-danger btn-save"  
+	        style="<?php if(!$showhidebutton){ echo 'display:none;';}?>"
+	        onClick="javascript:submit_quiz();"  ><i style="display:none;" class="fa fa-spinner sub-spinner fa-pulse  fa-lg"></i>&nbsp;<?php echo $this->lang->line('submit_quiz');?></button>
+
+
+
+
 </div>
 
 <script>
@@ -501,12 +532,9 @@ var ctime=0;
 var ind_time=new Array();
 <?php 
 $ind_time=explode(',',$quiz['individual_time']);
-for($ct=0; $ct < $quiz['noq']; $ct++){
-	?>
-ind_time[<?php echo $ct;?>]=<?php if(!isset($ind_time[$ct])){ echo 0;}else{ echo $ind_time[$ct]; }?>;
-	<?php 
-}
-?>
+for($ct=0; $ct < $quiz['noq']; $ct++){ ?>
+  ind_time[<?php echo $ct;?>]=<?php if(!isset($ind_time[$ct])){ echo 0;}else{ echo $ind_time[$ct]; }?>;
+<?php } ?>
 noq="<?php echo $quiz['noq'];?>";
 show_question('0');
 
@@ -518,7 +546,8 @@ function increasectime(){
 }
  setInterval(increasectime,1000);
  setInterval(setIndividual_time,30000);
- 
+
+
 </script>
  
  
