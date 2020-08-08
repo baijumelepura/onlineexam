@@ -44,21 +44,21 @@
       
                 </div>
               <div class="col-lg-6">
-                <div class="p-5">
+                <div class="p-5 text-center">
                   <div class="text-center" style="padding:20px;">
-				  <?php 
-				 $hquery=$this->db->query(" select * from savsoftquiz_setting where setting_name='App_Name' || setting_name='App_title' order by setting_id asc "); 
-				$hres=$hquery->result_Array();
-				?>
+            				  <?php 
+            				 $hquery=$this->db->query(" select * from savsoftquiz_setting where setting_name='App_Name' || setting_name='App_title' order by setting_id asc "); 
+            				$hres=$hquery->result_Array();
+            				?>
           <!-- <h1 class="h4 text-gray-900 mb-4">
 					
 					<?php if($hres[0]['setting_value']==""){ ?>Savsoft Quiz <sup>5.0</sup><?php }else{ echo $hres[0]['setting_value']; }?> 
 					
 					</h1> -->
 
-              <a class="login-brand" href="<?php echo base_url();?>">
-                  <img src="<?php echo base_url('images/logo.png');?>" width="240"  alt="drnadiabuhannad.com">
-               </a>
+                  <a class="login-brand" href="<?php echo base_url();?>">
+                      <img src="<?php echo base_url('images/logo.png');?>" width="240"  alt="drnadiabuhannad.com">
+                   </a>
                   </div>
                   <?php
                   $posturl = $this->input->get('quiz') ? site_url('login/verifylogin?quiz='.$this->input->get('quiz')) : site_url('login/verifylogin') ;

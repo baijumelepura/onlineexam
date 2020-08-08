@@ -15,7 +15,9 @@ html, body, h1, h2, h3, h4, p, div, span, ul, li, a {
    text-align: right !important;    
 }
  /*ARABIC STYLE*/
-
+.table{
+     background-color: #ffffff;   
+}
 
  .login{
 background-image:url('../images/bg.jpg');  background-size:     cover;  background-repeat:   no-repeat;

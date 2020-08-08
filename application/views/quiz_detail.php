@@ -144,7 +144,7 @@ $lang = $this->session->userdata("language");
 </div>
 
 
-<footer class="text-center">
+<!-- <footer class="text-center" style="position: relative">
 	<div class="row">
 	      <div class="col-md-12 text-center" >
 	      	2020 © Dr. Nadia Buhannad Development & Guidance - All information on this website is provided "as is" without any representations or warranties, express or implied. Developed By VML
@@ -157,3 +157,4 @@ $lang = $this->session->userdata("language");
 	       </div>
 	 </div>
 </footer>
+ -->
