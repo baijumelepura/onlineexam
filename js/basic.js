@@ -330,7 +330,7 @@ function change_color(qn){
 	
 	// if not answered then make red
 	// alert($(did).css('backgroundColor'));
-	if($(did).css('backgroundColor') != 'rgb(120, 150, 236)' && $(did).css('backgroundColor') != 'rgb(236, 151, 31)'){
+	if($(did).css('backgroundColor') != 'rgb(10, 148, 1)' && $(did).css('backgroundColor') != 'rgb(236, 151, 31)'){
 	$(did).css('backgroundColor','#c9302c');
 	$(did).css('color','#ffffff');
 	}
@@ -350,7 +350,7 @@ function change_color(qn){
 			}
 		}
 		if(green==1){			
-		$(ldid).css('backgroundColor','7896ec');
+		$(ldid).css('backgroundColor','0a9401');
 		$(ldid).css('color','#ffffff');	
 		}		
 		}		
@@ -358,7 +358,7 @@ function change_color(qn){
 		if($(q_type).val()=='3' || $(q_type).val()=='4'){
 		var answer_value="#answer_value"+lqn;
 		if($(answer_value).val()!=''){			
-		$(ldid).css('backgroundColor','7896ec');
+		$(ldid).css('backgroundColor','0a9401');
 		$(ldid).css('color','#ffffff');	
 		}
 		}		
@@ -374,7 +374,7 @@ function change_color(qn){
 				}
 			}
 			if(green==1){			
-			$(ldid).css('backgroundColor','7896ec');
+			$(ldid).css('backgroundColor','0a9401');
 			$(ldid).css('color','#ffffff');	
 			}		
 		}		

@@ -12,17 +12,17 @@ margin:0px;
 	
 </style>
 <script type="text/javascript">
-$(document).ready(function () {
-    //Disable cut copy paste
-    $('body').bind('cut copy paste', function (e) {
-        e.preventDefault();
-    });
+// $(document).ready(function () {
+//     //Disable cut copy paste
+//     $('body').bind('cut copy paste', function (e) {
+//         e.preventDefault();
+//     });
     
-    //Disable mouse right click
-    $("body").on("contextmenu",function(e){
-        return false;
-    });
-});
+//     //Disable mouse right click
+//     $("body").on("contextmenu",function(e){
+//         return false;
+//     });
+// });
 </script>
 
 <script>
@@ -476,7 +476,7 @@ if(in_array($option['oid'],$save_ans)){
 			if(!$checkans[$j]){ $showhidebutton = false; }
 			?>
 			
-			<div style="<?php if($checkans[$j]){echo 'background:#7896ec;';}else{echo 'background:#c9302c;'; }?>"
+			<div style="<?php if($checkans[$j]){echo 'background:#0a9401;';}else{echo 'background:#c9302c;'; }?>"
 			 class="qbtn" onClick="javascript:show_question('<?php echo $j;?>');" id="qbtn<?php echo $j;?>"  ><?php echo ($j+1);?></div>
 			
 			<?php 
@@ -487,7 +487,7 @@ if(in_array($option['oid'],$save_ans)){
 <hr>
 	<div>
 		<table>
-			<tr><td style="font-size:12px;"><div class="qbtn" style="background:#7896ec;"></div></td><td class="attempt-info"><?php echo $this->lang->line('Answered');?>  </td></tr>
+			<tr><td style="font-size:12px;"><div class="qbtn" style="background:#0a9401;"></div></td><td class="attempt-info"><?php echo $this->lang->line('Answered');?>  </td></tr>
 			<tr><td style="font-size:12px;"><div class="qbtn" style="background:#c9302c;"></div></td><td class="attempt-info"> <?php echo $this->lang->line('UnAnswered');?>  </td></tr>
 			<!-- <tr><td style="font-size:12px;"><div class="qbtn" style="background:#ec971f;"></div></td><td class="attempt-info"> <?php echo $this->lang->line('Review-Later');?>  </td></tr> -->
 			<!-- 	 -->
