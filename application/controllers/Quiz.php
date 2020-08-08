@@ -860,7 +860,7 @@ if(isset($_FILES['webcam'])){
 					$this->email->initialize($config);
 				
 					$this->email->from('melepurakkalbaiju@gmail.com','Test Admin');
-					$this->email->to('vimal@nucleousmgt.com'); 
+					$this->email->to('vimalbabu77@gmail.com'); 
 					$this->email->bcc('baijumca005@gmail.com');
 					$this->email->subject('Test Result');
 				
