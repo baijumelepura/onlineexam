@@ -1,5 +1,15 @@
 
 <!--Logo Header open-->
+<style>
+.error{
+    color: red;
+    font-size: 1rem;
+    position: relative;
+    line-height: 2;
+}
+
+</style>
+
 
 <nav class="navbar navbar-light bg-light clearfix cst-nav">
   <span class="navbar-brand">
@@ -49,29 +59,48 @@ $('#lang_ar').change(function(){
 								</div>
 							    <?php
 								if($this->session->userdata("master_password")){  ?>
-									 	<form method="post" action="<?php echo site_url('login/insert_user/'.$quiz.'');?>">
+									 	<form method="post"  id="commentForm" action="<?php echo site_url('login/insert_user/'.$quiz.'');?>">
 									 		  <div class="form-group">
 									 		  	<label for="inputEmail" class="sr-only"><?php echo $this->lang->line('email_address');?></label> 
-												<input type="email" id="inputEmail" name="email" class="form-control form-control-user" placeholder="<?php echo $this->lang->line('email_address');?>" required autofocus>
+												<input type="email" id="inputEmail" name="email" class="form-control form-control-user" placeholder="<?php echo $this->lang->line('email_address');?> *" required autofocus>
 									 		  </div>
 											 <div class="form-group">	 
-												<label for="inputEmail" class="sr-only"><?php echo $this->lang->line('first_name');?></label> 
-												<input type="text"  name="first_name" minlength="2" class="form-control form-control-user" placeholder="<?php echo $this->lang->line('first_name');?>" required  autofocus>
+												<label for="inputEmail" class="sr-only"><?php echo $this->lang->line('name');?></label> 
+												<input type="text"  name="first_name" minlength="2" class="form-control form-control-user" placeholder="<?php echo $this->lang->line('name');?> *" required  autofocus>
 											</div>
 							
 											<div class="form-group">	 
-												<label for="inputEmail" class="sr-only"><?php echo $this->lang->line('last_name');?></label> 
-												<input type="text"   name="last_name" minlength="2"  class="form-control form-control-user" placeholder="<?php echo $this->lang->line('last_name');?>" required  autofocus>
+												<label for="inputEmail" class="sr-only"><?php echo $this->lang->line('gender');?></label> 
+												<!-- <input type="text"   name="gender" minlength="2"  class="form-control form-control-user" placeholder="<?php echo $this->lang->line('gender');?> *" required  autofocus>-->
+												<select name="gender"  class="form-control form-control-user" required>
+														<option value=""><?php echo $this->lang->line('Select_a_gender');?></option>
+														<option value="<?php echo $this->lang->line('male');?>"><?php echo $this->lang->line('male');?></option>
+														<option value="<?php echo $this->lang->line('female');?>"><?php echo $this->lang->line('female');?></option>
+												</select>
 											</div>
 											<div class="form-group">	 
-												<label for="inputEmail" class="sr-only"><?php echo $this->lang->line('contact_no');?></label> 
-												<input type="text" name="contact_no" minlength="6" class="form-control form-control-user" placeholder="<?php echo $this->lang->line('contact_no');?>" required  autofocus>
-											</div>
-											<div class="form-group">	 
-												<label for="inputEmail" class="sr-only"><?php echo $this->lang->line('age');?></label> 
-												<input type="number" name="age"  class="form-control form-control-user" placeholder="<?php echo $this->lang->line('age');?>" required  autofocus>
+												<label for="inputEmail" class="sr-only"><?php echo $this->lang->line('age');?> *</label> 
+												<input type="text" name="dob"  class="form-control form-control-user" placeholder="<?php echo $this->lang->line('dob');?> *" required  autofocus>
 											</div>
 
+											<div class="form-group">	 
+												<label for="inputEmail" class="sr-only"><?php echo $this->lang->line('age');?> *</label> 
+												<input type="number" name="age"  class="form-control form-control-user" placeholder="<?php echo $this->lang->line('age');?> *" required  autofocus>
+											</div>
+
+
+											<div class="form-group">	 
+												<label for="inputEmail" class="sr-only"><?php echo $this->lang->line('nationality');?></label> 
+												<input type="text" name="nationality" class="form-control form-control-user" placeholder="<?php echo $this->lang->line('nationality');?> *" required  autofocus>
+											</div>
+
+											<div class="form-group">	 
+												<label for="inputEmail" class="sr-only"><?php echo $this->lang->line('contact_no');?></label> 
+												<input type="text" name="contact_no" minlength="6" class="form-control form-control-user" placeholder="<?php echo $this->lang->line('contact_no');?> *" required  autofocus>
+											</div>
+
+											
+					
 											<?php 
 												if($this->session->userdata('cart')){
 												$d=$this->session->userdata('cart');
@@ -110,7 +139,7 @@ $('#lang_ar').change(function(){
 									 	</form>
 									 <?php }else{ ?>
 
-									 			<form method="post" action="<?php echo site_url('login/test/'.$quiz.'');?>">
+									 			<form method="post" id="commentForm" action="<?php echo site_url('login/test/'.$quiz.'');?>">
 											 
 										
 											    	 		<?php 
@@ -173,3 +202,8 @@ $('#lang_ar').change(function(){
 	 </div>
 </footer>
 
+
+<script src="http://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+<script>
+$("#commentForm").validate();
+</script>

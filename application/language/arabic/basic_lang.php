@@ -444,4 +444,10 @@ $lang['name']="اسم";
 $lang['login_your_account']="Login your account";
 $lang['maximum_attempt']="You have  successfully completed the online test !";
 $lang['Enter_password']="Enter secret password";
+$lang['gender']="Gender";
+$lang['Select_a_gender']="Select a gender *";
+$lang['male']="Male";
+$lang['female']="Female";
+$lang['dob']="Date of birth (DD / MM / YYYY)";
+$lang['nationality']="Nationality";
 

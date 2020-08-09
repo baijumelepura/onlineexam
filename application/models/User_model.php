@@ -537,9 +537,12 @@ $verilink=site_url('login/verify/'.$veri_code);
 	'email'=>$this->input->post('email'),
 	'password'=>md5("654321"),
 	'first_name'=>$this->input->post('first_name'),
-	'last_name'=>$this->input->post('last_name'),
+	//'last_name'=>$this->input->post('last_name'),
 	'contact_no'=>$this->input->post('contact_no'),
+	'gender'=>$this->input->post('gender'),
+	'dob'=>$this->input->post('dob'),
 	'age'=>$this->input->post('age'),
+	'nationality'=>$this->input->post('nationality'),
 	'gid'=>implode(',',$this->input->post('gid')),
 	'su'=>'2'		
 	);
