@@ -5,10 +5,16 @@
     color: red;
     font-size: 1rem;
     position: relative;
-    line-height: 2;
+    line-height: 1;
+    width: 100%;
 }
-
+label.error{
+	margin-top: 5px;
+	margin-bottom: 0px;
+}
 </style>
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
 
 <nav class="navbar navbar-light bg-light clearfix cst-nav">
@@ -80,8 +86,22 @@ $('#lang_ar').change(function(){
 											</div>
 											<div class="form-group">	 
 												<label for="inputEmail" class="sr-only"><?php echo $this->lang->line('age');?> *</label> 
-												<input type="text" name="dob"  class="form-control form-control-user" placeholder="<?php echo $this->lang->line('dob');?> *" required  autofocus>
+												<input id="datepicker" type="text" name="dob"  class="form-control form-control-user" placeholder="<?php echo $this->lang->line('dob');?> *" required  autofocus>
+												 <script>
+													        $('#datepicker').datepicker({
+													            uiLibrary: 'bootstrap'
+													        });
+													    </script>
 											</div>
+
+						<!-- 					<div class="form-group">
+												<label for="inputEmail" class="sr-only">Date picker eg</label> 
+												    <input id="datepicker" class="form-control form-control-user" placeholder="<?php echo $this->lang->line('dob');?> *" autofocus />
+													   
+											</div>	 
+ -->
+
+
 
 											<div class="form-group">	 
 												<label for="inputEmail" class="sr-only"><?php echo $this->lang->line('age');?> *</label> 
@@ -188,7 +208,7 @@ $('#lang_ar').change(function(){
 
 
 
-<footer class="container-fluid text-center">
+<!-- <footer class="container-fluid text-center">
 	<div class="row">
 	      <div class="col-md-12 text-center" >
 	      	2020 © Dr. Nadia Buhannad Development & Guidance - All information on this website is provided "as is" without any representations or warranties, express or implied. Developed By VML
@@ -200,7 +220,7 @@ $('#lang_ar').change(function(){
 	       	<i class="fas fa-envelope"></i>info@nadiabuhannad.com
 	       </div>
 	 </div>
-</footer>
+</footer> -->
 
 
 <script src="http://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
