@@ -10,11 +10,7 @@ $lang = $this->session->userdata("language");
 			<?php  if(!$warningmsg){ ?>
 		  <h3 class="card-header">
 
-		  <?php
-		  
-			   echo $title;
-		  ?>
-		  
+		  <?php echo $title;?>
 		  </h3>
 			<?php } ?>
 			<?php 
