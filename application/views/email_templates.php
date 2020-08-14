@@ -484,12 +484,31 @@
                                     <p class="f-fallback"><?=$name?></p>
                                   </th>
                                 </tr>
+                              
+                                
                                 <tr>
                                   <th class="purchase_heading" align="left">
                                     <p class="f-fallback">Email</p>
                                   </th>
                                   <th class="purchase_heading" align="left">
                                     <p class="f-fallback"><?=$email;?></p>
+                                  </th>
+                                </tr>
+                                <tr>
+                                <tr>
+                                  <th class="purchase_heading" align="left">
+                                    <p class="f-fallback">Gender</p>
+                                  </th>
+                                  <th class="purchase_heading" align="left">
+                                    <p class="f-fallback"><?=$gender;?></p>
+                                  </th>
+                                </tr>
+                                <tr>
+                                  <th class="purchase_heading" align="left">
+                                    <p class="f-fallback">DOB</p>
+                                  </th>
+                                  <th class="purchase_heading" align="left">
+                                    <p class="f-fallback"><?=$dob;?></p>
                                   </th>
                                 </tr>
                                 <tr>
@@ -506,6 +525,14 @@
                                   </th>
                                   <th class="purchase_heading" align="left">
                                     <p class="f-fallback"><?=$age;?></p>
+                                  </th>
+                                </tr>
+                                <tr>
+                                  <th class="purchase_heading" align="left">
+                                     <p class="f-fallback">Nationality</p>
+                                  </th>
+                                  <th class="purchase_heading" align="left">
+                                     <p class="f-fallback"><?=$nationality;?></p>
                                   </th>
                                 </tr>
                                 <tr>

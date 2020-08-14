@@ -93,14 +93,14 @@
             <!--Language Selector-->
            
            
-       
+            <!--        
             <li class="form-inline ml-auto">
                <label class="navbar-text" for="cars">Language</label>
                <select class="form-control mr-sm-2"  id="lang_ar">
                  <option value="english" <?php if($this->session->userdata("language") == 'english'){ echo 'selected';}?> >English</option>
                  <option  value="arabic" <?php if($this->session->userdata("language") == 'arabic'){ echo 'selected';}?> >Arabic</option>
                </select>
-            </li>
+            </li> -->
                      <?php
          $method = $this->router->fetch_method();
          $methods = "answer/".$this->uri->segment(3)."/".$this->uri->segment(4);

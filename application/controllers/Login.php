@@ -418,7 +418,7 @@ public function insert_user( $quiz ="")
 		$this->session->set_userdata('logged_in', $user);
 		redirect('dashboard');
 	}
-	function language($lang = "" , $controller = "", $seg ="", $seg2 =""){
+	function language($lang = null , $controller = null , $seg = null , $seg2 = null){
 		$this->load->helper('url');
 		$language = "english";
 		if($lang == "english") $language = "english";
@@ -443,12 +443,14 @@ public function insert_user( $quiz ="")
 		} 
 	}
 	
-	function answer($rid,$method =""){
+	function answer($rid,$method =null){
 		
 		$this->load->helper('url');
 		
 			
 		$data['result']=$this->result_model->get_result($rid);
+
+	//	print_r($data['result']);die;
 		 
 		$data['attempt']=$this->result_model->no_attempt($data['result']['quid'],$data['result']['uid']);
 		$data['title']=$this->lang->line('result_id').' '.$data['result']['rid'];
@@ -472,18 +474,16 @@ public function insert_user( $quiz ="")
 	$correct_incorrect=explode(',',$data['result']['score_individual']);
 	 $qtime[]=array($this->lang->line('question_no'),$this->lang->line('time_in_sec'));
     foreach(explode(",",$data['result']['individual_time']) as $key => $val){
-	if($val=='0'){
-		$val=1;
-	}
-	 if($correct_incorrect[$key]=="1"){
-	 $qtime[]=array($this->lang->line('q')." ".($key+1).") - ".$this->lang->line('correct')." ",intval($val));
-	 }else if($correct_incorrect[$key]=='2' ){
-	  $qtime[]=array($this->lang->line('q')." ".($key+1).") - ".$this->lang->line('incorrect')."",intval($val));
-	 }else if($correct_incorrect[$key]=='0' ){
-	  $qtime[]=array($this->lang->line('q')." ".($key+1).") -".$this->lang->line('unattempted')." ",intval($val));
-	 }else if($correct_incorrect[$key]=='3' ){
-	  $qtime[]=array($this->lang->line('q')." ".($key+1).") - ".$this->lang->line('pending_evaluation')." ",intval($val));
-	 }
+		if($val=='0'){  $val=1; }
+		if($correct_incorrect[$key]=="1"){
+	    	$qtime[]=array($this->lang->line('q')." ".($key+1).") - ".$this->lang->line('correct')." ",intval($val));
+		}else if($correct_incorrect[$key]=='2' ){
+		    $qtime[]=array($this->lang->line('q')." ".($key+1).") - ".$this->lang->line('incorrect')."",intval($val));
+		}else if($correct_incorrect[$key]=='0' ){
+	    	$qtime[]=array($this->lang->line('q')." ".($key+1).") -".$this->lang->line('unattempted')." ",intval($val));
+		}else if($correct_incorrect[$key]=='3' ){
+	     	$qtime[]=array($this->lang->line('q')." ".($key+1).") - ".$this->lang->line('pending_evaluation')." ",intval($val));
+		}
 	}
 	 $data['qtime']=json_encode($qtime);
 	 $data['percentile'] = $this->result_model->get_percentile($data['result']['quid'], $data['result']['uid'], $data['result']['score_obtained']);

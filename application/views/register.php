@@ -16,13 +16,13 @@
   <img src="<?php echo base_url('images/logo.png');?>" width="250" height="70" class="d-inline-block align-top" alt="">
   	<?php  $this->lang->line('login_tagline');?> 
   </span>
-	<form class="form-inline ml-auto">
+	<!-- <form class="form-inline ml-auto">
 		<label class="navbar-text" for="cars">Language</label>
 		<select class="form-control mr-sm-2"  id="lang_ar">
 		  <option value="english" <?php if($this->session->userdata("language") == 'english'){ echo 'selected';}?> >English</option>
 		  <option  value="arabic" <?php if($this->session->userdata("language") == 'arabic'){ echo 'selected';}?> >Arabic</option>
 		</select>
-	</form>
+	</form> -->
 
 	
 

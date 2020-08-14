@@ -1,4 +1,4 @@
- <script src="<?php echo base_url('js/TweenMax.min.js');?>"></script>
+<script src="<?php echo base_url('js/TweenMax.min.js');?>"></script>
  <style>
 @media print {
    
@@ -251,27 +251,36 @@ $lang = ($this->session->userdata("language") =='english') ? true : false;
 $optn = ['0'=>'A','1'=>'B','2'=>'C','3'=>'D','4'=>'E','5'=>'F','6'=>'G'];
 ?>
 
-  <div class="row">
+  <div class="row" id="panel-default">
  
 
-<div class="col-md-12 print-area">
+<div class="col-md-12 print-area"  >
 
  <div class="login-panel panel panel-default">
  	<div class="card" style="">
- 		  <div class="card-header">
+ 		  <div class="card-header card-header1" >
 		    <h3 style="float:left">Client Details</h3>
-		     <a href="javascript:print();" class="btn btn-success printbtn" style="float:right;"><?php echo $this->lang->line('print');?></a>
+		     <a href="javascript:PrintElem('panel-default');" class="btn btn-success printbtn" style="float:right; "><?php echo $this->lang->line('print');?></a>
 		  </div>
 
-			<div class="panel-body card-body"> 
+			<div class="panel-body card-body baiju"> 
 				<table class="table table-bordered client-details">
 				
-					<tr><td><?php echo $this->lang->line('name');?></td><td><?php echo $result['first_name'];?> <?php echo $result['last_name'];?></td></tr>
+					<tr><td><?php echo $this->lang->line('name');?></td><td><?php echo $result['first_name'];?></td></tr>
 					<tr><td><?php echo $this->lang->line('email');?></td><td><?php echo $result['email'];?></td></tr>
-					<tr><td><?php echo $this->lang->line('contact_no');?></td><td><?php echo $result['contact_no'];?></td></tr>
+					<tr><td><?php echo $this->lang->line('gender');?></td><td><?php echo $result['gender'];?></td></tr>
+					<tr><td><?php echo "DOB";?></td><td><?php echo $result['dob'];?></td></tr>
 					<tr><td><?php echo $this->lang->line('age');?></td><td><?php echo $result['age'];?></td></tr>
+					<tr><td><?php echo $this->lang->line('contact_no');?></td><td><?php echo $result['contact_no'];?></td></tr>
+					<tr><td><?php echo $this->lang->line('nationality');?></td><td><?php echo $result['nationality'];?></td></tr>
+					
 					<tr><td><?php echo $this->lang->line('quiz_name');?></td><td><?php echo $result['quiz_name'];?></td></tr>
 					<tr><td><?php echo $this->lang->line('attempt_time');?></td><td><?php echo date('d-m-Y',$result['start_time']);?></td></tr>
+					
+					
+					
+					
+					
 					<?php /*<tr><td><?php echo $this->lang->line('time_spent');?></td><td><?php echo secintomin($result['total_time']);?></td></tr>
 					<<tr><td><?php echo $this->lang->line('percentage_obtained');?></td><td><?php echo $result['percentage_obtained'];?>%</td></tr>
 					<tr><td><?php echo $this->lang->line('percentile_obtained');?></td><td><?php echo substr(((($percentile[1]+1)/$percentile[0])*100),0,5);   ?>%</td></tr> <?php */?>
@@ -302,7 +311,7 @@ if(1==1){
 				      <th scope="col">Q-No</th>
 				      <th scope="col">Question</th>
 					  <th scope="col">Client Answer</th>
-				      <th scope="col">Correct Answer</th>
+				      <!-- <th scope="col">Correct Answer</th> -->
 				  
 				    </tr>
 				  </thead>
@@ -363,7 +372,7 @@ if($question['question_type']==$this->lang->line('multiple_choice_single_answer'
 			 echo '<td>';
 			$i=0; $j=0;
 			$correct_options=array();
-			foreach(array_reverse($options) as $ok => $option){
+			foreach($options as $ok => $option){
 				if($option['qid']==$question['qid']){
 					if($option['score'] >= 0.1){
 						$correct_options[$j]= $lang  ? $optn[$j].' ) '.strip_tags($option['q_option']): $optn[$j].' ) '.strip_tags($option['q_option1']);
@@ -380,12 +389,13 @@ if($question['question_type']==$this->lang->line('multiple_choice_single_answer'
 				}
 			};
 			echo'</td>';
-			echo "<td>";
+			 "<td>";
 			if(!empty($correct_options)){ 
 				foreach($correct_options as $correct_option){ 
-					echo  $correct_option.'<br>';
+					  $correct_option.'<br>';
 				} }
-			echo "</td> </tr >";
+			 "</td>";
+			echo "</tr >";
 		 }
 
 		 
@@ -418,7 +428,7 @@ if($question['question_type']==$this->lang->line('multiple_choice_single_answer'
 			echo'<td>';
 
 			//print_r($options);die;
-			foreach(array_reverse($options) as $ok => $option){
+			foreach($options as $ok => $option){
 				if($option['qid']==$question['qid']){
 					if($option['score'] >= 0.1){
 							$correct_options[$j]= $lang  ? $optn[$j].' ) '.strip_tags($option['q_option']).'<br>' : $optn[$j].' ) '.strip_tags($option['q_option1']).'<br>';
@@ -659,7 +669,58 @@ $(document).ready(function () {
     // $("body").on("contextmenu",function(e){
     //     return false;
     // });
+    
+    
+    
+    
+    
+  
+  
+    
+    
+    
+    
 });
+
+
+
+function PrintElem(elem)
+{
+    $('.card-header1').hide();
+    
+    
+    setTimeout(function(){ 
+        $('.card-header1').show();
+        
+        
+    }, 3000);
+    
+    
+    var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+
+    mywindow.document.write('<html><head><title></title>');
+    mywindow.document.write('</head><body >');
+    mywindow.document.write(document.getElementById(elem).innerHTML);
+    mywindow.document.write('</body></html>');
+
+    mywindow.document.close(); // necessary for IE >= 10
+    mywindow.focus(); // necessary for IE >= 10*/
+
+    mywindow.print();
+    mywindow.close();
+    
+
+
+    return true;
+}
+
+
+
+
+
+
+
+
 </script>
 <!-- disable copy, right click ends -->
 

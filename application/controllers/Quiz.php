@@ -865,13 +865,17 @@ if(isset($_FILES['webcam'])){
 					$this->email->subject('Test Result');
 				
 					date_default_timezone_set('Asia/Dubai');
+
 					$email_data = [
-						"name"=>$logged_in['first_name'].' '.$logged_in['last_name'],
+						"name"=>$logged_in['first_name'],
 						"email"=>$logged_in['email'],
 						"number"=>$logged_in['contact_no'],
 						"age"=>$logged_in['age'],
 						"test"=>$result_model['quiz_name'],
 						"date"=>date('d-m-y H:i:s'),
+						"gender"=>$logged_in['gender'],
+						"dob"=>$logged_in['dob'],
+						"nationality"=>$logged_in['nationality'],
 						"url"=>base_url()."index.php/login/answer/".$rid."/".$this->config->item('quiz_list')[$result_model['quid']],
 					];
 					$body =	$this->load->view('email_templates',$email_data,true);

@@ -387,13 +387,13 @@
            
             <?php if($logged_in['su'] == 2){ ?>
 
-            <li class="form-inline nav-item">
+            <!-- <li class="form-inline nav-item">
                <label class="navbar-text" for="cars"><b>Language</b></label>
                <select class="form-control mr-sm-2"  id="lang_ar">
                  <option value="english" <?php if($this->session->userdata("language") == 'english'){ echo 'selected';}?> >English</option>
                  <option  value="arabic" <?php if($this->session->userdata("language") == 'arabic'){ echo 'selected';}?> >Arabic</option>
                </select>
-            </li>
+            </li> -->
                      <?php
          $method = $this->router->fetch_method();
          $methods = "quiz";

@@ -795,3 +795,5 @@ $config['quiz_list']=["10"=>"leadership-quality",
 //Result 
 //http://test.sikologia.com/index.php/login/answer/54
 
+
+
