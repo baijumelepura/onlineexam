@@ -190,7 +190,7 @@ foreach($questions as $qk => $question){
 				<div class="media-body">
 					<?php 
 					if(strip_tags($question['paragraph'])!=""){
-					echo $this->lang->line('paragraph')."<br>";
+					// echo $this->lang->line('paragraph')."<br>";
 					echo $question['paragraph']."<hr>";
 					}
 					?>
