@@ -469,6 +469,15 @@ if(in_array($option['oid'],$save_ans)){
 <div class="col-md-3 ques-hint shadow-sm">
    
 	<b> <h5><?php echo $this->lang->line('questions');?></h5></b>
+	<!-- <p style="color:#333131;"><?php echo $this->lang->line('quest-dash-instruction');?></p> -->
+	<ul>
+		<li style="color:#333131;">
+			<?php echo $this->lang->line('quest-dash-instruction-1');?>
+		</li>
+		<li style="color:#333131;">
+			<?php echo $this->lang->line('quest-dash-instruction-2');?>
+		</li>
+	</ul>
 	<div style="max-height:60%;overflow-y:auto;">
 		<?php 
 			$showhidebutton = true;
@@ -514,7 +523,7 @@ if(in_array($option['oid'],$save_ans)){
 	
 	<button class="btn btn-info"  onClick="javascript:clear_response();"   ><?php echo $this->lang->line('clear');?></button> */ ?>
 
-	<button class="btn btn-success"  id="backbtn" style="visibility:hidden;" onClick="javascript:show_back_question();"   ><?php echo $this->lang->line('back');?></button>
+	<button class="btn btn-success"  id="backbtn" style="visibility:hidden;" onClick="javascript:show_back_question();"   ><span style="font-size: 14px;margin-right:5px;" class="oi oi-arrow-circle-left"></span><?php echo $this->lang->line('back');?></button>
 	
 	<?php /* <button class="btn btn-success" id="nextbtn" onClick="javascript:show_next_question();" ><?php echo $this->lang->line('save_next');?></button> */ ?>
 	
