@@ -6,16 +6,24 @@ $lang = $this->session->userdata("language");
 
  	<form method="post" id="quiz_detail" action="<?php echo site_url('quiz/validate_quiz/'.$quiz['quid']);?>"  style="width:100%;">
 		
-	 <?= $warningmsg;?><div class="card">
+	<div class="card">
 			
-		  <h3 class="card-header"><?php echo $title;?></h3>
+		  <h3 class="card-header">
+
+		  <?php echo $title;?>
+		  
+		  </h3>
 			<?php 
 			if($this->session->flashdata('message')){
 			echo $this->session->flashdata('message');	
 			}
 			?>
-		  <div class="card-body">
-			<?php if($lang == 'english'){ ?>
+		  <div class="card-body" style="min-height: 184px;">
+
+		  <?=$warningmsg;?>
+			<?php 
+			if(!$warningmsg){
+			if($lang == 'english'){ ?>
 		    <h5 class="card-title"><?php echo $this->lang->line('quiz_name');?> : <?php echo $quiz['quiz_name'];?></h5>
 			<?php }else{ ?>
 				<h5 class="card-title"><?php echo $this->lang->line('quiz_name');?> : <?php echo $quiz['quiz_name1'];?></h5>
@@ -32,24 +40,16 @@ $lang = $this->session->userdata("language");
 				<?php echo $quiz['description1'];?>
 		    	<!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  -->
 		    </p>
-				<?php } ?>
+				<?php } } ?>
 
 		   <!--  <a href="#" class="btn btn-primary">Go somewhere</a> -->
 		  </div>
-<!-- 		   <ul class="list-group list-group-flush">
-		   	 <li class="list-group-item">
-		   	 	<?php echo $this->lang->line('select_language');?>
-				<select name="selected_lang"  id="changelang">
-					<?php
-					foreach($this->config->item('question_lang') as $lk => $val){
-					?>
-					<option value="<?php echo $lk;?>"><?php echo $val;?></option>
-					<?php 
-					}
-					?>
-				</select>
-		   	 </li>
-		   </ul> -->
+
+
+
+
+
+
 		   <div class="card-body text-left">
 
 				<?php 

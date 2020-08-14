@@ -17,6 +17,9 @@ label.error{
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
 
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+
+
 <nav class="navbar navbar-light bg-light clearfix cst-nav">
   <span class="navbar-brand">
   <img src="<?php echo base_url('images/logo.png');?>" width="250" height="70" class="d-inline-block align-top" alt="">
@@ -87,11 +90,7 @@ $('#lang_ar').change(function(){
 											<div class="form-group">	 
 												<label for="inputEmail" class="sr-only"><?php echo $this->lang->line('age');?> *</label> 
 												<input id="datepicker" type="text" name="dob"  class="form-control form-control-user" placeholder="<?php echo $this->lang->line('dob');?> *" required  autofocus>
-												 <script>
-													        $('#datepicker').datepicker({
-													            uiLibrary: 'bootstrap'
-													        });
-													    </script>
+												
 											</div>
 
 						<!-- 					<div class="form-group">
@@ -226,4 +225,10 @@ $('#lang_ar').change(function(){
 <script src="http://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
 <script>
 $("#commentForm").validate();
+</script>
+<script>
+$('#datepicker').datepicker({
+	uiLibrary: 'bootstrap',
+	format: 'dd/mm/yyyy',
+});
 </script>
