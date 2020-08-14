@@ -7,12 +7,16 @@ $lang = $this->session->userdata("language");
  	<form method="post" id="quiz_detail" action="<?php echo site_url('quiz/validate_quiz/'.$quiz['quid']);?>"  style="width:100%;">
 		
 	<div class="card">
-			
+			<?php  if(!$warningmsg){ ?>
 		  <h3 class="card-header">
 
-		  <?php echo $title;?>
+		  <?php
+		  
+			   echo $title;
+		  ?>
 		  
 		  </h3>
+			<?php } ?>
 			<?php 
 			if($this->session->flashdata('message')){
 			echo $this->session->flashdata('message');	
