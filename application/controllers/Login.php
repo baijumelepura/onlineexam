@@ -139,7 +139,14 @@ public function registration($gid='0')
 		$this->load->view('footer',$data);
 	}
 
-    public function test($quiz=""){
+    public function test($quiz=null,$lang=null){
+		if($lang=='ar'){
+			 $this->session->set_userdata("language","arabic");
+		}else{
+			 $this->session->set_userdata("language","english");
+		}
+		$this->lang->load('basic',$this->session->userdata("language"));
+
 		$this->load->helper('url');
 		$data['gid']=0;
 		$data['quiz']=$quiz;
