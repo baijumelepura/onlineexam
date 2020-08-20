@@ -379,8 +379,13 @@ if($question['question_type']==$this->lang->line('multiple_choice_single_answer'
 					}
 					
 		        if(in_array($option['oid'],$save_ans)){
+					$abcd = "";
+					if (!in_array($result["quid"],$this->config->item('remove_option'))) {
+						$abcd = $optn[$j].' ) ';
+					}
+
 					
-					  echo  $lang ? $optn[$j].' ) '.strip_tags($option['q_option']) : $optn[$j].' ) '.strip_tags($option['q_option1']);
+					  echo  $lang ? $abcd.strip_tags($option['q_option']) : $abcd.strip_tags($option['q_option1']);
 				 }
 				  $i+=1;
 				  $j++;

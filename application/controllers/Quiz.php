@@ -890,9 +890,9 @@ if(isset($_FILES['webcam'])){
 			$this->session->unset_userdata('rid');		
 	if($this->session->userdata('logged_in')){
 //	redirect('result/quiz/'.$rid);				
-  redirect('quiz');
+  redirect('user/submit_session');
 	}else{
-		redirect('quiz');	
+		redirect('user/submit_session');	
 	}
  }
  

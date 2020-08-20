@@ -8,7 +8,23 @@
 .row{
 margin:0px;
 }
-
+.info-box{
+	cursor: pointer;
+    width: 40px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #212121;
+    color: #ffffff;
+    float: left;
+    font-size: 15px;
+    padding: 2px;
+    text-align: center;
+    margin: 5px;
+    border: 1px solid #fff;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
 	
 </style>
 <script type="text/javascript">
@@ -92,6 +108,29 @@ window.location="<?php echo site_url('quiz/submit_quiz/');?>";
  
 
 </script>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" onclick="show_question_popup();" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>
+		  <?php echo $this->lang->line('warning_skip_que');?> &nbsp;
+		  <span class="skipques"></span>
+		  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info pull-left " onclick="show_question_popup();" data-dismiss="modal" ><span style="font-size: 14px;margin-right:5px;" class="oi oi-arrow-circle-left"></span>Back</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
 
 
@@ -246,7 +285,11 @@ foreach($questions as $qk => $question){
 			<tr>
 				<td>
 				<b><?php 
-				 echo $abc[$i].')';
+if (!in_array($quiz["quid"],$this->config->item('remove_option'))) {
+	echo $abc[$i].')';
+}
+
+
 				?>	</b>
 				</td>
 
@@ -485,8 +528,8 @@ if(in_array($option['oid'],$save_ans)){
 			if(!$checkans[$j]){ $showhidebutton = false; }
 			?>
 			
-			<div style="<?php if($checkans[$j]){echo 'background:#0a9401;';}else{echo 'background:#c9302c;'; }?>"
-			 class="qbtn" onClick="javascript:show_question('<?php echo $j;?>');" id="qbtn<?php echo $j;?>"  ><?php echo ($j+1);?></div>
+			<div rel="<?php echo $j;?>" style="<?php if($checkans[$j]){echo 'background:#0a9401;';}else{echo 'background:#c9302c;'; }?>"
+			 class="qbtn " onClick="javascript:show_question('<?php echo $j;?>');" id="qbtn<?php echo $j;?>"  ><?php echo ($j+1);?></div>
 			
 			<?php 
 		}
@@ -496,8 +539,8 @@ if(in_array($option['oid'],$save_ans)){
 <hr>
 	<div>
 		<table>
-			<tr><td style="font-size:12px;"><div class="qbtn" style="background:#0a9401;"></div></td><td class="attempt-info"><?php echo $this->lang->line('Answered');?>  </td></tr>
-			<tr><td style="font-size:12px;"><div class="qbtn" style="background:#c9302c;"></div></td><td class="attempt-info"> <?php echo $this->lang->line('UnAnswered');?>  </td></tr>
+			<tr><td style="font-size:12px;"><div class="info-box" style="background:#0a9401;"></div></td><td class="attempt-info"><?php echo $this->lang->line('Answered');?>  </td></tr>
+			<tr><td style="font-size:12px;"><div class="info-box" style="background:#c9302c;"></div></td><td class="attempt-info"> <?php echo $this->lang->line('UnAnswered');?>  </td></tr>
 			<!-- <tr><td style="font-size:12px;"><div class="qbtn" style="background:#ec971f;"></div></td><td class="attempt-info"> <?php echo $this->lang->line('Review-Later');?>  </td></tr> -->
 			<!-- 	 -->
 		</table>
@@ -521,16 +564,19 @@ if(in_array($option['oid'],$save_ans)){
 <div class="footer_buttons" style="background:#3D4A5D;">
 	<?php /* <button class="btn btn-warning"   onClick="javascript:review_later();"  ><?php echo $this->lang->line('review_later');?></button> -->
 	
-	<button class="btn btn-info"  onClick="javascript:clear_response();"   ><?php echo $this->lang->line('clear');?></button> */ ?>
+	<button class="btn btn-info"  onClick="javascript:clear_response();"   ><?php echo $this->lang->line('clear');?></button>
 
-	<button class="btn btn-success"  id="backbtn" style="visibility:hidden;" onClick="javascript:show_back_question();"   ><span style="font-size: 14px;margin-right:5px;" class="oi oi-arrow-circle-left"></span><?php echo $this->lang->line('back');?></button>
+	<button class="btn btn-success"  id="backbtn" style="visibility:hidden;" onClick="javascript:show_back_question();"   ><span style="font-size: 14px;margin-right:5px;" class="oi oi-arrow-circle-left"></span><?php echo $this->lang->line('back');?></button> */ ?>
 	
-	<?php /* <button class="btn btn-success" id="nextbtn" onClick="javascript:show_next_question();" ><?php echo $this->lang->line('save_next');?></button> */ ?>
+	<?php /* <button class="btn btn-success" id="nextbtn" onClick="javascript:show_next_question();" ><?php echo $this->lang->line('save_next');?></button> 
 	
 	<button class="btn btn-danger btn-save"  
 	        style="<?php if(!$showhidebutton){ echo 'display:none;';}?>"
-	        onClick="javascript:submit_quiz();"  ><i style="display:none;" class="fa fa-spinner sub-spinner fa-pulse  fa-lg"></i>&nbsp;<?php echo $this->lang->line('submit_quiz');?></button>
+	        onClick="javascript:submit_quiz();"  ><i style="display:none;" class="fa fa-spinner sub-spinner fa-pulse  fa-lg"></i>&nbsp;<?php echo $this->lang->line('submit_quiz');?></button> */ ?>
 
+			<button class="btn btn-danger btn-save"  
+	        onClick="javascript:submit_validation();"  >
+			<i style="display:none;" class="fa fa-spinner sub-spinner fa-pulse  fa-lg"></i>&nbsp;<?php echo $this->lang->line('submit_quiz');?></button>
 
 
 
@@ -560,7 +606,8 @@ function increasectime(){
 </script>
  
  
- 
+
+
  
  
 <div  id="warning_div" style="padding:10px; position:fixed;z-index:100;display:none;width:100%;border-radius:5px;height:200px; border:1px solid #dddddd;left:4px;top:70px;background:#ffffff;">

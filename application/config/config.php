@@ -764,8 +764,7 @@ $config['quiz_list']=["10"=>"leadership-quality",
 					  "17"=>"iq",
 					  "18"=>"anxiety-test"
 					];
-
-
+$config['remove_option']=["12"];
 
 
 

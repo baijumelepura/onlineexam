@@ -38,9 +38,6 @@ class Login extends CI_Controller {
 			}
 			
 		}
-		
-		
-		
 		$data['title']=$this->lang->line('login');
 		$data['recent_quiz']=$this->quiz_model->recent_quiz('5');
 		
@@ -52,7 +49,7 @@ class Login extends CI_Controller {
 	{
 		
 		
-		 $this->load->helper('url');
+	    $this->load->helper('url');
 		if($this->input->post('email')){
 		$status=$this->user_model->resend($this->input->post('email'));
 		$this->session->set_flashdata('message', $status);
@@ -139,7 +136,10 @@ public function registration($gid='0')
 		$this->load->view('footer',$data);
 	}
 
-    public function test($quiz=null,$lang=null){
+public function test($quiz=null,$lang=null){
+
+
+if($quiz && array_search($quiz,$this->config->item('quiz_list')) ){
 		if($lang=='ar'){
 			 $this->session->set_userdata("language","arabic");
 		}else{
@@ -150,30 +150,35 @@ public function registration($gid='0')
 		$this->load->helper('url');
 		$data['gid']=0;
 		$data['quiz']=$quiz;
-
+		$data['langs']=$lang;
+		$this->session->unset_userdata("master_password");
 		if($this->input->post('password')){
 			if($this->input->post('password') == $this->config->item('master_password')){
 				$this->session->set_userdata("master_password",$this->config->item('master_password'));
 			}else{
 				$this->session->set_flashdata('message', "<div style='width: 308px;margin-left: 108px;' class='alert alert-danger'>Incorrect password ..! </div>");
-				redirect('login/test/'.$quiz);
+				redirect('login/test/'.$quiz.'/'.$lang);
 			}
 		}
-
-
-
 		$data['title']=$this->lang->line('register_new_account');
 		$data['custom_form']=$this->user_model->custom_form('Registration');
 		// fetching group list
 		$data['group_list']=$this->user_model->group_list();
-		$this->load->view('header',$data);
 		$this->load->view('register',$data);
 		$this->load->view('footer',$data);
+	}else{
+		$this->load->helper('url');
+		$data['title']=$this->lang->line('files_missing');
+	//	$this->load->view('header',$data);
+		$this->load->view('files_missing',$data);
+		$this->load->view('footer',$data);
+	}
 	}
 
 	
 	
 	public function verifylogin($p1='',$p2='',$p3=""){
+		
 		$this->load->helper('url');
 		if($p1 == ''){
 		$username=$this->input->post('email');
@@ -237,8 +242,11 @@ public function registration($gid='0')
                 if($p3 || $this->input->get('quiz')){
 					$keys = ($p3) ? $p3 : $this->input->get('quiz');
 					$quiz_id = array_search($keys,$this->config->item('quiz_list'));
-	               $this->session->set_userdata("reg_quiz",$quiz_id);
-				   $burl = $this->config->item('base_url').'index.php/quiz/quiz_detail/'.$quiz_id;
+	                $this->session->set_userdata("reg_quiz",$quiz_id);
+				    $burl = $this->config->item('base_url').'index.php/quiz/quiz_detail/'.$quiz_id;
+					if($this->session->userdata('master_password')){
+						$this->session->unset_userdata("master_password");
+					}
 				}else{
 					$this->session->unset_userdata('reg_quiz');
 					$burl = $this->config->item('base_url').'index.php/quiz/';
@@ -274,7 +282,7 @@ public function registration($gid='0')
 			$this->load->view('verify_code',$data);
 		  $this->load->view('footer',$data);
 
-			}
+	   }
 	}
 	
 	
@@ -457,7 +465,7 @@ public function insert_user( $quiz ="")
 			
 		$data['result']=$this->result_model->get_result($rid);
 
-	//	print_r($data['result']);die;
+	
 		 
 		$data['attempt']=$this->result_model->no_attempt($data['result']['quid'],$data['result']['uid']);
 		$data['title']=$this->lang->line('result_id').' '.$data['result']['rid'];
@@ -497,13 +505,16 @@ public function insert_user( $quiz ="")
 
 	  $uid=$data['result']['uid'];
 	  $quid=$data['result']['quid'];
-	  
 		$this->load->view('open_header',$data);
 		$this->load->view('open_view_result',$data);
 	//	$this->load->view('view_result_without_login',$data);
 		$this->load->view('footer',$data);	
 		
-		
+	}
+
+	function test_submit(){
+		$data['title']="Test Submitted Successfully";
+		$this->load->view('success',$data);
 	}
 
 

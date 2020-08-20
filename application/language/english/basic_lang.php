@@ -452,3 +452,5 @@ $lang['male']="Male";
 $lang['female']="Female";
 $lang['dob']="Date of birth (DD / MM / YYYY)";
 $lang['nationality']="Nationality";
+
+$lang['warning_skip_que']="you need to answer all questions. the skipped questions are : ";

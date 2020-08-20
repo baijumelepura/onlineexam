@@ -490,9 +490,9 @@ function save_answer(qn){
 							// signal 1
 
 							if(objectifyForm(strformData)){
-								$('.btn-save').show();
+							//	$('.btn-save').show();
 							}else{
-								$('.btn-save').hide();
+							//	$('.btn-save').hide();
 							}
 		
 							$('#save_answer_signal2').css('backgroundColor','#00ff00');
@@ -893,3 +893,39 @@ function closeNav() {
 }
  
 
+
+function submit_validation(){
+$('.sub-spinner').show();
+let  subval = [];
+$('.skipques').text('');
+
+$('.qbtn').each(function(i, ele) {
+var i =	$(this).attr('rel');
+var backgroundcolors = $(this).css('backgroundColor')
+if(backgroundcolors == "rgb(201, 48, 44)"){
+	subval.push(((+i)+1))
+}
+});
+
+if(subval.length > 0){
+let text =	' [ '+subval.toString()+' ] ';
+$('.skipques').text(text);
+$('#myModal1').modal('show');
+$('.sub-spinner').hide();
+}else{
+	submit_quiz();
+}
+}
+
+
+
+function show_question_popup(){
+	let  subval1 = [];
+	$('.qbtn').each(function(i, ele) {
+	var j =	$(this).attr('rel');
+	var backgroundcolors1 = $(this).css('backgroundColor')
+	if(backgroundcolors1 == "rgb(201, 48, 44)"){
+		subval1.push(j);
+	}});
+	show_question(subval1[0]);
+}

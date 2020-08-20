@@ -522,4 +522,20 @@ function edit_custom($field_id){
            redirect('login/test/'.$quiz.'');
 		
 	}
+	function submit_session(){
+		$quiz="";
+		$this->session->unset_userdata('logged_in');		
+		if($this->session->userdata('logged_in_raw')){
+			$this->session->unset_userdata('logged_in_raw');	
+		}	
+		if($this->session->userdata('master_password')){
+			$this->session->unset_userdata("master_password");
+		}
+		if($this->session->userdata('reg_quiz')){
+			$quiz=$this->config->item('quiz_list')[$this->session->userdata('reg_quiz')];
+			$this->session->unset_userdata('reg_quiz');	
+		}		
+	   redirect('login/test_submit');
+	
+	}
 }

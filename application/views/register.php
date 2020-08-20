@@ -1,3 +1,72 @@
+<html lang="en">
+   <head>
+      <title> <?php echo $title;?></title>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- Custom fonts for this template-->
+      <link rel="icon" href="http://nadiabuhannad.com/wp-content/uploads/2020/07/cropped-logo-square-32x32.png" sizes="32x32">
+      <link href="<?php echo base_url();?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+      <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" rel="stylesheet">
+      <!-- custom css -->
+      <?php if($this->session->userdata("language")=='english'){ ?>
+      <link href="<?php echo base_url('css/style.css?q='.time());?>" rel="stylesheet">
+      <?php }else{ ?>
+        <link href="<?php echo base_url('css/ar_style.css?q='.time());?>" rel="stylesheet">
+      <?php } ?>
+
+      <!-- Custom styles for this template-->
+      <link href="<?php echo base_url();?>css/sb-admin-2.min.css" rel="stylesheet">
+      <style>
+         html,body,h1,h2,h3,h4,p,div,span,ul,li,a{
+         direction: <?php echo $this->config->item('direction');?>;
+         }
+         .btn-default{
+         border:1px solid #c8c4c4;
+         }
+         form{
+    /*     width: 100%;*/
+         }
+         .sidebar {
+         width: 16rem!important;
+         }
+      </style>
+
+
+<script src="<?php echo base_url();?>vendor/jquery/jquery.min.js"></script>
+      <script src="<?php echo base_url();?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <!-- Core plugin JavaScript-->
+      <script src="<?php echo base_url();?>vendor/jquery-easing/jquery.easing.min.js"></script>
+      <!-- Custom scripts for all pages-->
+      <script src="<?php echo base_url();?>js/sb-admin-2.min.js"></script>
+      <!-- Page level plugins -->
+      <script src="<?php echo base_url();?>vendor/chart.js/Chart.min.js"></script>
+      <script>
+         var base_url="<?php echo base_url();?>";
+         
+      </script>
+
+            <script type="text/javascript">
+            $(document).ready(function(){
+            resizeDiv();
+            });
+
+            window.onresize = function(event) {
+            resizeDiv();
+            }
+
+            function resizeDiv() {
+            vpw = $(window).width();
+            vph = $(window).height();
+            $(‘#regeng).css({‘height’: vph });
+            }
+            </script>
+
+
+
 
 <!--Logo Header open-->
 <style>
@@ -20,7 +89,7 @@ label.error{
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
 
 
-<nav class="navbar navbar-light bg-light clearfix cst-nav">
+<nav class="cst-navbar-header navbar navbar-expand-lg navbar-light bg-white topbar mb-4 static-top shadow">
   <span class="navbar-brand">
   <img src="<?php echo base_url('images/logo.png');?>" width="250" height="70" class="d-inline-block align-top" alt="">
   	<?php  $this->lang->line('login_tagline');?> 
@@ -49,9 +118,7 @@ $('#lang_ar').change(function(){
 
 
 </nav>
-
  -->
-
  <div class="container-fluid">
 <div class="row justify-content-center">
       <div class="col-md-10">
@@ -158,7 +225,7 @@ $('#lang_ar').change(function(){
 									 	</form>
 									 <?php }else{ ?>
 
-									 			<form method="post" id="commentForm" action="<?php echo site_url('login/test/'.$quiz.'');?>">
+									 			<form method="post" id="commentForm" action="<?php echo site_url('login/test/'.$quiz.'/'.$langs);?>">
 											 
 										
 											    	 		<?php 
