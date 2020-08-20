@@ -1,5 +1,5 @@
 <!-- Template javascript -->
-	  	<script src="<?php echo base_url('js/basic.js?q='.time());?>"></script>
+<script src="<?php echo base_url('js/basic.js?q='.time());?>"></script>
  <style>
  td{
 		font-size:14px;
@@ -521,7 +521,7 @@ if(in_array($option['oid'],$save_ans)){
 			<?php echo $this->lang->line('quest-dash-instruction-2');?>
 		</li>
 	</ul>
-	<div style="max-height:60%;overflow-y:auto;">
+	<div style="max-height:46%;overflow-y:auto;">
 		<?php 
 			$showhidebutton = true;
 		for($j=0; $j < $quiz['noq']; $j++ ){
@@ -618,27 +618,3 @@ function increasectime(){
 <a href="javascript:submit_quiz();"   class="btn btn-info"  style="cursor:pointer;"><?php echo $this->lang->line('submit_quiz');?></a>
 </center>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
- 
