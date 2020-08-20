@@ -511,7 +511,7 @@ if(in_array($option['oid'],$save_ans)){
  <!--hint section-->
 <div class="col-md-3 ques-hint shadow-sm">
    
-	<b> <h5><?php echo $this->lang->line('questions');?></h5></b>
+	<b> <h5><?php echo $this->lang->line('dash-instruction-questions');?></h5></b>
 	<!-- <p style="color:#333131;"><?php echo $this->lang->line('quest-dash-instruction');?></p> -->
 	<ul>
 		<li style="color:#333131;">
