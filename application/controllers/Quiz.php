@@ -503,6 +503,8 @@ function open_quiz($limit='0'){
 	}
 	
 	public function validate_quiz($quid){
+	    
+	
 	$selected_lang=0;
 	if($this->input->post('selected_lang')){
 	$selected_lang=$this->input->post('selected_lang');
@@ -548,14 +550,14 @@ function open_quiz($limit='0'){
 		}		
 		
 		
-		$gid=$logged_in['gid'];
+		$gid=$logged_in['gid']; 
 		$uid=$logged_in['uid'];
 		 
 		 // if this quiz already opened by user then resume it
 		 $open_result=$this->quiz_model->open_result($quid,$uid);
 		 if($open_result != '0'){
 		// $this->session->set_userdata('rid', $open_result);
-		redirect('quiz/resume_pending/'.$open_result);
+		//redirect('quiz/resume_pending/'.$open_result);
 		 	
 		}
 		$data['quiz']=$this->quiz_model->get_quiz($quid);
@@ -602,6 +604,7 @@ function open_quiz($limit='0'){
 		
 		$logged_in=$this->session->userdata('logged_in');
 		
+	//	print_r($logged_in);
 		
 		$gid=$logged_in['gid'];
 		$uid=$logged_in['uid'];
@@ -610,7 +613,7 @@ function open_quiz($limit='0'){
 		 $open_result=$this->quiz_model->open_result($quid,$uid);
 		 if($open_result != '0'){
 		// $this->session->set_userdata('rid', $open_result);
-		redirect('quiz/resume_pending/'.$open_result);
+	//	 redirect('quiz/resume_pending/'.$open_result);
 		 	
 		}
 		$data['quiz']=$this->quiz_model->get_quiz($quid);

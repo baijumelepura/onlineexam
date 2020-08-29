@@ -427,13 +427,13 @@
                </a>
             <!-- Dropdown - User Information -->
                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                  <a class="dropdown-item" href="<?php echo site_url('user/edit_user/'.$logged_in['uid']);?>">
+              <?php /*    <a class="dropdown-item" href="<?php echo site_url('user/edit_user/'.$logged_in['uid']);?>">
                      <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                      <?php echo $this->lang->line('myaccount');?>
-                  </a>
+                  </a> */ ?>
                   <?php 
                      if(in_array('List',explode(',',$logged_in['appointment'])) && !in_array('List_all',explode(',',$logged_in['appointment']))){ ?>
-                  <!-- <a class="dropdown-item" href="<?php echo site_url('appointment/myappointment/');?>"><i class="fas fa-mobile fa-sm fa-fw mr-2 text-gray-400"></i><?php echo $this->lang->line('myappointment');?></a>     -->
+                  <!-- <a class="dropdown-item" href="<?php echo site_url('appointment/myappointment/');?>"><i class="fas fa-mobile fa-sm fa-fw mr-2 text-gray-400"></i><?php  $this->lang->line('myappointment');?></a>     -->
                   <?php } ?> 
                   <div class="dropdown-divider"></div>
                      <a class="dropdown-item" href="<?php echo site_url('user/logout');?>"  >
